@@ -1,0 +1,49 @@
+project:
+  type: book
+  output-dir: htmlfiles
+
+book:
+  title: "Thesis"
+  author: "Stan Brouwer"
+  date: "19/4/2024"
+  chapters:
+    - text: "Home"
+      file: index.qmd
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+# - part: "Cijfers"
+#      chapters:
+#        - text: "Ledenaantal en rittenkaarten"
+#          file: aantallen.qmd
+#        - text: "Omzet"
+#          file: omzet.qmd
+#        - text: "Technisch overzicht"
+#          file: TechnischOverzicht.qmd
+#        - text: "Proeflessen en opzeggingen"
+#          file: conversie.qmd
+#    - part: "Leden"
+#      chapters:
+#        - text: "Afmeldingen (te laat)"
+#          file: afmelders.qmd
+#        - text: "Opkomst"
+#          file: opkomst.qmd
+#        - text: "Waardevolle leden"
+#          file: MVP.qmd
+#        - text: "Beste Les"
+#          file: bestlesson.qmd
+#    - part: "Overig"
+#      chapters:
+#        - text: "iZettle"
+#          file: izettle.qmd
+#        - text: "retentie"
+#          file: retentie.qmd
+#        - text: "leads"
+#          file: leads.qmd
+#        - text: "Maximum"
+#          file: Maximum.qmd
