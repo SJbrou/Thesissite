@@ -1,9 +1,6 @@
-# Preface {.unnumbered}
+# Thesis {.unnumbered}
 
-This is a Quarto book.
+Here I'll provide all the data for my thesis. Hosting it makes it easy to show the analysises that I do. Code is provided in the code, and also hosted complementary on github. 
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+First drafts of my thesis, presentation, collected data and scripts will be available here. 
 
-```{r}
-1 + 1
-```
