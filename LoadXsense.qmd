@@ -1,0 +1,52 @@
+---
+title: "ExploreXsenseData"
+author: "Stan Brouwer"
+format: html
+editor: source
+---
+
+# Explore Dot Data
+
+```{r Config, message = FALSE, verbose = FALSE}
+rm(list = ls())
+
+# Define directory with data
+directory <- "../Data/20240419_104713"
+
+# Load dependencies
+library(tidyr)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+
+# Function for loading Xsense data
+#LoadXsenseData <- function(directory) {
+
+# Check for files in the chosen directory, and save them per marker
+files <- list.files(path = directory, full.names = TRUE)
+
+for (i in 1:length(files)) {
+  assign(paste0("data", i), read.csv(files[i], header = TRUE, skip = 10))  # Read CSV file 
+  assign(paste0("data", i), transform(get(paste0("data", i)), TimeS = (SampleTimeFine / 1e6) - (SampleTimeFine[1] / 1e6)))  # Add TimeS column
+}
+
+
+
+# Assuming data1 is your data frame
+library(plotly)
+
+plot_ly(data = data1, x = ~PacketCounter) %>%
+  add_trace(y = ~FreeAcc_X, type = 'scatter', mode = 'lines', name = 'FreeAcc_X') %>%
+  add_trace(y = ~FreeAcc_Y, type = 'scatter', mode = 'lines', name = 'FreeAcc_Y') %>%
+  add_trace(y = ~FreeAcc_Z, type = 'scatter', mode = 'lines', name = 'FreeAcc_Z') %>%
+  layout(xaxis = list(title = "Packet Counter"),
+         yaxis = list(title = "Acceleration"),
+         title = "Packet Counter vs. Acceleration")
+
+
+
+
+
+```
