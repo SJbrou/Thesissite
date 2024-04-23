@@ -4,27 +4,21 @@ author: "Stan Brouwer"
 format:
   html:
     toc: true
-    toc-location: left
     embed-resources: true
 #    page-layout: full
 editor: source
+number-sections: false
 ---
 
-# Explore Dot Data
+This is my R code and output of the Xsense Dot IMU data. The source code can be found on [my github](https://github.com/SJbrou/Thesissite/blob/main/web/LoadXsense.qmd)
 
-## Correct Time?
+::: column-margin
+IMU's do not start or stop measuring at the exact same moment in time. Thus, the amount of registration per IMU dffered (<code>FreeAcc_X</code> was of differing length). Assuming that the time in <code>SampletimeFine</code> is synchronized, I temporally realigned the data, excluding some of the first or last elements to ensure dataframes are of the same length
+:::
 
-Obviously, not all IMU's will register time on the exact same moment. Also, the amount of registrations per IMU differed: <code>FreeAcc_X</code> is of differing length per IMU. I suspect this to be due to the command stopping the IMU's taking longer to reach and procces the different units. 
+<details close>
+<summary>Code for loading the data</summary>
 
-Assuming that the time is synchronised across the IMU's, and that absolute time is expressed in <code>SampleTimeFine</code>, it would be usefull to\n (1) Temporally realigning the data\n
-(2) Convert time to a more human readable format
-
-Since time is given in microseconds, dividing by 1e6 converts it to seconds. It would be usefull to define t0 as the lowest value, and substract it from all other values.
-<code>data$TimeS <- (data$SampleTimeFine / 1e6) - (data$SampleTimeFine[1] / 1e6)</code>
-
-Temporally realigning data is more work. See the code below for my inplementation where I assumed that similar values of SampleTimeFine indicate similar temporality.
-
-<details><summary>Code for loading the data</summary>
 ```{r Config, message = FALSE, verbose = FALSE}
 # Clean workspace and load dependencies
 rm(list = ls())
@@ -37,31 +31,26 @@ library(lubridate)
 
 # Function to load Xsense data (and convert time to seconds)
 LoadXsenseData <- function(directory) {
-# directory <- "../../Data/20240419_104713"
-
   files <- list.files(path = directory, full.names = TRUE)  # Searches each marker file
   data_list <- lapply(files, function(file) { # creates a list storing the data
-    data <- read.csv(file, header = TRUE, skip = 10) # reads each cvs file
-    # data$TimeS <- (data$SampleTimeFine / 1e6) - (data$SampleTimeFine[1] / 1e6) # Converts time to seconds
+    data <- read.csv(file, header = TRUE, skip = 10) # reads each csv file
     return(data)
   })
   names(data_list) <- paste0("data", seq_along(data_list))  # Names elements to my preference
   
-## Re-align time
+  # Re-align time
   min_time <- min(sapply(data_list, function(df) min(df$SampleTimeFine))) #  Identify the minimum SampleTimeFine value across all data
   adjusted_data_list <- lapply(data_list, function(df) { # Subtract min_time from SampleTimeFine for each dataframe in data_list
     df$SampleTimeFine <- df$SampleTimeFine - min_time
+    df$A_abs <- sqrt(df$FreeAcc_X^2 + df$FreeAcc_Y^2 + df$FreeAcc_Z^2)
+    df$TimeS <- (df$SampleTimeFine / 1e6) - (df$SampleTimeFine[1] / 1e6) # Converts time to seconds
     return(df)
   })
-
-# This is intresting. After substracting the min_time, it seemed that longer lists had a smaller minimum time, and that all time could only differ by 1/60 of a second (or 16667 SampleTimeFine). 
-# Thus, equaling lists in lenght by substracting the first values of longer lists, should ensure that the times are well-alligned
-
-# Removing first elements of longer list
-# Find the minimum number of rows among all dataframes
+  
+  # Removing first elements of longer list, Find the minimum number of rows among all dataframes
   min_rows <- min(sapply(adjusted_data_list, nrow))
-
-# Remove elements from the beginning of each dataframe in adjusted_data_list
+  
+  # Remove elements from the beginning of each dataframe in adjusted_data_list
   adjusted_data_list <- lapply(adjusted_data_list, function(df) {
     if (nrow(df) > min_rows) {
       df <- df[(nrow(df) - min_rows + 1):nrow(df), , drop = FALSE]  # Remove elements from the beginning
@@ -69,85 +58,168 @@ LoadXsenseData <- function(directory) {
     return(df)
   })
   
+  # Define Markers dataframe
+  markers <- data.frame(PacketCounter = adjusted_data_list[[1]]$PacketCounter,
+                        SampleTimeFine = adjusted_data_list[[1]]$SampleTimeFine,
+                        TimeS = adjusted_data_list[[1]]$TimeS)
 
-  
-  list2env(adjusted_data_list, envir = .GlobalEnv)  # Unpack the list into the global environment
-    # Define Markers dataframe
-  markers <- data.frame(
-  PacketCounter = data1$PacketCounter,
-  SampleTimeFine = data1$SampleTimeFine,
-  A_X1 = data1$FreeAcc_X,
-  A_X2 = data2$FreeAcc_X,
-  A_X3 = data3$FreeAcc_X,
-  A_X4 = data4$FreeAcc_X,
-  A_X5 = data5$FreeAcc_X,
-  
-  A_Y1 = data1$FreeAcc_Y,
-  A_Y2 = data2$FreeAcc_Y,
-  A_Y3 = data3$FreeAcc_Y,
-  A_Y4 = data4$FreeAcc_Y,
-  A_Y5 = data5$FreeAcc_Y,
-  
-  A_Z1 = data1$FreeAcc_Z,
-  A_Z2 = data2$FreeAcc_Z,
-  A_Z3 = data3$FreeAcc_Z,
-  A_Z4 = data4$FreeAcc_Z,
-  A_Z5 = data5$FreeAcc_Z
-  )
-  return(markers)
+  # Add A_abs columns dynamically for each dataframe
+  for (i in 1:5) {
+    markers[paste0("A_abs", i)] <- adjusted_data_list[[i]]$A_abs
+  }
+
+  # Add FreeAcc_X, FreeAcc_Y, FreeAcc_Z columns for each dataframe
+  # for (i in 1:5) {
+  #   markers[paste0("A_X", i)] <- adjusted_data_list[[i]]$FreeAcc_X
+  #   markers[paste0("A_Y", i)] <- adjusted_data_list[[i]]$FreeAcc_Y
+  #   markers[paste0("A_Z", i)] <- adjusted_data_list[[i]]$FreeAcc_Z
+  # }
+
+  return(markers)  # Return the Markers dataframe
 }
 
+####################################################################
+#### function to load all different measurements into "markers_list"
+LoadMarkers <- function(folderdir) {
+  markers <- list()  # Initialize an empty list to store the dataframes
+  folders <- list.dirs(folderdir, full.names = TRUE, recursive = FALSE)
+  for (i in seq_along(folders)) { # Iterate through each folder
+    data <- LoadXsenseData(folders[i])  # Load Xsense data from the current folder
+    markers[[paste0("markers", i)]] <- data  # Store the dataframe in the list with a dynamic name
+  }
+  return(markers)  # Return the list of dataframes
+}
 
+markers_list <- LoadMarkers("../../Logs") # Load all data
+```
+
+</details>
+
+### Normalise plots
+
+Only the data during the lift should be considered. And I want to express time as percentage of the duration of an lift. \n
+Lets start by viewing the plot of the absolute acceleration of the barbell: Note that session 1 - 3 are test sessions.
+
+```{r plotsToClip, message = FALSE, echo = FALSE}
+markers_list <- LoadMarkers("../../Logs") # Load all data
+
+# Create a list to store the plots
+plots <- lapply(seq_along(markers_list), function(i) {
+  # Plot Times against A_abs for the current dataframe
+  plot <- plot_ly(markers_list[[i]], x = ~TimeS, y = ~A_abs5, type = 'scatter', mode = 'lines', name = paste("session", i)) %>%
+    layout(xaxis = list(title = "TimeS"), yaxis = list(title = "A_abs"))
+  return(plot)
+})
+
+# Combine plots into a single interactive plot
+combined_plot <- subplot(plots, nrows = length(plots))
+
+# Print the combined plot
+combined_plot
+
+```
+
+The Y-axis scale differes. Note that for the strict press (session 4) the downward acceleration is almost similar to the upward acceleration. Thus, we are left with double the peaks in <code>A_abs</code>
+
+Also, the difference between strict presses and push jerks becomes obvious when looking at upper leg acceleration:
+
+```{r plotstoclip2, message = FALSE, echo = FALSE}
+plot4 <- plot_ly(markers_list[[4]], x = ~TimeS, y = ~A_abs5, type = 'scatter', mode = 'lines', name = "Barbell") %>%
+  add_trace(y = ~A_abs2, name = "Bovenbeen") %>%
+  layout(xaxis = list(title = "TimeS"), yaxis = list(title = "A_abs"), title = "Strict Press")
+plot4
+
+plot4 <- plot_ly(markers_list[[7]], x = ~TimeS, y = ~A_abs5, type = 'scatter', mode = 'lines', name = "Barbell") %>%
+  add_trace(y = ~A_abs2, name = "Bovenbeen") %>%
+  layout(xaxis = list(title = "TimeS"), yaxis = list(title = "A_abs"), title = "Push Jerk")
+plot4
+
+rm(plots, plot4)
+```
+
+Letst exlude the data before and after the push jerk.\n
+This is the data I want to clip:
+
+```{r, clipdata}
+cliptime <- data.frame(
+  session = c(NA, NA, NA, NA, 5, 6, 7),
+  start = c(NA, NA, NA, NA, 8.4, 10.81, 8),
+  end = c(NA, NA, NA, NA, 27.35, 33.3, 38)
+)
+```
+
+<details close>
+<summary>Code for clipping the data</summary>
+
+```{r clipdatafunct}
+# plot to visually inspect all the data, to determine where to clip. Would like to program this so it automatically identifies the start of movement patterns. 
+plot <- plot_ly(markers_list[[5]], x = ~TimeS, y = ~A_abs5, type = 'scatter', mode = 'lines', name = "Barbell") %>%
+  add_trace(y = ~A_abs3, name = "Bovenbeen") %>%
+  layout(xaxis = list(title = "TimeS"), yaxis = list(title = "A_abs"), title = "Strict Press")
+# plot
+rm(plot)
+```
+
+```{r}
+clip_data <- function(cliptime, markers_list) {
+  sessions <- list()
+  for (i in seq_along(markers_list)) {
+    session_num <- i
+    if (!is.na(cliptime$session[session_num])) { # check if session should be clipped
+      filtered_df <- markers_list[[i]] %>%
+        filter(TimeS >= cliptime$start[session_num] & TimeS <= cliptime$end[session_num])
+      if (!is.null(filtered_df) && nrow(filtered_df) > 0) {
+        assign(paste0("session", session_num), filtered_df, envir = .GlobalEnv) 
+        sessions[[paste0("session", session_num)]] <- filtered_df
+      }
+    }
+  }
+  return(sessions)
+}
 ```
 </details>
 
-```{r graphs, message = FALSE}
-markers <- LoadXsenseData("../../Data/20240419_104713") # Execute function loading data
-
-# Plots for A_X
-plot <- plot_ly()
-for (i in 1:5) { # Add traces for each A_X column with different colors
-  plot <- plot %>% 
-    add_trace(data = markers, x = ~SampleTimeFine, y = as.formula(paste0("~A_X", i)), 
-              type = 'scatter', mode = 'lines', name = paste("marker", i))
-}
-# Customize layout
-plot_A_X <- plot %>% 
-  layout(xaxis = list(title = "Sample Time Fine"),
-         yaxis = list(title = "Acceleration"),
-         title = "Acceleration vs. Sample Time Fine")
-
-# Plots for A_Y
-plot_A_Y <- plot_ly()
-for (i in 1:5) { # Add traces for each A_Y column with different colors
-  plot_A_Y <- plot_A_Y %>% 
-    add_trace(data = markers, x = ~SampleTimeFine, y = as.formula(paste0("~A_Y", i)), 
-              type = 'scatter', mode = 'lines', name = paste("marker", i))
-}
-# Customize layout
-plot_A_Y <- plot_A_Y %>% 
-  layout(xaxis = list(title = "Sample Time Fine"),
-         yaxis = list(title = "Acceleration"),
-         title = "Acceleration vs. Sample Time Fine (A_Y)")
-
-# Plots for A_Z
-plot_A_Z <- plot_ly()
-for (i in 1:5) { # Add traces for each A_Z column with different colors
-  plot_A_Z <- plot_A_Z %>% 
-    add_trace(data = markers, x = ~SampleTimeFine, y = as.formula(paste0("~A_Z", i)), 
-              type = 'scatter', mode = 'lines', name = paste("marker", i))
-}
-# Customize layout
-plot_A_Z <- plot_A_Z %>% 
-  layout(xaxis = list(title = "Sample Time Fine"),
-         yaxis = list(title = "Acceleration"),
-         title = "Acceleration vs. Sample Time Fine (A_Z)")
-```
+Lets plot the clipped data. 
 
 ```{r, echo = FALSE}
-# Print the plot
-plot_A_X
-plot_A_Y
-plot_A_Z
-# Different bits for new commit
+sessions <- clip_data(cliptime, markers_list)
+# Create a list to store the plots
+plots <- lapply(seq_along(sessions), function(i) {
+  # Plot Times against A_abs for the current dataframe
+  plot <- plot_ly(sessions[[i]], x = ~TimeS, y = ~A_abs5, type = 'scatter', mode = 'lines', name = paste("session", i+4)) %>%
+    layout(xaxis = list(title = "TimeS"), yaxis = list(title = "A_abs"))
+  return(plot)
+})
+combined_plot <- subplot(plots, nrows = length(plots))
+combined_plot
 ```
+
+Now lets focus on only one lift
+```{r, echo = FALSE}
+rm(sessions, session5, session6, session7, cliptime)
+cliptime <- data.frame(
+  session = c(NA, NA, NA, NA, 5, 6, 7),
+  start = c(NA, NA, NA, NA, 15.78, 15.83, 19.2),
+  end = c(NA, NA, NA, NA, 19.2, 20, 24)
+)
+sessions <- clip_data(cliptime, markers_list)
+
+```
+
+```{r}
+# Create a list to store the plots
+plots <- lapply(seq_along(sessions), function(i) {
+  # Plot Times against A_abs for the current dataframe
+  plot <- plot_ly(sessions[[i]], x = ~TimeS, y = ~A_abs5, type = 'scatter', mode = 'lines', name = paste("session", i+4)) %>%
+  add_trace(y = ~A_abs2, name = "Bovenbeen", line = list(width = 1)) %>%
+    layout(xaxis = list(title = "TimeS"), yaxis = list(title = "A_abs"))
+  return(plot)
+})
+
+# Combine plots into a single interactive plot
+combined_plot <- subplot(plots, nrows = length(plots))
+combined_plot
+
+
+```
+

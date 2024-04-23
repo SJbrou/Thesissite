@@ -1,4 +1,14 @@
-# Thesis {.unnumbered}
+---
+title: "Thesis"
+author: "Stan Brouwer"
+date: 04-19-2024
+format:
+  html:
+    toc: true
+    embed-resources: true
+#    page-layout: full
+editor: source
+---
 
 Here I'll provide all the data for my thesis. Hosting it makes it easy to show the analysises that I do. Code is provided in the code, and also hosted complementary on github. 
 

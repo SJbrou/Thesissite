@@ -9,8 +9,12 @@ book:
   chapters:
     - text: "Home"
       file: index.qmd
-    - text: "LoadXsense"
-      file: LoadXsense.qmd
+    - text: "Thesis"
+      file: thesis.qmd
+    - part: "Scripts"
+      chapters:
+      - text: "LoadXsense"
+        file: LoadXsense.qmd
 format:
   html:
     theme: cosmo
