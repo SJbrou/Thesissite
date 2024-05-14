@@ -15,6 +15,11 @@ book:
       chapters:
       - text: "LoadXsense"
         file: LoadXsense.qmd
+    - part: "Data"
+      chapters: 
+      - text: "Measurements"
+        file: Allmeasurements.qmd
+        
 format:
   html:
     theme: cosmo
