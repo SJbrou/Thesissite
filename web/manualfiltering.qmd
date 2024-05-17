@@ -1,0 +1,66 @@
+---
+title: "Data filtering"
+author: "Stan Brouwer"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 1
+    embed-resources: true
+    # standalone: true
+    smooth-scroll: true
+    page-layout: full
+    code-fold: show
+    grid:
+      sidebar-width: 180px
+editor: source
+number-sections: false
+---
+::: column-screen-inset-right
+
+Lets load all functions from the previous chapter. This is a hassle since they are stored in Quarto markdown language, and R only accept real R code.
+```{r LoadData, message = FALSE, verbose = FALSE}
+# Clean workspace
+rm(list = ls())
+
+# Most dependencies are loaded by loading datafiltering.qmd.
+# To load only the chuncks containing functiosn we need parsermd
+library(parsermd)
+
+toload <- c("load_data","load_plots", "filter_data", "separate_lifts", "visualise_seperate_lifts")
+rmd <- parse_rmd("datafiltering.qmd")
+
+
+for (i in seq_along(toload)) {
+  setup_chunk <- rmd_select(rmd, toload[i]) |> 
+    as_document()
+
+  setup_chunk <- setup_chunk[-grep("```", setup_chunk)]
+  setup_chunk
+#> [1] "library(tidyr)"   "library(stringr)" ""                
+
+  eval(parse(text = setup_chunk))             
+}
+rm(rmd, i, setup_chunk, toload)
+```
+
+I've collected metadata about all recorded lift in liftinfo.csv. This can be used to easialy load the lifts:
+```{r lets_go, message=FALSE}
+metadata <- read.csv("../../Logs/metadata.csv", header = TRUE, sep = ";")
+data <- LoadXsenseData(metadata[10,])
+plot_a(data)
+plot_gyr(data)
+
+```
+```{r letstgo2, message = FALSE}
+data <- filterdata(data)
+plot_a(data)
+```
+```{r letsgo3, message = FALSE}
+data <- separatelifts(data)
+plot_filtered_subplots(data)
+
+```
+
+
+:::

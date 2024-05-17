@@ -1,7 +1,7 @@
 project:
   type: book
   output-dir: htmlfiles
-
+  
 book:
   title: "Thesis"
   author: "Stan Brouwer"
@@ -11,14 +11,10 @@ book:
       file: index.qmd
     - text: "Thesis"
       file: thesis.qmd
-    - part: "Scripts"
-      chapters:
-      - text: "LoadXsense"
-        file: LoadXsense.qmd
-    - part: "Data"
-      chapters: 
-      - text: "Measurements"
-        file: Allmeasurements.qmd
+    - text: "Data filtering"
+      file: datafiltering.qmd
+    - text: "Manual filtering"
+      file: manualfiltering.qmd
         
 format:
   html:
