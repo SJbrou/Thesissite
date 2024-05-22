@@ -107,6 +107,60 @@ pp_info <- data.frame (
 )
 ```
 
+```{r loadXsenseData2, message=FALSE}
+LoadXsenseData2 <- function(dir) {
+  hz <- 60
+  skiprow <- 7
+
+
+  files <- list.files(path = dir, full.names = TRUE)
+  data <- list()
+
+  # Read CSV files of each directory
+  for (i in seq_along(files)) {
+    data[[i]] <- read.csv(files[i], header = TRUE, skip = skiprow)
+  }
+
+  # Ensure all dataframes have the same number of rows
+  min_rows <- min(sapply(data, nrow))
+  data <- lapply(data, function(df) {
+    df <- df[1:min_rows, , drop = FALSE]
+    return(df)
+  })
+
+  # Adjust time
+  for (i in seq_along(data)) {
+    rows <- nrow(data[[i]])
+    data[[i]]$TimeS <- ((1/hz) * (1:rows))
+  }
+
+  # Initialize toreturn data frame with time column
+  toreturn <- data.frame(time = data[[1]]$TimeS)
+
+  # Calculate absolute values
+  for (i in 1:length(data)) {
+    if ("FreeAcc_X" %in% names(data[[i]])) {
+      col_name <- paste0("FreeAcc_abs", i)
+      toreturn[[col_name]] <- sqrt(data[[i]]$FreeAcc_X^2 + data[[i]]$FreeAcc_Y^2 + data[[i]]$FreeAcc_Z^2)
+    }
+    if ("Acc_X" %in% names(data[[i]])) {
+      col_name <- paste0("A_abs", i)
+      toreturn[[col_name]] <- sqrt(data[[i]]$Acc_X^2 + data[[i]]$Acc_Y^2 + data[[i]]$Acc_Z^2)
+    }
+    if ("Gyr_X" %in% names(data[[i]])) {
+      col_name <- paste0("Gyr_abs", i)
+      toreturn[[col_name]] <- sqrt(data[[i]]$Gyr_X^2 + data[[i]]$Gyr_Y^2 + data[[i]]$Gyr_Z^2)
+    }
+  }
+
+  # Order the attributes of the dataframe
+  toreturn_sorted <- toreturn[, sort(names(toreturn))]
+
+  return(toreturn_sorted)
+}
+
+
+```
 ## Visualization
 
 lets also define some functions to visualize the data
@@ -358,7 +412,7 @@ plot_filtered_subplots <- function(filtered2) {
 }
 ```
 Lets call the function
-```{r call_filtered_subplots, message=FALSE}
+```{r call_filtered_subplots, message=FALSE, verbose=FALSE, warning=FALSE}
 plot_filtered_subplots(filtered2)
 ```
 This is great! As expected our filter is a bit conservative. It is hard to identify the exact start of the lift mathematicly. However, when we visualise the data a clear dip in acceleration can be seen just before the peaks. This should be the start of the lift - the dip - where the subject moves downward before propelling the bar upwards. This can be seen at T=31 for the firts lift, at t=192.5 for the second lift, and t=470 for the last lift. 

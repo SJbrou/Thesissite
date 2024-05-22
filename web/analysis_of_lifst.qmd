@@ -1,0 +1,177 @@
+---
+title: "Analysis of lifts"
+author: "Stan Brouwer"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 1
+    embed-resources: true
+    # standalone: true
+    smooth-scroll: true
+    page-layout: full
+    code-fold: show
+    grid:
+      sidebar-width: 180px
+editor: source
+number-sections: false
+---
+
+This is the code used to analyse the biomechanical characteristics of each lift. 
+
+::: column-page-right
+
+Lets start by loading all previous functions
+```{r startUp, message = FALSE, verbose = FALSE}
+# Clean workspace
+rm(list = ls())
+library(tidyr)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+library(car)
+
+# Most dependencies are loaded by loading datafiltering.qmd.
+# To load only the chuncks containing functions we need parsermd
+library(parsermd)
+
+toload <- c("load_data","load_plots", "filter_data", "separate_lifts", "visualise_seperate_lifts", "loadXsenseData2")
+rmd <- parse_rmd("datafiltering.qmd")
+
+
+for (i in seq_along(toload)) {
+  setup_chunk <- rmd_select(rmd, toload[i]) |> 
+    as_document()
+
+  setup_chunk <- setup_chunk[-grep("```", setup_chunk)]
+  setup_chunk
+#> [1] "library(tidyr)"   "library(stringr)" ""                
+
+  eval(parse(text = setup_chunk))             
+}
+rm(rmd, i, setup_chunk, toload)
+```
+
+Lets define a function to load the R objects containing lift data
+```{r LoadData, message = FALSE, verbose = FALSE}
+loadLift <- function(dir) {
+  files <- list.files(path = dir, full.names = TRUE)
+  data <- list()
+  
+  for (i in seq_along(files)) {
+    data[[i]] <- read.csv(files[i])
+  }
+  return(data)
+}
+
+# Load the data
+data_male <- loadLift("../../lifts/male")
+data_female <- loadLift("../../lifts/female")
+```
+
+
+# Statitstics
+
+Lets do some statistics!
+
+## Peak accelerations
+Lets create a function to find the maximum value for a specific attribute for each lift (such as the absolute acceleration or gyr of one of the IMU's)
+
+```{r analysedata, message=FALSE}
+## Loading correct data
+find_col_max <- function(df_list, colname) {
+  # Initialize a matrix to store the maximum values
+  col_max <- matrix(NA, nrow = length(df_list), ncol = 5)
+  colnames(col_max) <- c(paste0(colname, "1"), paste0(colname, "2"), paste0(colname, "3"), paste0(colname, "4"), paste0(colname, "5"))
+  
+  for (i in seq_along(df_list)) {
+    df <- df_list[[i]]
+    for (j in 1:5) {
+      col_max[i, j] <- max(df[[paste0(colname, j)]], na.rm = TRUE)
+    }
+  }
+  
+  # Convert the matrix to a dataframe
+  col_max_df <- as.data.frame(col_max)
+  
+  return(col_max_df)
+}
+```
+Lets check if the function works as intended by loading the absolute acceleration of the barbells (showing only first 10 rows)
+```{r, message=FALSE}
+male_max_abs <- find_col_max(data_male, "A_abs")
+female_max_abs <- find_col_max(data_female, "A_abs")
+
+# Showing only first 10 rows
+kable(male_max_abs[1:10, ])
+kable(female_max_abs[1:10, ])
+```
+
+Now lets define a function to do statistical tests. This function has some logic so it automatically uses the correct t-test (studens, welch's or mann-whithney based on the results of levenes test and shapiro-wilk tests)
+
+```{r t-test_funct, message=FALSE}
+library(car)
+
+# Define the function
+compare_groups <- function(column1, column2, group1_name = "Male", group2_name = "Female") {
+  # Create dataframes
+  group1 <- data.frame(Value = column1, Group = group1_name)
+  group2 <- data.frame(Value = column2, Group = group2_name)
+  
+  # Check for normality (Shapiro-Wilk test)
+  shapiro_test_group1 <- shapiro.test(group1$Value)
+  shapiro_test_group2 <- shapiro.test(group2$Value)
+  
+  # Print normality test results
+  cat("Shapiro-Wilk Test for Normality\n")
+  print(shapiro_test_group1)
+  print(shapiro_test_group2)
+  
+  # Combine the dataframes
+  combined_data <- rbind(group1, group2)
+  
+  # Check for equal variance (Levene's test)
+  levene_test <- leveneTest(Value ~ Group, data = combined_data)
+  
+  # Print Levene's test result
+  cat("Levene's Test for Equality of Variances\n")
+  print(levene_test)
+  
+  # Logic to run the appropriate test
+  if (shapiro_test_group1$p.value > 0.05 && shapiro_test_group2$p.value > 0.05) {
+    # Normal distribution
+    if (levene_test$`Pr(>F)`[1] > 0.05) {
+      # Equal variances
+      cat("Normal distribution and equal variances (Student's t-test)\n")
+      t_test_result <- t.test(column1, column2, var.equal = TRUE)
+    } else {
+      # Unequal variances
+      cat("Normal distribution, unequal variances (Welch's t-test)\n")
+      t_test_result <- t.test(column1, column2, var.equal = FALSE)
+    }
+  } else {
+    # No normality
+    cat("No normality (Mann-Whitney U test)\n")
+    t_test_result <- wilcox.test(column1, column2)
+  }
+  print(t_test_result)
+}
+```
+Lets test the function with the male and female maximum absolute acceleration of the barbell IMU
+
+```{r, message=FALSE}
+# Example usage
+# Assuming abs_max_male and abs_max_female are your dataframes and A_abs1 is the column to compare
+result <- compare_groups(male_max_abs$A_abs1, female_max_abs$A_abs1, group1_name = "Male", group2_name = "Female")
+
+```
+
+
+
+
+
+The next chapter will describe the analysis of the lifts.
+
+:::
