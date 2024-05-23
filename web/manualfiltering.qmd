@@ -83,7 +83,7 @@ plot_filtered_subplots(data1)
 ```
 This was used to loop throuhg all the lifts
 ```{r, message=FALSE, eval=FALSE}
-
+#! A mistake of mine, This filters the analysed data (with the absolute values) instead of the raw imu data. 
 cat("lift ", i)
 proefpersoon <- "female1_2105"
 cat("start time: ")

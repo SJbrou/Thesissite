@@ -207,6 +207,22 @@ plot_gyr <- function(df) {
   return(plot)
 }
 
+
+plot_all_columns <- function(df) {
+  if (!"time" %in% names(df)) {
+    stop("The dataframe must contain a 'time' column for the x-axis.")
+  }
+  plot <- plot_ly(df, x = ~time, type = 'scatter', mode = 'lines')
+  for (col in setdiff(names(df), "time")) {
+    plot <- plot %>% add_trace(y = df[[col]], name = col)
+  }
+  plot <- plot %>%
+    layout(title = "All Columns Plot",
+           xaxis = list(title = "Time"),
+           yaxis = list(title = "Values"))
+  return(plot)
+}
+
 #! Maybe include a plotting function that takes the dataframe and the attribute to plot, assuming 5 markers?
 ```
 
@@ -229,6 +245,7 @@ meting1 <- read.csv("example1.csv")
 
 # Plot the calculated data
 plot_a(meting1)
+plot_gyr(meting1)
 ```
 
 :::

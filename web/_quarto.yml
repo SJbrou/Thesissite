@@ -19,6 +19,8 @@ book:
           file: datafiltering.qmd
         - text: "Manual clipping"
           file: manualfiltering.qmd
+    - part: "Statistical analysis"
+      chapters:
         - text: "Analysis of lifts"
           file: analysis_of_lifst.qmd
         - text: "Results"
