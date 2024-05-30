@@ -1623,7 +1623,7 @@ function fuseSearch(query, fuse, fuseOptions) {
 }
 </script>
 <meta name="quarto:offset" content="./">
-<link href="./results.html" rel="next">
+<link href="./analysis_of_lifst_mean_values.html" rel="next">
 <link href="./manualfiltering.html" rel="prev">
 <script>const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   detail: {},
@@ -4703,13 +4703,7 @@ vertical-align: -.125em;
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Home</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./thesis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Full text</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Full text</span></span></a>
   </div>
 </li>
       </ul>
@@ -4723,6 +4717,12 @@ vertical-align: -.125em;
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./participants.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Participants</span></span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./datafiltering.html" class="sidebar-item-text sidebar-link">
@@ -4754,8 +4754,14 @@ vertical-align: -.125em;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./analysis_of_lifst_mean_values.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Analysis of lifts mean values</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Results</span></span></a>
   </div>
 </li>
       </ul>
@@ -4852,9 +4858,6 @@ vertical-align: -.125em;
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>data_female <span class="ot">&lt;-</span> <span class="fu">loadLift</span>(<span class="st">"../../lifts/female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="statitstics" class="level1">
-<h1>Statitstics</h1>
-<p>Lets do some statistics!</p>
 <section id="peak-accelerations" class="level2">
 <h2 class="anchored" data-anchor-id="peak-accelerations">Peak accelerations</h2>
 <p>Lets create a function to find the maximum value for a specific attribute for each lift (such as the absolute acceleration or gyr of one of the IMU’s)</p>
@@ -4873,12 +4876,11 @@ vertical-align: -.125em;
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      col_max[i, j] <span class="ot">&lt;-</span> <span class="fu">max</span>(df[[<span class="fu">paste0</span>(colname, j)]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the matrix to a dataframe</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  col_max_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(col_max)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col_max_df)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the matrix to a dataframe</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  col_max_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(col_max)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col_max_df)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Lets check if the function works as intended by loading the absolute acceleration of the barbells (showing only first 10 rows)</p>
@@ -4886,192 +4888,183 @@ vertical-align: -.125em;
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>male_max_abs <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_male, <span class="st">"A_abs"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>female_max_abs <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_female, <span class="st">"A_abs"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing only first 10 rows</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(male_max_abs[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>male_max_gyr <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_male, <span class="st">"Gyr_abs"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>female_max_abs <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_female, <span class="st">"A_abs"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>female_max_gyr <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_female, <span class="st">"Gyr_abs"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>male_max <span class="ot">&lt;-</span> <span class="fu">cbind</span>(male_max_abs, male_max_gyr)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>female_max <span class="ot">&lt;-</span> <span class="fu">cbind</span>(female_max_abs, female_max_gyr)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a group column to each dataframe</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>male_max <span class="ot">&lt;-</span> male_max <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"male"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>female_max <span class="ot">&lt;-</span> female_max <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"female"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the dataframes</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(male_max, female_max)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing only first 10 rows</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(data[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 6%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
 <th style="text-align: right;">A_abs1</th>
 <th style="text-align: right;">A_abs2</th>
 <th style="text-align: right;">A_abs3</th>
 <th style="text-align: right;">A_abs4</th>
 <th style="text-align: right;">A_abs5</th>
+<th style="text-align: right;">Gyr_abs1</th>
+<th style="text-align: right;">Gyr_abs2</th>
+<th style="text-align: right;">Gyr_abs3</th>
+<th style="text-align: right;">Gyr_abs4</th>
+<th style="text-align: right;">Gyr_abs5</th>
+<th style="text-align: left;">group</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">1</td>
 <td style="text-align: right;">19.45938</td>
 <td style="text-align: right;">123.70582</td>
 <td style="text-align: right;">68.15013</td>
 <td style="text-align: right;">37.94942</td>
 <td style="text-align: right;">31.23898</td>
+<td style="text-align: right;">30.70867</td>
+<td style="text-align: right;">447.3661</td>
+<td style="text-align: right;">378.9496</td>
+<td style="text-align: right;">152.0784</td>
+<td style="text-align: right;">405.7006</td>
+<td style="text-align: left;">male</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">2</td>
+<td style="text-align: right;">19.45938</td>
+<td style="text-align: right;">123.70582</td>
+<td style="text-align: right;">68.15013</td>
+<td style="text-align: right;">37.94942</td>
+<td style="text-align: right;">31.23898</td>
+<td style="text-align: right;">30.70867</td>
+<td style="text-align: right;">447.3661</td>
+<td style="text-align: right;">378.9496</td>
+<td style="text-align: right;">152.0784</td>
+<td style="text-align: right;">405.7006</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">17.93894</td>
 <td style="text-align: right;">134.62920</td>
 <td style="text-align: right;">87.32489</td>
 <td style="text-align: right;">55.14171</td>
 <td style="text-align: right;">31.51992</td>
+<td style="text-align: right;">12.95801</td>
+<td style="text-align: right;">510.0824</td>
+<td style="text-align: right;">415.3523</td>
+<td style="text-align: right;">167.5220</td>
+<td style="text-align: right;">439.2996</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.93894</td>
+<td style="text-align: right;">134.62920</td>
+<td style="text-align: right;">87.32489</td>
+<td style="text-align: right;">55.14171</td>
+<td style="text-align: right;">31.51992</td>
+<td style="text-align: right;">12.95801</td>
+<td style="text-align: right;">510.0824</td>
+<td style="text-align: right;">415.3523</td>
+<td style="text-align: right;">167.5220</td>
+<td style="text-align: right;">439.2996</td>
+<td style="text-align: left;">male</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">3</td>
 <td style="text-align: right;">16.34248</td>
 <td style="text-align: right;">119.93698</td>
 <td style="text-align: right;">79.20782</td>
 <td style="text-align: right;">42.85987</td>
 <td style="text-align: right;">27.21415</td>
+<td style="text-align: right;">20.19276</td>
+<td style="text-align: right;">571.6062</td>
+<td style="text-align: right;">416.3854</td>
+<td style="text-align: right;">151.0167</td>
+<td style="text-align: right;">416.2550</td>
+<td style="text-align: left;">male</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">4</td>
+<td style="text-align: right;">16.34248</td>
+<td style="text-align: right;">119.93698</td>
+<td style="text-align: right;">79.20782</td>
+<td style="text-align: right;">42.85987</td>
+<td style="text-align: right;">27.21415</td>
+<td style="text-align: right;">20.19276</td>
+<td style="text-align: right;">571.6062</td>
+<td style="text-align: right;">416.3854</td>
+<td style="text-align: right;">151.0167</td>
+<td style="text-align: right;">416.2550</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">15.98943</td>
 <td style="text-align: right;">145.17490</td>
 <td style="text-align: right;">59.99045</td>
 <td style="text-align: right;">37.66462</td>
 <td style="text-align: right;">19.23075</td>
+<td style="text-align: right;">16.90985</td>
+<td style="text-align: right;">472.4933</td>
+<td style="text-align: right;">408.2328</td>
+<td style="text-align: right;">189.7104</td>
+<td style="text-align: right;">408.4898</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.98943</td>
+<td style="text-align: right;">145.17490</td>
+<td style="text-align: right;">59.99045</td>
+<td style="text-align: right;">37.66462</td>
+<td style="text-align: right;">19.23075</td>
+<td style="text-align: right;">16.90985</td>
+<td style="text-align: right;">472.4933</td>
+<td style="text-align: right;">408.2328</td>
+<td style="text-align: right;">189.7104</td>
+<td style="text-align: right;">408.4898</td>
+<td style="text-align: left;">male</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">5</td>
 <td style="text-align: right;">16.22577</td>
 <td style="text-align: right;">79.54606</td>
 <td style="text-align: right;">62.68990</td>
 <td style="text-align: right;">32.99983</td>
 <td style="text-align: right;">25.64038</td>
+<td style="text-align: right;">45.76053</td>
+<td style="text-align: right;">591.9665</td>
+<td style="text-align: right;">391.2921</td>
+<td style="text-align: right;">176.5874</td>
+<td style="text-align: right;">480.1031</td>
+<td style="text-align: left;">male</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">6</td>
-<td style="text-align: right;">18.28350</td>
-<td style="text-align: right;">36.82861</td>
-<td style="text-align: right;">23.90038</td>
-<td style="text-align: right;">18.61690</td>
-<td style="text-align: right;">21.60688</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">NA.1</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">NA.2</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">NA.3</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-</tr>
-</tbody>
-</table>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(female_max_abs[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">A_abs1</th>
-<th style="text-align: right;">A_abs2</th>
-<th style="text-align: right;">A_abs3</th>
-<th style="text-align: right;">A_abs4</th>
-<th style="text-align: right;">A_abs5</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">21.33489</td>
-<td style="text-align: right;">26.25516</td>
-<td style="text-align: right;">21.11224</td>
-<td style="text-align: right;">20.35712</td>
-<td style="text-align: right;">21.43023</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">18.31731</td>
-<td style="text-align: right;">52.59376</td>
-<td style="text-align: right;">29.68279</td>
-<td style="text-align: right;">29.37173</td>
-<td style="text-align: right;">18.88949</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">17.80586</td>
-<td style="text-align: right;">61.21685</td>
-<td style="text-align: right;">28.65790</td>
-<td style="text-align: right;">28.80041</td>
-<td style="text-align: right;">17.90354</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20.68555</td>
-<td style="text-align: right;">33.19173</td>
-<td style="text-align: right;">19.86114</td>
-<td style="text-align: right;">20.08488</td>
-<td style="text-align: right;">21.76857</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">20.18132</td>
-<td style="text-align: right;">65.96100</td>
-<td style="text-align: right;">31.89304</td>
-<td style="text-align: right;">29.46926</td>
-<td style="text-align: right;">29.89478</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">19.42459</td>
-<td style="text-align: right;">40.37175</td>
-<td style="text-align: right;">23.66470</td>
-<td style="text-align: right;">21.92713</td>
-<td style="text-align: right;">19.92161</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">20.48714</td>
-<td style="text-align: right;">47.56603</td>
-<td style="text-align: right;">23.36424</td>
-<td style="text-align: right;">25.57460</td>
-<td style="text-align: right;">22.10430</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">19.19975</td>
-<td style="text-align: right;">36.74904</td>
-<td style="text-align: right;">22.33372</td>
-<td style="text-align: right;">18.90032</td>
-<td style="text-align: right;">19.84985</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">18.21275</td>
-<td style="text-align: right;">39.00130</td>
-<td style="text-align: right;">23.14487</td>
-<td style="text-align: right;">21.93431</td>
-<td style="text-align: right;">20.78825</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">18.94983</td>
-<td style="text-align: right;">55.57859</td>
-<td style="text-align: right;">24.33905</td>
-<td style="text-align: right;">22.37700</td>
-<td style="text-align: right;">19.79378</td>
+<td style="text-align: right;">16.22577</td>
+<td style="text-align: right;">79.54606</td>
+<td style="text-align: right;">62.68990</td>
+<td style="text-align: right;">32.99983</td>
+<td style="text-align: right;">25.64038</td>
+<td style="text-align: right;">45.76053</td>
+<td style="text-align: right;">591.9665</td>
+<td style="text-align: right;">391.2921</td>
+<td style="text-align: right;">176.5874</td>
+<td style="text-align: right;">480.1031</td>
+<td style="text-align: left;">male</td>
 </tr>
 </tbody>
 </table>
@@ -5081,61 +5074,61 @@ vertical-align: -.125em;
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>compare_groups <span class="ot">&lt;-</span> <span class="cf">function</span>(column1, column2, <span class="at">group1_name =</span> <span class="st">"Male"</span>, <span class="at">group2_name =</span> <span class="st">"Female"</span>) {</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create dataframes</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  group1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Value =</span> column1, <span class="at">Group =</span> group1_name)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  group2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Value =</span> column2, <span class="at">Group =</span> group2_name)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for normality (Shapiro-Wilk test)</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  shapiro_test_group1 <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(group1<span class="sc">$</span>Value)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  shapiro_test_group2 <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(group2<span class="sc">$</span>Value)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print normality test results</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Shapiro-Wilk Test for Normality</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(shapiro_test_group1)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(shapiro_test_group2)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the dataframes</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  combined_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(group1, group2)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for equal variance (Levene's test)</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  levene_test <span class="ot">&lt;-</span> <span class="fu">leveneTest</span>(Value <span class="sc">~</span> Group, <span class="at">data =</span> combined_data)</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print Levene's test result</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Levene's Test for Equality of Variances</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(levene_test)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Logic to run the appropriate test</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (shapiro_test_group1<span class="sc">$</span>p.value <span class="sc">&gt;</span> <span class="fl">0.05</span> <span class="sc">&amp;&amp;</span> shapiro_test_group2<span class="sc">$</span>p.value <span class="sc">&gt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Normal distribution</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (levene_test<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Equal variances</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Normal distribution and equal variances (Student's t-test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>      t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(column1, column2, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Unequal variances</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Normal distribution, unequal variances (Welch's t-test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>      t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(column1, column2, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># No normality</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No normality (Mann-Whitney U test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    t_test_result <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(column1, column2)</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(t_test_result)</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>compare_groups <span class="ot">&lt;-</span> <span class="cf">function</span>(column1, column2, <span class="at">group1_name =</span> <span class="st">"Male"</span>, <span class="at">group2_name =</span> <span class="st">"Female"</span>) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create dataframes</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  group1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Value =</span> column1, <span class="at">Group =</span> group1_name)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  group2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Value =</span> column2, <span class="at">Group =</span> group2_name)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for normality (Shapiro-Wilk test)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  shapiro_test_group1 <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(group1<span class="sc">$</span>Value)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  shapiro_test_group2 <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(group2<span class="sc">$</span>Value)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print normality test results</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Shapiro-Wilk Test for Normality</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(shapiro_test_group1)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(shapiro_test_group2)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the dataframes</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  combined_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(group1, group2)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for equal variance (Levene's test)</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  levene_test <span class="ot">&lt;-</span> <span class="fu">leveneTest</span>(Value <span class="sc">~</span> Group, <span class="at">data =</span> combined_data)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print Levene's test result</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Levene's Test for Equality of Variances</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(levene_test)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Logic to run the appropriate test</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (shapiro_test_group1<span class="sc">$</span>p.value <span class="sc">&gt;</span> <span class="fl">0.05</span> <span class="sc">&amp;&amp;</span> shapiro_test_group2<span class="sc">$</span>p.value <span class="sc">&gt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Normal distribution</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (levene_test<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Equal variances</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Normal distribution and equal variances (Student's t-test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(column1, column2, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Unequal variances</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Normal distribution, unequal variances (Welch's t-test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>      t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(column1, column2, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># No normality</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No normality (Mann-Whitney U test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    t_test_result <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(column1, column2)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(t_test_result)</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Lets test the function with the male and female maximum absolute acceleration of the barbell IMU</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming abs_max_male and abs_max_female are your dataframes and A_abs1 is the column to compare</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">compare_groups</span>(male_max_abs<span class="sc">$</span>A_abs1, female_max_abs<span class="sc">$</span>A_abs1, <span class="at">group1_name =</span> <span class="st">"Male"</span>, <span class="at">group2_name =</span> <span class="st">"Female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming abs_max_male and abs_max_female are your dataframes and A_abs1 is the column to compare</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">compare_groups</span>(data<span class="sc">$</span>A_abs1, data<span class="sc">$</span>A_abs1, <span class="at">group1_name =</span> <span class="st">"male"</span>, <span class="at">group2_name =</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Shapiro-Wilk Test for Normality
@@ -5143,13 +5136,13 @@ vertical-align: -.125em;
     Shapiro-Wilk normality test
 
 data:  group1$Value
-W = 0.88825, p-value = 0.3091
+W = 0.93966, p-value = 0.08073
 
 
     Shapiro-Wilk normality test
 
 data:  group2$Value
-W = 0.95406, p-value = 0.462</code></pre>
+W = 0.93966, p-value = 0.08073</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
@@ -5159,24 +5152,564 @@ factor.</code></pre>
 <pre><code>Levene's Test for Equality of Variances
 Levene's Test for Homogeneity of Variance (center = median)
       Df F value Pr(&gt;F)
-group  1  1.0969 0.3058
-      23               
+group  1       0      1
+      60               
 Normal distribution and equal variances (Student's t-test)
 
     Two Sample t-test
 
 data:  column1 and column2
-t = -4.1223, df = 23, p-value = 0.000415
+t = 0, df = 60, p-value = 1
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -3.353086 -1.112275
+ -0.8151582  0.8151582
 sample estimates:
 mean of x mean of y 
- 17.37325  19.60593 </code></pre>
+ 18.74167  18.74167 </code></pre>
 </div>
 </div>
-<p>The next chapter will describe the analysis of the lifts.</p>
-</section>
+<p>Obviously, we do not want to do many T-tests due to inflated familywise error rates. Thus we should perform a MANVOA #### #### ### #### ####</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a custom function to format mean and standard deviation</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>format_mean_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  mean_x <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  sd_x <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">"%.2f ± %.2f"</span>, mean_x, sd_x)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean, standard deviation, and count for each column by group</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), format_mean_sd)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results in a nice table</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Summary Statistics by Group (Number of Participants, Mean ± Standard Deviation)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Summary Statistics by Group (Number of Participants, Mean ± Standard Deviation)</caption>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">group</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;">A_abs1</th>
+<th style="text-align: left;">A_abs2</th>
+<th style="text-align: left;">A_abs3</th>
+<th style="text-align: left;">A_abs4</th>
+<th style="text-align: left;">A_abs5</th>
+<th style="text-align: left;">Gyr_abs1</th>
+<th style="text-align: left;">Gyr_abs2</th>
+<th style="text-align: left;">Gyr_abs3</th>
+<th style="text-align: left;">Gyr_abs4</th>
+<th style="text-align: left;">Gyr_abs5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">19.00 ± NA</td>
+<td style="text-align: left;">19.61 ± 1.08</td>
+<td style="text-align: left;">47.11 ± 16.97</td>
+<td style="text-align: left;">25.36 ± 6.29</td>
+<td style="text-align: left;">23.30 ± 3.84</td>
+<td style="text-align: left;">21.68 ± 3.33</td>
+<td style="text-align: left;">310.10 ± 134.92</td>
+<td style="text-align: left;">371.86 ± 125.60</td>
+<td style="text-align: left;">278.59 ± 118.32</td>
+<td style="text-align: left;">160.80 ± 32.10</td>
+<td style="text-align: left;">438.74 ± 35.54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">12.00 ± NA</td>
+<td style="text-align: left;">17.37 ± 1.33</td>
+<td style="text-align: left;">106.64 ± 38.95</td>
+<td style="text-align: left;">63.54 ± 20.96</td>
+<td style="text-align: left;">37.54 ± 11.42</td>
+<td style="text-align: left;">26.08 ± 4.76</td>
+<td style="text-align: left;">99.40 ± 173.40</td>
+<td style="text-align: left;">498.98 ± 70.24</td>
+<td style="text-align: left;">425.90 ± 57.43</td>
+<td style="text-align: left;">157.01 ± 28.01</td>
+<td style="text-align: left;">418.80 ± 37.12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now the statistics for the particiapnt’s characteristics</p>
+<p>Lets confirm normality and equality of variances</p>
+<p>Lets run an MANOVA and calculate effect sizes</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary packages</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MVN)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize)  <span class="co"># For effect size calculation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'effectsize' was built under R version 4.3.3</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'data' is your dataframe and 'Sex' column indicates 'male' or 'female'</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate numerical columns and the 'Sex' column</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, is.numeric)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>numerical_data <span class="ot">&lt;-</span> data[, numerical_columns]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>group_data <span class="ot">&lt;-</span> data<span class="sc">$</span>group</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for normality for each numerical column and each group (male, female)</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>normality_results <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">names</span>(numerical_data), <span class="cf">function</span>(col) {</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  male_normality <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(numerical_data[group_data <span class="sc">==</span> <span class="st">"male"</span>, col])<span class="sc">$</span>p.value</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  female_normality <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(numerical_data[group_data <span class="sc">==</span> <span class="st">"female"</span>, col])<span class="sc">$</span>p.value</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(male_normality, female_normality))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine normality results into a dataframe</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>normality_results_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, normality_results)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(normality_results_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Male_p_value"</span>, <span class="st">"Female_p_value"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(normality_results_df) <span class="ot">&lt;-</span> <span class="fu">names</span>(numerical_data)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(normality_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Male_p_value Female_p_value
+A_abs1   2.854878e-02   4.619671e-01
+A_abs2   1.931507e-02   7.249080e-02
+A_abs3   3.517357e-02   1.858413e-04
+A_abs4   1.928614e-01   8.951810e-03
+A_abs5   8.402953e-02   3.976160e-04
+Gyr_abs1 2.489356e-05   2.471050e-03
+Gyr_abs2 2.069149e-01   3.043955e-05
+Gyr_abs3 5.393877e-04   2.329259e-06
+Gyr_abs4 5.615732e-02   1.014058e-04
+Gyr_abs5 1.944619e-01   1.859017e-02</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a list to store the test results</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>levene_results <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Levene's test for each numerical column</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> <span class="fu">names</span>(data)[numerical_columns]) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  test_result <span class="ot">&lt;-</span> <span class="fu">leveneTest</span>(data[[col]] <span class="sc">~</span> data<span class="sc">$</span>group)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  levene_results[[col]] <span class="ot">&lt;-</span> test_result</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.
+
+Warning in leveneTest.default(y = y, group = group, ...): group coerced to
+factor.</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract "F value" and "Pr(&gt;F)" columns from each test result and bind them into a dataframe</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>levene_results_df <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(levene_results, <span class="sc">~</span>{</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">F_value =</span> .x<span class="sc">$</span>F[<span class="dv">1</span>],    <span class="co"># Extract the first value of F</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Pr_value =</span> .x<span class="sc">$</span><span class="st">"Pr(&gt;F)"</span>[<span class="dv">1</span>]  <span class="co"># Extract the first value of Pr(&gt;F)</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View the dataframe</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(levene_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      F_value    Pr_value
+1  1.83995079 0.185423775
+2  3.63208611 0.066631868
+3  9.09645837 0.005283311
+4  5.75789660 0.023062104
+5  3.46179709 0.072970011
+6  0.02008831 0.888270779
+7  0.14657819 0.704618992
+8  0.47705054 0.495252947
+9  0.08428623 0.773636728
+10 0.00715751 0.933159109</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>levene_p_values <span class="ot">&lt;-</span> levene_results_df<span class="sc">$</span>Pr_value</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if all p-values &gt; 0.05 for normality assumption</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>all_normal <span class="ot">&lt;-</span> <span class="fu">all</span>(normality_results_df <span class="sc">&gt;</span> <span class="fl">0.05</span>) <span class="sc">&amp;</span> <span class="fu">all</span>(levene_p_values <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (all_normal) {</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Perform MANOVA</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  formula <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste</span>(<span class="st">"cbind("</span>, <span class="fu">paste</span>(<span class="fu">names</span>(numerical_data), <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">") ~ group"</span>))</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  manova_result <span class="ot">&lt;-</span> <span class="fu">manova</span>(formula, <span class="at">data =</span> data)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  manova_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(manova_result, <span class="at">test =</span> <span class="st">"Pillai"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(manova_summary)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if the MANOVA is significant</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"Pr(&gt;F)"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"MANOVA is significant. Performing univariate ANOVAs:"</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform univariate ANOVAs for each dependent variable</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    univariate_results <span class="ot">&lt;-</span> <span class="fu">summary.aov</span>(manova_result)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(univariate_results)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracting p-values and means for interpretation</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(numerical_data)) {</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Analyzing variable:"</span>, var))</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>      aov_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(var, <span class="st">"~ group"</span>)), <span class="at">data =</span> data)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">summary</span>(aov_result))</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">model.tables</span>(aov_result, <span class="st">"means"</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Calculate effect size (eta-squared)</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>      eta_squared_result <span class="ot">&lt;-</span> <span class="fu">eta_squared</span>(aov_result)</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(eta_squared_result)</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"MANOVA is not significant. No further tests are performed."</span>)</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If normality is not met, use Multivariate Kruskal-Wallis test for each numerical column</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(numerical_data)) {</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Performing Multivariate Kruskal-Wallis test for variable:"</span>, var))</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>    kruskal_result <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(var, <span class="st">"~ group"</span>)), <span class="at">data =</span> data)</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(kruskal_result)</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract p-value and calculate effect size (not applicable for Kruskal-Wallis)</span></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>p.value</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"P-value:"</span>, p_value))</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs1"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs1 by group
+Kruskal-Wallis chi-squared = 12.768, df = 1, p-value = 0.0003527
+
+[1] "P-value: 0.000352650198177613"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs2"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs2 by group
+Kruskal-Wallis chi-squared = 12.768, df = 1, p-value = 0.0003527
+
+[1] "P-value: 0.000352650198177613"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs3"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs3 by group
+Kruskal-Wallis chi-squared = 16.487, df = 1, p-value = 4.898e-05
+
+[1] "P-value: 4.8978154674227e-05"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs4"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs4 by group
+Kruskal-Wallis chi-squared = 9.523, df = 1, p-value = 0.002029
+
+[1] "P-value: 0.00202908222598898"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs5"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs5 by group
+Kruskal-Wallis chi-squared = 5.9354, df = 1, p-value = 0.01484
+
+[1] "P-value: 0.0148395949690251"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs1"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs1 by group
+Kruskal-Wallis chi-squared = 11.086, df = 1, p-value = 0.0008698
+
+[1] "P-value: 0.000869804231618486"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs2"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs2 by group
+Kruskal-Wallis chi-squared = 11.633, df = 1, p-value = 0.0006478
+
+[1] "P-value: 0.000647777430091623"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs3"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs3 by group
+Kruskal-Wallis chi-squared = 13.955, df = 1, p-value = 0.0001873
+
+[1] "P-value: 0.000187257491153609"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs4"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs4 by group
+Kruskal-Wallis chi-squared = 0.42207, df = 1, p-value = 0.5159
+
+[1] "P-value: 0.515904079141032"
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs5"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs5 by group
+Kruskal-Wallis chi-squared = 1.4839, df = 1, p-value = 0.2232
+
+[1] "P-value: 0.22317263688255"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty dataframe to store the results</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>kruskal_results_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">character</span>(),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Test_Statistic =</span> <span class="fu">numeric</span>(),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Degrees_of_Freedom =</span> <span class="fu">numeric</span>(),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">P_Value =</span> <span class="fu">numeric</span>(),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>all_normal) {</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If normality assumptions are not met, perform Multivariate Kruskal-Wallis test for each numerical column</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(numerical_data)) {</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Performing Multivariate Kruskal-Wallis test for variable:"</span>, var))</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    kruskal_result <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(var, <span class="st">"~ group"</span>)), <span class="at">data =</span> data)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(kruskal_result)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract relevant information and add to the dataframe</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>p.value</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    test_statistic <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>statistic</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    degrees_freedom <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>parameter</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    kruskal_results_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kruskal_results_df, <span class="fu">data.frame</span>(</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">Variable =</span> var,</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">Test_Statistic =</span> test_statistic,</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">Degrees_of_Freedom =</span> degrees_freedom,</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">P_Value =</span> p_value</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs1"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs1 by group
+Kruskal-Wallis chi-squared = 12.768, df = 1, p-value = 0.0003527
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs2"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs2 by group
+Kruskal-Wallis chi-squared = 12.768, df = 1, p-value = 0.0003527
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs3"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs3 by group
+Kruskal-Wallis chi-squared = 16.487, df = 1, p-value = 4.898e-05
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs4"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs4 by group
+Kruskal-Wallis chi-squared = 9.523, df = 1, p-value = 0.002029
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs5"
+
+    Kruskal-Wallis rank sum test
+
+data:  A_abs5 by group
+Kruskal-Wallis chi-squared = 5.9354, df = 1, p-value = 0.01484
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs1"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs1 by group
+Kruskal-Wallis chi-squared = 11.086, df = 1, p-value = 0.0008698
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs2"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs2 by group
+Kruskal-Wallis chi-squared = 11.633, df = 1, p-value = 0.0006478
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs3"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs3 by group
+Kruskal-Wallis chi-squared = 13.955, df = 1, p-value = 0.0001873
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs4"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs4 by group
+Kruskal-Wallis chi-squared = 0.42207, df = 1, p-value = 0.5159
+
+[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs5"
+
+    Kruskal-Wallis rank sum test
+
+data:  Gyr_abs5 by group
+Kruskal-Wallis chi-squared = 1.4839, df = 1, p-value = 0.2232</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the dataframe of Kruskal-Wallis test results</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kruskal_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            Variable Test_Statistic Degrees_of_Freedom
+Kruskal-Wallis chi-squared    A_abs1     12.7677318                  1
+Kruskal-Wallis chi-squared1   A_abs2     12.7677318                  1
+Kruskal-Wallis chi-squared2   A_abs3     16.4872569                  1
+Kruskal-Wallis chi-squared3   A_abs4      9.5230396                  1
+Kruskal-Wallis chi-squared4   A_abs5      5.9354125                  1
+Kruskal-Wallis chi-squared5 Gyr_abs1     11.0860316                  1
+Kruskal-Wallis chi-squared6 Gyr_abs2     11.6334085                  1
+Kruskal-Wallis chi-squared7 Gyr_abs3     13.9548143                  1
+Kruskal-Wallis chi-squared8 Gyr_abs4      0.4220738                  1
+Kruskal-Wallis chi-squared9 Gyr_abs5      1.4838531                  1
+                                 P_Value
+Kruskal-Wallis chi-squared  3.526502e-04
+Kruskal-Wallis chi-squared1 3.526502e-04
+Kruskal-Wallis chi-squared2 4.897815e-05
+Kruskal-Wallis chi-squared3 2.029082e-03
+Kruskal-Wallis chi-squared4 1.483959e-02
+Kruskal-Wallis chi-squared5 8.698042e-04
+Kruskal-Wallis chi-squared6 6.477774e-04
+Kruskal-Wallis chi-squared7 1.872575e-04
+Kruskal-Wallis chi-squared8 5.159041e-01
+Kruskal-Wallis chi-squared9 2.231726e-01</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the dataframe without row names and the "Degrees_of_Freedom" column, with P-values formatted</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell PLA"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg PLA"</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg PLA"</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">"Torso PLA"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm PLA"</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell PAA"</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg PAA"</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg PAA"</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="st">"Torso PAA"</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">10</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm PAA"</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">format</span>(kruskal_results_df[, <span class="sc">-</span><span class="fu">which</span>(<span class="fu">names</span>(kruskal_results_df) <span class="sc">==</span> <span class="st">"Degrees_of_Freedom"</span>)], <span class="at">scientific =</span> <span class="cn">FALSE</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Variable Test_Statistic       P_Value
+   Barbell PLA     12.7677318 0.00035265020
+ Lower leg PLA     12.7677318 0.00035265020
+ Upper leg PLA     16.4872569 0.00004897815
+     Torso PLA      9.5230396 0.00202908223
+ Upper arm PLA      5.9354125 0.01483959497
+   Barbell PAA     11.0860316 0.00086980423
+ Lower leg PAA     11.6334085 0.00064777743
+ Upper leg PAA     13.9548143 0.00018725749
+     Torso PAA      0.4220738 0.51590407914
+ Upper arm PAA      1.4838531 0.22317263688</code></pre>
+</div>
+</div>
+<p>Calculate the Point-biserial correlation coefficient</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty vector to store the point-biserial correlation coefficients</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>point_biserial_coeffs <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each column in the dataset (excluding the grouping variable)</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> <span class="fu">names</span>(data)[<span class="sc">!</span><span class="fu">names</span>(data) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"group"</span>)]) {</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the point-biserial correlation coefficient</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  point_biserial <span class="ot">&lt;-</span> <span class="fu">cor</span>(data[[col]], <span class="fu">as.numeric</span>(data<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"female"</span>))  <span class="co"># Convert "female" to 1 and "male" to 0</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the coefficient in the vector</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  point_biserial_coeffs <span class="ot">&lt;-</span> <span class="fu">c</span>(point_biserial_coeffs, point_biserial)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe to display the results</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>pb_results_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">names</span>(data)[<span class="sc">!</span><span class="fu">names</span>(data) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"group"</span>)],  <span class="co"># Variable names (excluding grouping variable)</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Point_Biserial_Coefficient =</span> point_biserial_coeffs  <span class="co"># Point-biserial correlation coefficients</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results dataframe</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell PLA"</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg PLA"</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg PLA"</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">"Torso PLA"</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm PLA"</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell PAA"</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg PAA"</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg PAA"</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="st">"Torso PAA"</span></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">10</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm PAA"</span></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pb_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Variable Point_Biserial_Coefficient
+1    Barbell PLA                 0.68903217
+2  Lower leg PLA                -0.73738706
+3  Upper leg PLA                -0.81182778
+4      Torso PLA                -0.68372236
+5  Upper arm PLA                -0.49035474
+6    Barbell PAA                 0.57577712
+7  Lower leg PAA                -0.50994398
+8  Upper leg PAA                -0.59694920
+9      Torso PAA                 0.06232652
+10 Upper arm PAA                 0.26762921</code></pre>
+</div>
+</div>
 </section>
 </div>
 
@@ -5577,8 +6110,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./results.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Results</span>">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Results</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./analysis_of_lifst_mean_values.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Analysis of lifts mean values</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Analysis of lifts mean values</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

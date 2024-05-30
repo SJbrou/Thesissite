@@ -1,0 +1,363 @@
+---
+title: "Participants"
+author: "Stan Brouwer"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 1
+    embed-resources: true
+    # standalone: true
+    smooth-scroll: true
+    page-layout: full
+    code-fold: show
+    grid:
+      sidebar-width: 180px
+editor: source
+number-sections: false
+---
+
+Analysis of the participants of the study
+
+::: column-page-right
+
+```{r LoadData, message = FALSE, verbose = FALSE}
+# Clean workspace
+rm(list = ls())
+library(tidyr)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+
+# Most dependencies are loaded by loading datafiltering.qmd.
+# To load only the chuncks containing functions we need parsermd
+library(parsermd)
+
+toload <- c("load_data","load_plots", "filter_data", "separate_lifts", "visualise_seperate_lifts", "loadXsenseData2")
+rmd <- parse_rmd("datafiltering.qmd")
+
+
+for (i in seq_along(toload)) {
+  setup_chunk <- rmd_select(rmd, toload[i]) |> 
+    as_document()
+
+  setup_chunk <- setup_chunk[-grep("```", setup_chunk)]
+  setup_chunk
+#> [1] "library(tidyr)"   "library(stringr)" ""                
+
+  eval(parse(text = setup_chunk))             
+}
+rm(rmd, i, setup_chunk, toload)
+```
+
+Iformation about the participants is collected in participants.csv. It is trivial to calculate means and standard deviations (or other descriptive statistics) using R, but it is somewhat harder to output this in the [mean ± std] format in a table. This code is somewhat complex but does just that!
+
+```{r lets_go, message=FALSE}
+# Load participant data
+data <- read.csv("../../Logs/participants.csv", header = TRUE, sep = ";")
+# Install and load necessary packages
+library(dplyr)
+library(knitr)
+
+# Calculate the number of participants overall and by sex
+count_summary <- data %>%
+  group_by(Sex) %>%
+  summarise(count = n()) %>%
+  bind_rows(summarise(data, Sex = "Overall", count = n()))
+
+# Calculate the summary statistics for all subjects
+overall_summary <- data %>%
+  summarise(across(c(Age, Height, Mass, Experience, Reported1rm), 
+                   list(mean = ~ round(mean(.x, na.rm = TRUE),2), 
+                        sd = ~ round(sd(.x, na.rm = TRUE)))),2)
+
+# Calculate the summary statistics by sex
+sex_summary <- data %>%
+  group_by(Sex) %>%
+  summarise(across(c(Age, Height, Mass, Experience, Reported1rm), 
+                   list(mean = ~ round(mean(.x, na.rm = TRUE),2), 
+                        sd = ~ round(sd(.x, na.rm = TRUE)))),2)
+
+# Combine the summaries into a single table
+summary_table <- bind_rows(
+  overall_summary %>% mutate(Sex = "Overall"),
+  sex_summary
+)
+
+# Reshape the table for better visualization
+summary_table <- summary_table %>%
+  pivot_longer(cols = -Sex, 
+               names_to = c("variable", ".value"), 
+               names_sep = "_") %>%
+  pivot_wider(names_from = Sex, values_from = c(mean, sd))
+
+# Combine mean and sd into a single column
+summary_table <- summary_table %>%
+  mutate(across(ends_with("_Overall"), ~ ifelse(is.na(.), "", as.character(.))),
+         Overall = paste0(mean_Overall, " ± ", sd_Overall)) %>%
+  mutate(across(ends_with("_male"), ~ ifelse(is.na(.), "", as.character(.))),
+         male = paste0(mean_male, " ± ", sd_male)) %>%
+  mutate(across(ends_with("_female"), ~ ifelse(is.na(.), "", as.character(.))),
+         female = paste0(mean_female, " ± ", sd_female)) %>%
+  select(variable, Overall, male, female)
+
+# Prepare the participant counts in the correct format
+participant_counts <- count_summary %>%
+  pivot_wider(names_from = Sex, values_from = count) %>%
+  mutate(variable = "count",
+         Overall = as.character(Overall),
+         male = as.character(male),
+         female = as.character(female))
+
+# Combine the participant counts with the summary statistics
+final_summary_table <- bind_rows(participant_counts, summary_table)
+
+# Correct the NA values for combined mean ± sd columns
+final_summary_table <- final_summary_table %>%
+  mutate(Overall = ifelse(is.na(Overall), "", Overall),
+         male = ifelse(is.na(male), "", male),
+         female = ifelse(is.na(female), "", female))
+
+# Change the order of the columns, edit some names
+final_summary_table <- final_summary_table %>%
+  select(variable, Overall, male, female)
+final_summary_table$variable[1] <- "Participants"
+final_summary_table$variable[2] <- "Age (years)"
+final_summary_table$variable[3] <- "Height (cm)"
+final_summary_table$variable[4] <- "Body mass (kg)"
+final_summary_table$variable[5] <- "Experience (months)"
+final_summary_table$variable[6] <- "Reported 1RM (kg)"
+
+library(gtExtras)
+# Print the table using knitr::kable
+knitr::kable(final_summary_table[1:6,], caption = "Table X: summary of participant characteristics") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped")
+```
+```{r, message=FALSE}
+
+library(car)
+
+# Get the numerical columns from the dataframe
+num_cols <- sapply(data, is.numeric)
+
+# Exclude the column 'Sex' as it is categorical
+num_cols <- num_cols & names(data) != "Sex"
+
+# Initialize a list to store the test results
+levene_results <- list()
+
+# Perform Levene's test for each numerical column
+for (col in names(data)[num_cols]) {
+  test_result <- leveneTest(data[[col]] ~ data$Sex)
+  levene_results[[col]] <- test_result
+}
+
+# View the results
+levene_results
+
+
+```
+
+Now the statistics for the particiapnt's characteristics
+
+Lets confirm normality
+
+```{r, message=FALSE}
+library(car)
+
+data_male <- data %>%
+  filter(Sex == "male")
+
+data_female <- data %>%
+  filter(Sex == "female")
+
+shapiro_test_male <- list()
+shapiro_test_female <- list()
+
+
+for (i in colnames(data)[3:8]) { # Adjust the column indices based on actual data structure
+  shapiro_test_male[[i]] <- shapiro.test(data_male[[i]])
+  shapiro_test_female[[i]] <- shapiro.test(data_female[[i]])
+}
+
+shapiro_test_male
+shapiro_test_female
+
+
+```
+
+
+
+Lets run an MANOVA and calculate effect sizes
+
+```{r, message=FALSE}
+# Load necessary packages
+library(car)
+library(MVN)
+library(effectsize)  # For effect size calculation
+
+# Assuming 'data' is your dataframe and 'Sex' column indicates 'male' or 'female'
+# Separate numerical columns and the 'Sex' column
+numerical_columns <- sapply(data, is.numeric)
+numerical_data <- data[, numerical_columns]
+group_data <- data$Sex
+
+# Check for normality for each numerical column and each group (male, female)
+normality_results <- lapply(names(numerical_data), function(col) {
+  male_normality <- shapiro.test(numerical_data[group_data == "male", col])$p.value
+  female_normality <- shapiro.test(numerical_data[group_data == "female", col])$p.value
+  return(c(male_normality, female_normality))
+})
+
+
+
+# Combine normality results into a dataframe
+normality_results_df <- do.call(rbind, normality_results)
+colnames(normality_results_df) <- c("Male_p_value", "Female_p_value")
+rownames(normality_results_df) <- names(numerical_data)
+
+print(normality_results_df)
+
+# Check if all p-values > 0.05 for normality assumption
+all_normal <- all(normality_results_df > 0.05)
+
+if (all_normal) {
+  # Perform MANOVA
+  formula <- as.formula(paste("cbind(", paste(names(numerical_data), collapse = ", "), ") ~ Sex"))
+  manova_result <- manova(formula, data = data)
+  manova_summary <- summary(manova_result, test = "Pillai")
+  print(manova_summary)
+  
+  # Check if the MANOVA is significant
+  if (manova_summary$stats[1, "Pr(>F)"] < 0.05) {
+    print("MANOVA is significant. Performing univariate ANOVAs:")
+    # Perform univariate ANOVAs for each dependent variable
+    univariate_results <- summary.aov(manova_result)
+    print(univariate_results)
+    
+    # Extracting p-values and means for interpretation
+    for (var in names(numerical_data)) {
+      print(paste("Analyzing variable:", var))
+      aov_result <- aov(as.formula(paste(var, "~ Sex")), data = data)
+      print(summary(aov_result))
+      print(model.tables(aov_result, "means"), digits = 3)
+      
+      # Calculate effect size (eta-squared)
+      eta_squared_result <- eta_squared(aov_result)
+      print(eta_squared_result)
+    }
+  } else {
+    print("MANOVA is not significant. No further tests are performed.")
+  }
+} else {
+  # If normality is not met, use Kruskal-Wallis test for each numerical column
+  print("Normality assumption not met. Performing Kruskal-Wallis tests:")
+  kruskal_results <- lapply(names(numerical_data), function(col) {
+    kruskal.test(numerical_data[, col] ~ group_data)$p.value
+  })
+  kruskal_results_df <- data.frame(
+    Variable = names(numerical_data),
+    Kruskal_p_value = unlist(kruskal_results)
+  )
+  print(kruskal_results_df)
+}
+
+
+
+```
+
+
+
+
+
+
+
+
+Using t-tests
+
+```{r, message=FALSE, eval=FALSE}
+# # Load necessary packages
+# library(car)
+# library(MVN)
+# 
+# # Assuming 'data' is your dataframe and 'Sex' column indicates 'male' or 'female'
+# # Separate numerical columns and the 'Sex' column
+# numerical_columns <- sapply(data, is.numeric)
+# numerical_data <- data[, numerical_columns]
+# group_data <- data$Sex
+# 
+# # Check for normality for each numerical column and each group (male, female)
+# normality_results <- lapply(names(numerical_data), function(col) {
+#   male_normality <- shapiro.test(numerical_data[group_data == "male", col])$p.value
+#   female_normality <- shapiro.test(numerical_data[group_data == "female", col])$p.value
+#   return(c(male_normality, female_normality))
+# })
+# 
+# # Combine normality results into a dataframe
+# normality_results_df <- do.call(rbind, normality_results)
+# colnames(normality_results_df) <- c("Male_p_value", "Female_p_value")
+# rownames(normality_results_df) <- names(numerical_data)
+# 
+# print(normality_results_df)
+# 
+# # Check if all p-values > 0.05 for normality assumption
+# all_normal <- all(normality_results_df > 0.05)
+# 
+# if (all_normal) {
+#   # Perform t-tests for each numerical column
+#   t_test_results <- lapply(names(numerical_data), function(var) {
+#     t_test_result <- t.test(numerical_data[data$Sex == "male", var], 
+#                              numerical_data[data$Sex == "female", var])
+#     return(t_test_result)
+#   })
+# 
+#   # Extract p-values from t-test results
+#   p_values <- sapply(t_test_results, function(result) result$p.value)
+# 
+#   # Correct for multiple comparisons if necessary
+#   # Bonferroni correction for example
+#   alpha <- 0.05
+#   num_tests <- length(p_values)
+#   corrected_alpha <- alpha / num_tests
+#   significant_tests <- p_values < corrected_alpha
+# 
+#   # Print significant tests
+#   print("Significant t-tests:")
+#   print(names(numerical_data)[significant_tests])
+# 
+#   # Function to calculate Cohen's d
+#   calculate_cohens_d <- function(t_test_result) {
+#     d <- (mean(t_test_result$estimate[1]) - mean(t_test_result$estimate[2])) / 
+#       sqrt(((t_test_result$estimate[1] + t_test_result$estimate[2]) / 2) * 
+#              (1 - ((t_test_result$parameter + 1) / t_test_result$parameter)) *
+#              (1 / t_test_result$parameter))
+#     return(d)
+#   }
+# 
+#   # Calculate Cohen's d for significant tests
+#   cohens_d_results <- lapply(t_test_results[significant_tests], calculate_cohens_d)
+#   names(cohens_d_results) <- names(t_test_results)[significant_tests]
+# 
+#   # Calculate Hedges' g for significant tests
+#   # Assuming unequal sample sizes
+#   n1 <- sum(data$Sex == "male")
+#   n2 <- sum(data$Sex == "female")
+#   hedges_g_results <- lapply(cohens_d_results, function(cohen_d) {
+#     g <- cohen_d * (1 - (3 / (4 * (n1 + n2) - 9)))
+#     return(g)
+#   })
+# 
+#   print("Hedges' g for significant tests:")
+#   print(hedges_g_results)
+# 
+# } else {
+#   print("Normality assumption not met. Further tests cannot be performed.")
+# }
+
+
+```
+
+
+:::

@@ -69,12 +69,13 @@ loadLift <- function(dir) {
 # Load the data
 data_male <- loadLift("../../lifts/male")
 data_female <- loadLift("../../lifts/female")
+
+
 ```
 
 
-# Statitstics
 
-Lets do some statistics!
+
 
 ## Peak accelerations
 Lets create a function to find the maximum value for a specific attribute for each lift (such as the absolute acceleration or gyr of one of the IMU's)
@@ -92,7 +93,6 @@ find_col_max <- function(df_list, colname) {
       col_max[i, j] <- max(df[[paste0(colname, j)]], na.rm = TRUE)
     }
   }
-  
   # Convert the matrix to a dataframe
   col_max_df <- as.data.frame(col_max)
   
@@ -102,11 +102,22 @@ find_col_max <- function(df_list, colname) {
 Lets check if the function works as intended by loading the absolute acceleration of the barbells (showing only first 10 rows)
 ```{r, message=FALSE}
 male_max_abs <- find_col_max(data_male, "A_abs")
+male_max_gyr <- find_col_max(data_male, "Gyr_abs")
 female_max_abs <- find_col_max(data_female, "A_abs")
+female_max_gyr <- find_col_max(data_female, "Gyr_abs")
+
+male_max <- cbind(male_max_abs, male_max_gyr)
+female_max <- cbind(female_max_abs, female_max_gyr)
+# Add a group column to each dataframe
+male_max <- male_max %>% mutate(group = "male")
+female_max <- female_max %>% mutate(group = "female")
+
+# Combine the dataframes
+data <- bind_rows(male_max, female_max)
+
 
 # Showing only first 10 rows
-kable(male_max_abs[1:10, ])
-kable(female_max_abs[1:10, ])
+kable(data[1:10, ])
 ```
 
 Now lets define a function to do statistical tests. This function has some logic so it automatically uses the correct t-test (studens, welch's or mann-whithney based on the results of levenes test and shapiro-wilk tests)
@@ -164,14 +175,230 @@ Lets test the function with the male and female maximum absolute acceleration of
 ```{r, message=FALSE}
 # Example usage
 # Assuming abs_max_male and abs_max_female are your dataframes and A_abs1 is the column to compare
-result <- compare_groups(male_max_abs$A_abs1, female_max_abs$A_abs1, group1_name = "Male", group2_name = "Female")
+result <- compare_groups(data$A_abs1, data$A_abs1, group1_name = "male", group2_name = "female")
 
+```
+
+Obviously, we do not want to do many T-tests due to inflated familywise error rates. Thus we should perform a MANVOA
+####
+####
+###
+####
+####
+
+
+
+```{r lets_go, message=FALSE}
+# Define a custom function to format mean and standard deviation
+format_mean_sd <- function(x) {
+  mean_x <- mean(x, na.rm = TRUE)
+  sd_x <- sd(x, na.rm = TRUE)
+  sprintf("%.2f ± %.2f", mean_x, sd_x)
+}
+
+# Calculate mean, standard deviation, and count for each column by group
+results <- data %>%
+  group_by(group) %>%
+  summarise(
+    n = n(),
+    across(where(is.numeric), format_mean_sd)
+  )
+
+# Display the results in a nice table
+results %>%
+  kable(caption = "Summary Statistics by Group (Number of Participants, Mean ± Standard Deviation)")
 ```
 
 
 
 
+Now the statistics for the particiapnt's characteristics
 
-The next chapter will describe the analysis of the lifts.
+Lets confirm normality and equality of variances
+
+
+
+
+
+Lets run an MANOVA and calculate effect sizes
+
+```{r, message=FALSE}
+# Load necessary packages
+library(car)
+library(MVN)
+library(purrr)
+library(effectsize)  # For effect size calculation
+
+# Assuming 'data' is your dataframe and 'Sex' column indicates 'male' or 'female'
+# Separate numerical columns and the 'Sex' column
+numerical_columns <- sapply(data, is.numeric)
+numerical_data <- data[, numerical_columns]
+group_data <- data$group
+
+# Check for normality for each numerical column and each group (male, female)
+normality_results <- lapply(names(numerical_data), function(col) {
+  male_normality <- shapiro.test(numerical_data[group_data == "male", col])$p.value
+  female_normality <- shapiro.test(numerical_data[group_data == "female", col])$p.value
+  return(c(male_normality, female_normality))
+})
+# Combine normality results into a dataframe
+normality_results_df <- do.call(rbind, normality_results)
+colnames(normality_results_df) <- c("Male_p_value", "Female_p_value")
+rownames(normality_results_df) <- names(numerical_data)
+print(normality_results_df)
+
+
+
+# Initialize a list to store the test results
+levene_results <- list()
+# Perform Levene's test for each numerical column
+for (col in names(data)[numerical_columns]) {
+  test_result <- leveneTest(data[[col]] ~ data$group)
+  levene_results[[col]] <- test_result
+}
+# Extract "F value" and "Pr(>F)" columns from each test result and bind them into a dataframe
+levene_results_df <- map_dfr(levene_results, ~{
+  data.frame(
+    F_value = .x$F[1],    # Extract the first value of F
+    Pr_value = .x$"Pr(>F)"[1]  # Extract the first value of Pr(>F)
+  )
+})
+
+# View the dataframe
+print(levene_results_df)
+
+
+
+
+levene_p_values <- levene_results_df$Pr_value
+# Check if all p-values > 0.05 for normality assumption
+all_normal <- all(normality_results_df > 0.05) & all(levene_p_values < 0.05)
+
+if (all_normal) {
+  # Perform MANOVA
+  formula <- as.formula(paste("cbind(", paste(names(numerical_data), collapse = ", "), ") ~ group"))
+  manova_result <- manova(formula, data = data)
+  manova_summary <- summary(manova_result, test = "Pillai")
+  print(manova_summary)
+  
+  # Check if the MANOVA is significant
+  if (manova_summary$stats[1, "Pr(>F)"] < 0.05) {
+    print("MANOVA is significant. Performing univariate ANOVAs:")
+    # Perform univariate ANOVAs for each dependent variable
+    univariate_results <- summary.aov(manova_result)
+    print(univariate_results)
+    
+    # Extracting p-values and means for interpretation
+    for (var in names(numerical_data)) {
+      print(paste("Analyzing variable:", var))
+      aov_result <- aov(as.formula(paste(var, "~ group")), data = data)
+      print(summary(aov_result))
+      print(model.tables(aov_result, "means"), digits = 3)
+      
+      # Calculate effect size (eta-squared)
+      eta_squared_result <- eta_squared(aov_result)
+      print(eta_squared_result)
+    }
+  } else {
+    print("MANOVA is not significant. No further tests are performed.")
+  }
+} else {
+  # If normality is not met, use Multivariate Kruskal-Wallis test for each numerical column
+  for (var in names(numerical_data)) {
+    print(paste("Performing Multivariate Kruskal-Wallis test for variable:", var))
+    kruskal_result <- kruskal.test(as.formula(paste(var, "~ group")), data = data)
+    print(kruskal_result)
+    
+    # Extract p-value and calculate effect size (not applicable for Kruskal-Wallis)
+    p_value <- kruskal_result$p.value
+    print(paste("P-value:", p_value))
+  }
+}
+
+
+# Initialize an empty dataframe to store the results
+kruskal_results_df <- data.frame(
+  Variable = character(),
+  Test_Statistic = numeric(),
+  Degrees_of_Freedom = numeric(),
+  P_Value = numeric(),
+  stringsAsFactors = FALSE
+)
+
+if (!all_normal) {
+  # If normality assumptions are not met, perform Multivariate Kruskal-Wallis test for each numerical column
+  for (var in names(numerical_data)) {
+    print(paste("Performing Multivariate Kruskal-Wallis test for variable:", var))
+    kruskal_result <- kruskal.test(as.formula(paste(var, "~ group")), data = data)
+    print(kruskal_result)
+    
+    # Extract relevant information and add to the dataframe
+    p_value <- kruskal_result$p.value
+    test_statistic <- kruskal_result$statistic
+    degrees_freedom <- kruskal_result$parameter
+    kruskal_results_df <- rbind(kruskal_results_df, data.frame(
+      Variable = var,
+      Test_Statistic = test_statistic,
+      Degrees_of_Freedom = degrees_freedom,
+      P_Value = p_value
+    ))
+  }
+}
+
+# Print the dataframe of Kruskal-Wallis test results
+print(kruskal_results_df)
+# Print the dataframe without row names and the "Degrees_of_Freedom" column, with P-values formatted
+kruskal_results_df$Variable[1] <- "Barbell PLA"
+kruskal_results_df$Variable[2] <- "Lower leg PLA"
+kruskal_results_df$Variable[3] <- "Upper leg PLA"
+kruskal_results_df$Variable[4] <- "Torso PLA"
+kruskal_results_df$Variable[5] <- "Upper arm PLA"
+kruskal_results_df$Variable[6] <- "Barbell PAA"
+kruskal_results_df$Variable[7] <- "Lower leg PAA"
+kruskal_results_df$Variable[8] <- "Upper leg PAA"
+kruskal_results_df$Variable[9] <- "Torso PAA"
+kruskal_results_df$Variable[10] <- "Upper arm PAA"
+print(format(kruskal_results_df[, -which(names(kruskal_results_df) == "Degrees_of_Freedom")], scientific = FALSE), row.names = FALSE)
+
+
+```
+
+Calculate the Point-biserial correlation coefficient
+```{r, message=FALSE}
+# Initialize an empty vector to store the point-biserial correlation coefficients
+point_biserial_coeffs <- numeric()
+
+# Loop through each column in the dataset (excluding the grouping variable)
+for (col in names(data)[!names(data) %in% c("group")]) {
+  # Calculate the point-biserial correlation coefficient
+  point_biserial <- cor(data[[col]], as.numeric(data$group == "female"))  # Convert "female" to 1 and "male" to 0
+  # Store the coefficient in the vector
+  point_biserial_coeffs <- c(point_biserial_coeffs, point_biserial)
+}
+
+# Create a dataframe to display the results
+pb_results_df <- data.frame(
+  Variable = names(data)[!names(data) %in% c("group")],  # Variable names (excluding grouping variable)
+  Point_Biserial_Coefficient = point_biserial_coeffs  # Point-biserial correlation coefficients
+)
+
+# Print the results dataframe
+pb_results_df$Variable[1] <- "Barbell PLA"
+pb_results_df$Variable[2] <- "Lower leg PLA"
+pb_results_df$Variable[3] <- "Upper leg PLA"
+pb_results_df$Variable[4] <- "Torso PLA"
+pb_results_df$Variable[5] <- "Upper arm PLA"
+pb_results_df$Variable[6] <- "Barbell PAA"
+pb_results_df$Variable[7] <- "Lower leg PAA"
+pb_results_df$Variable[8] <- "Upper leg PAA"
+pb_results_df$Variable[9] <- "Torso PAA"
+pb_results_df$Variable[10] <- "Upper arm PAA"
+print(pb_results_df)
+
+
+```
+
+
+
 
 :::
