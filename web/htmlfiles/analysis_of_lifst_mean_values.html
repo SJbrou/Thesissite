@@ -4653,6 +4653,230 @@ vertical-align: -.125em;
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
 
 
 </head>
@@ -4802,918 +5026,1995 @@ vertical-align: -.125em;
 </header>
 
 
-<p>This is the code used to analyse the biomechanical characteristics of each lift.</p>
+<p>Statistical analysis of the PLA, PAA, ALA and AAA</p>
 <div class="column-page-right">
-<p>Lets start by loading all previous functions</p>
 <div class="cell" data-verbose="false">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean workspace</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Most dependencies are loaded by loading datafiltering.qmd.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># To load only the chuncks containing functions we need parsermd</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parsermd)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>toload <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"load_data"</span>,<span class="st">"load_plots"</span>, <span class="st">"filter_data"</span>, <span class="st">"separate_lifts"</span>, <span class="st">"visualise_seperate_lifts"</span>, <span class="st">"loadXsenseData2"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>rmd <span class="ot">&lt;-</span> <span class="fu">parse_rmd</span>(<span class="st">"datafiltering.qmd"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(toload)) {</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  setup_chunk <span class="ot">&lt;-</span> <span class="fu">rmd_select</span>(rmd, toload[i]) <span class="sc">|&gt;</span> </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_document</span>()</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  setup_chunk <span class="ot">&lt;-</span> setup_chunk[<span class="sc">-</span><span class="fu">grep</span>(<span class="st">"```"</span>, setup_chunk)]</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  setup_chunk</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "library(tidyr)"   "library(stringr)" ""                </span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">eval</span>(<span class="fu">parse</span>(<span class="at">text =</span> setup_chunk))             </span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(rmd, i, setup_chunk, toload)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Lets define a function to load the R objects containing lift data</p>
-<div class="cell" data-verbose="false">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>loadLift <span class="ot">&lt;-</span> <span class="cf">function</span>(dir) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> dir, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(files)) {</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    data[[i]] <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(files[i])</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data_male <span class="ot">&lt;-</span> <span class="fu">loadLift</span>(<span class="st">"../../lifts/male"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>data_female <span class="ot">&lt;-</span> <span class="fu">loadLift</span>(<span class="st">"../../lifts/female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<section id="peak-accelerations" class="level2">
-<h2 class="anchored" data-anchor-id="peak-accelerations">Peak accelerations</h2>
-<p>Lets create a function to find the maximum value for a specific attribute for each lift (such as the absolute acceleration or gyr of one of the IMU’s)</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>find_col_means <span class="ot">&lt;-</span> <span class="cf">function</span>(df_list, colname) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize a matrix to store the column means</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  col_means <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> <span class="fu">length</span>(df_list), <span class="at">ncol =</span> <span class="dv">5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(col_means) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">paste0</span>(colname, <span class="st">"1"</span>), <span class="fu">paste0</span>(colname, <span class="st">"2"</span>), <span class="fu">paste0</span>(colname, <span class="st">"3"</span>), <span class="fu">paste0</span>(colname, <span class="st">"4"</span>), <span class="fu">paste0</span>(colname, <span class="st">"5"</span>))</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df_list)) {</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> df_list[[i]]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      col_means[i, j] <span class="ot">&lt;-</span> <span class="fu">mean</span>(df[[<span class="fu">paste0</span>(colname, j)]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the matrix to a dataframe</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  col_means_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(col_means)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col_means_df)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Lets check if the function works as intended by loading the absolute acceleration of the barbells (showing only first 10 rows)</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the column means for male group</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>male_avg_abs <span class="ot">&lt;-</span> <span class="fu">find_col_means</span>(data_male, <span class="st">"A_abs"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>male_avg_gyr <span class="ot">&lt;-</span> <span class="fu">find_col_means</span>(data_male, <span class="st">"Gyr_abs"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the column means for female group</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>female_avg_abs <span class="ot">&lt;-</span> <span class="fu">find_col_means</span>(data_female, <span class="st">"A_abs"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>female_avg_gyr <span class="ot">&lt;-</span> <span class="fu">find_col_means</span>(data_female, <span class="st">"Gyr_abs"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>male_avg <span class="ot">&lt;-</span> <span class="fu">cbind</span>(male_avg_abs, male_avg_gyr)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>female_avg <span class="ot">&lt;-</span> <span class="fu">cbind</span>(female_avg_abs, female_avg_gyr)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a group column to each dataframe</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>male_avg <span class="ot">&lt;-</span> male_avg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"male"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>female_avg <span class="ot">&lt;-</span> female_avg <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"female"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the dataframes</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(male_avg, female_avg)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing only first 10 rows</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(data[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 9%">
-<col style="width: 10%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">A_abs1</th>
-<th style="text-align: right;">A_abs2</th>
-<th style="text-align: right;">A_abs3</th>
-<th style="text-align: right;">A_abs4</th>
-<th style="text-align: right;">A_abs5</th>
-<th style="text-align: right;">Gyr_abs1</th>
-<th style="text-align: right;">Gyr_abs2</th>
-<th style="text-align: right;">Gyr_abs3</th>
-<th style="text-align: right;">Gyr_abs4</th>
-<th style="text-align: right;">Gyr_abs5</th>
-<th style="text-align: left;">group</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">9.868109</td>
-<td style="text-align: right;">13.17767</td>
-<td style="text-align: right;">12.78585</td>
-<td style="text-align: right;">10.94101</td>
-<td style="text-align: right;">11.43829</td>
-<td style="text-align: right;">7.107748</td>
-<td style="text-align: right;">89.39781</td>
-<td style="text-align: right;">103.86579</td>
-<td style="text-align: right;">41.85146</td>
-<td style="text-align: right;">87.08400</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">9.868109</td>
-<td style="text-align: right;">13.17767</td>
-<td style="text-align: right;">12.78585</td>
-<td style="text-align: right;">10.94101</td>
-<td style="text-align: right;">11.43829</td>
-<td style="text-align: right;">7.107748</td>
-<td style="text-align: right;">89.39781</td>
-<td style="text-align: right;">103.86579</td>
-<td style="text-align: right;">41.85146</td>
-<td style="text-align: right;">87.08400</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9.812543</td>
-<td style="text-align: right;">14.07092</td>
-<td style="text-align: right;">13.09411</td>
-<td style="text-align: right;">11.05630</td>
-<td style="text-align: right;">11.00833</td>
-<td style="text-align: right;">8.275944</td>
-<td style="text-align: right;">98.22886</td>
-<td style="text-align: right;">100.09508</td>
-<td style="text-align: right;">43.27235</td>
-<td style="text-align: right;">82.99422</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">9.812543</td>
-<td style="text-align: right;">14.07092</td>
-<td style="text-align: right;">13.09411</td>
-<td style="text-align: right;">11.05630</td>
-<td style="text-align: right;">11.00833</td>
-<td style="text-align: right;">8.275944</td>
-<td style="text-align: right;">98.22886</td>
-<td style="text-align: right;">100.09508</td>
-<td style="text-align: right;">43.27235</td>
-<td style="text-align: right;">82.99422</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9.785642</td>
-<td style="text-align: right;">13.84012</td>
-<td style="text-align: right;">13.31589</td>
-<td style="text-align: right;">11.13770</td>
-<td style="text-align: right;">11.05129</td>
-<td style="text-align: right;">6.760488</td>
-<td style="text-align: right;">89.39743</td>
-<td style="text-align: right;">93.60903</td>
-<td style="text-align: right;">41.06197</td>
-<td style="text-align: right;">82.98281</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">9.785642</td>
-<td style="text-align: right;">13.84012</td>
-<td style="text-align: right;">13.31589</td>
-<td style="text-align: right;">11.13770</td>
-<td style="text-align: right;">11.05129</td>
-<td style="text-align: right;">6.760488</td>
-<td style="text-align: right;">89.39743</td>
-<td style="text-align: right;">93.60903</td>
-<td style="text-align: right;">41.06197</td>
-<td style="text-align: right;">82.98281</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9.778011</td>
-<td style="text-align: right;">14.00533</td>
-<td style="text-align: right;">13.22083</td>
-<td style="text-align: right;">11.01086</td>
-<td style="text-align: right;">10.83578</td>
-<td style="text-align: right;">4.812203</td>
-<td style="text-align: right;">98.42327</td>
-<td style="text-align: right;">88.54224</td>
-<td style="text-align: right;">40.06628</td>
-<td style="text-align: right;">69.36684</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">9.778011</td>
-<td style="text-align: right;">14.00533</td>
-<td style="text-align: right;">13.22083</td>
-<td style="text-align: right;">11.01086</td>
-<td style="text-align: right;">10.83578</td>
-<td style="text-align: right;">4.812203</td>
-<td style="text-align: right;">98.42327</td>
-<td style="text-align: right;">88.54224</td>
-<td style="text-align: right;">40.06628</td>
-<td style="text-align: right;">69.36684</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8.276597</td>
-<td style="text-align: right;">15.05094</td>
-<td style="text-align: right;">13.53958</td>
-<td style="text-align: right;">11.29214</td>
-<td style="text-align: right;">11.17770</td>
-<td style="text-align: right;">8.077316</td>
-<td style="text-align: right;">129.77213</td>
-<td style="text-align: right;">97.32199</td>
-<td style="text-align: right;">44.18114</td>
-<td style="text-align: right;">118.39520</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8.276597</td>
-<td style="text-align: right;">15.05094</td>
-<td style="text-align: right;">13.53958</td>
-<td style="text-align: right;">11.29214</td>
-<td style="text-align: right;">11.17770</td>
-<td style="text-align: right;">8.077316</td>
-<td style="text-align: right;">129.77213</td>
-<td style="text-align: right;">97.32199</td>
-<td style="text-align: right;">44.18114</td>
-<td style="text-align: right;">118.39520</td>
-<td style="text-align: left;">male</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Now lets define a function to do statistical tests. This function has some logic so it automatically uses the correct t-test (studens, welch’s or mann-whithney based on the results of levenes test and shapiro-wilk tests)</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>compare_groups <span class="ot">&lt;-</span> <span class="cf">function</span>(column1, column2, <span class="at">group1_name =</span> <span class="st">"Male"</span>, <span class="at">group2_name =</span> <span class="st">"Female"</span>) {</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create dataframes</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  group1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Value =</span> column1, <span class="at">Group =</span> group1_name)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  group2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Value =</span> column2, <span class="at">Group =</span> group2_name)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for normality (Shapiro-Wilk test)</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  shapiro_test_group1 <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(group1<span class="sc">$</span>Value)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  shapiro_test_group2 <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(group2<span class="sc">$</span>Value)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print normality test results</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Shapiro-Wilk Test for Normality</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(shapiro_test_group1)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(shapiro_test_group2)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the dataframes</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  combined_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(group1, group2)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check for equal variance (Levene's test)</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  levene_test <span class="ot">&lt;-</span> <span class="fu">leveneTest</span>(Value <span class="sc">~</span> Group, <span class="at">data =</span> combined_data)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print Levene's test result</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Levene's Test for Equality of Variances</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(levene_test)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Logic to run the appropriate test</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (shapiro_test_group1<span class="sc">$</span>p.value <span class="sc">&gt;</span> <span class="fl">0.05</span> <span class="sc">&amp;&amp;</span> shapiro_test_group2<span class="sc">$</span>p.value <span class="sc">&gt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Normal distribution</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (levene_test<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Equal variances</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Normal distribution and equal variances (Student's t-test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(column1, column2, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Unequal variances</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cat</span>(<span class="st">"Normal distribution, unequal variances (Welch's t-test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>      t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(column1, column2, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># No normality</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No normality (Mann-Whitney U test)</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    t_test_result <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(column1, column2)</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(t_test_result)</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Lets test the function with the male and female maximum absolute acceleration of the barbell IMU</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming abs_max_male and abs_max_female are your dataframes and A_abs1 is the column to compare</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">compare_groups</span>(data<span class="sc">$</span>A_abs1, data<span class="sc">$</span>A_abs1, <span class="at">group1_name =</span> <span class="st">"male"</span>, <span class="at">group2_name =</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Shapiro-Wilk Test for Normality
-
-    Shapiro-Wilk normality test
-
-data:  group1$Value
-W = 0.54891, p-value = 1.288e-08
-
-
-    Shapiro-Wilk normality test
-
-data:  group2$Value
-W = 0.54891, p-value = 1.288e-08</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Equality of Variances
-Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  1       0      1
-      60               
-No normality (Mann-Whitney U test)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in wilcox.test.default(column1, column2): cannot compute exact p-value
-with ties</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Wilcoxon rank sum test with continuity correction
-
-data:  column1 and column2
-W = 480.5, p-value = 1
-alternative hypothesis: true location shift is not equal to 0</code></pre>
-</div>
-</div>
-<p>Obviously, we do not want to do many T-tests due to inflated familywise error rates. Thus we should perform a MANVOA #### #### ### #### ####</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a custom function to format mean and standard deviation</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>format_mean_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  mean_x <span class="ot">&lt;-</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  sd_x <span class="ot">&lt;-</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">"%.2f ± %.2f"</span>, mean_x, sd_x)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean, standard deviation, and count for each column by group</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), format_mean_sd)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results in a nice table</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Summary Statistics by Group (Number of Participants, Mean ± Standard Deviation)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<caption>Summary Statistics by Group (Number of Participants, Mean ± Standard Deviation)</caption>
-<colgroup>
-<col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 8%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">group</th>
-<th style="text-align: left;">n</th>
-<th style="text-align: left;">A_abs1</th>
-<th style="text-align: left;">A_abs2</th>
-<th style="text-align: left;">A_abs3</th>
-<th style="text-align: left;">A_abs4</th>
-<th style="text-align: left;">A_abs5</th>
-<th style="text-align: left;">Gyr_abs1</th>
-<th style="text-align: left;">Gyr_abs2</th>
-<th style="text-align: left;">Gyr_abs3</th>
-<th style="text-align: left;">Gyr_abs4</th>
-<th style="text-align: left;">Gyr_abs5</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">female</td>
-<td style="text-align: left;">19.00 ± NA</td>
-<td style="text-align: left;">9.73 ± 0.14</td>
-<td style="text-align: left;">12.16 ± 0.64</td>
-<td style="text-align: left;">11.12 ± 0.27</td>
-<td style="text-align: left;">10.56 ± 0.15</td>
-<td style="text-align: left;">10.84 ± 0.25</td>
-<td style="text-align: left;">44.71 ± 7.68</td>
-<td style="text-align: left;">73.40 ± 13.26</td>
-<td style="text-align: left;">63.84 ± 14.58</td>
-<td style="text-align: left;">34.84 ± 5.99</td>
-<td style="text-align: left;">89.52 ± 15.88</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">male</td>
-<td style="text-align: left;">12.00 ± NA</td>
-<td style="text-align: left;">9.53 ± 0.59</td>
-<td style="text-align: left;">13.64 ± 1.06</td>
-<td style="text-align: left;">12.87 ± 0.78</td>
-<td style="text-align: left;">10.98 ± 0.28</td>
-<td style="text-align: left;">11.08 ± 0.20</td>
-<td style="text-align: left;">14.61 ± 17.81</td>
-<td style="text-align: left;">94.85 ± 20.29</td>
-<td style="text-align: left;">97.77 ± 5.63</td>
-<td style="text-align: left;">39.82 ± 5.48</td>
-<td style="text-align: left;">86.26 ± 16.13</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Now the statistics for the particiapnt’s characteristics</p>
-<p>Lets confirm normality and equality of variances</p>
-<p>Lets run an MANOVA and calculate effect sizes</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary packages</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MVN)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effectsize)  <span class="co"># For effect size calculation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'effectsize' was built under R version 4.3.3</code></pre>
 </div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'data' is your dataframe and 'Sex' column indicates 'male' or 'female'</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate numerical columns and the 'Sex' column</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, is.numeric)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>numerical_data <span class="ot">&lt;-</span> data[, numerical_columns]</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>group_data <span class="ot">&lt;-</span> data<span class="sc">$</span>group</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for normality for each numerical column and each group (male, female)</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>normality_results <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">names</span>(numerical_data), <span class="cf">function</span>(col) {</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  male_normality <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(numerical_data[group_data <span class="sc">==</span> <span class="st">"male"</span>, col])<span class="sc">$</span>p.value</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  female_normality <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(numerical_data[group_data <span class="sc">==</span> <span class="st">"female"</span>, col])<span class="sc">$</span>p.value</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(male_normality, female_normality))</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine normality results into a dataframe</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>normality_results_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, normality_results)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(normality_results_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Male_p_value"</span>, <span class="st">"Female_p_value"</span>)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(normality_results_df) <span class="ot">&lt;-</span> <span class="fu">names</span>(numerical_data)</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(normality_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>         Male_p_value Female_p_value
-A_abs1   5.501996e-05    0.504435357
-A_abs2   7.149120e-02    0.281492897
-A_abs3   1.645330e-03    0.027044509
-A_abs4   1.702656e-02    0.461098454
-A_abs5   1.029700e-01    0.154558903
-Gyr_abs1 2.745057e-05    0.339941501
-Gyr_abs2 5.932461e-02    0.015986803
-Gyr_abs3 1.072579e-01    0.005786293
-Gyr_abs4 7.850112e-04    0.631027461
-Gyr_abs5 5.472550e-03    0.162971907</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a list to store the test results</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>levene_results <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Levene's test for each numerical column</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> <span class="fu">names</span>(data)[numerical_columns]) {</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  test_result <span class="ot">&lt;-</span> <span class="fu">leveneTest</span>(data[[col]] <span class="sc">~</span> data<span class="sc">$</span>group)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  levene_results[[col]] <span class="ot">&lt;-</span> test_result</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.</code></pre>
+<pre><code>Warning: package 'broom' was built under R version 4.3.3</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.
-
-Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.</code></pre>
 </div>
+<p>Lets load all lift data and calculate peak and average linear and angular accelerations (names are removed)</p>
+<div class="cell" data-verbose="false">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract "F value" and "Pr(&gt;F)" columns from each test result and bind them into a dataframe</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>levene_results_df <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(levene_results, <span class="sc">~</span>{</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">F_value =</span> .x<span class="sc">$</span>F[<span class="dv">1</span>],    <span class="co"># Extract the first value of F</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Pr_value =</span> .x<span class="sc">$</span><span class="st">"Pr(&gt;F)"</span>[<span class="dv">1</span>]  <span class="co"># Extract the first value of Pr(&gt;F)</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View the dataframe</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(levene_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>loadLift <span class="ot">&lt;-</span> <span class="cf">function</span>(dir) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path =</span> dir, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(files)) {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    data[[i]] <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(files[i])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>data_male <span class="ot">&lt;-</span> <span class="fu">loadLift</span>(<span class="st">"../../lifts/male"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>data_female <span class="ot">&lt;-</span> <span class="fu">loadLift</span>(<span class="st">"../../lifts/female"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to find the maximum value for each attribute for the lift</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>find_col_max <span class="ot">&lt;-</span> <span class="cf">function</span>(df_list, colname) {</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize a matrix to store the maximum values</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  col_max <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> <span class="fu">length</span>(df_list), <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(col_max) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">paste0</span>(colname, <span class="st">"1"</span>), <span class="fu">paste0</span>(colname, <span class="st">"2"</span>), <span class="fu">paste0</span>(colname, <span class="st">"3"</span>), <span class="fu">paste0</span>(colname, <span class="st">"4"</span>), <span class="fu">paste0</span>(colname, <span class="st">"5"</span>))</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df_list)) {</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> df_list[[i]]</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      col_max[i, j] <span class="ot">&lt;-</span> <span class="fu">max</span>(df[[<span class="fu">paste0</span>(colname, j)]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the matrix to a dataframe</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  col_max_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(col_max)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col_max_df)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to find the average value for each attribute for the lift</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>find_col_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(df_list, colname) {</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize a matrix to store the mean values</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  col_mean <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> <span class="fu">length</span>(df_list), <span class="at">ncol =</span> <span class="dv">5</span>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(col_mean) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">paste0</span>(colname, <span class="st">"1"</span>), <span class="fu">paste0</span>(colname, <span class="st">"2"</span>), <span class="fu">paste0</span>(colname, <span class="st">"3"</span>), <span class="fu">paste0</span>(colname, <span class="st">"4"</span>), <span class="fu">paste0</span>(colname, <span class="st">"5"</span>))</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df_list)) {</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> df_list[[i]]</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      col_mean[i, j] <span class="ot">&lt;-</span> <span class="fu">mean</span>(df[[<span class="fu">paste0</span>(colname, j)]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert the matrix to a dataframe</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  col_mean_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(col_mean)</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(col_mean_df)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate peak accelerations</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>male_PLA <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_male, <span class="st">"A_abs"</span>)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>male_PAA <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_male, <span class="st">"Gyr_abs"</span>)</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>female_PLA <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_female, <span class="st">"A_abs"</span>)</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>female_PAA <span class="ot">&lt;-</span> <span class="fu">find_col_max</span>(data_female, <span class="st">"Gyr_abs"</span>)</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate average accelerations</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>male_ALA <span class="ot">&lt;-</span> <span class="fu">find_col_mean</span>(data_male, <span class="st">"A_abs"</span>)</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>male_AAA <span class="ot">&lt;-</span> <span class="fu">find_col_mean</span>(data_male, <span class="st">"Gyr_abs"</span>)</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>female_ALA <span class="ot">&lt;-</span> <span class="fu">find_col_mean</span>(data_female, <span class="st">"A_abs"</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>female_AAA <span class="ot">&lt;-</span> <span class="fu">find_col_mean</span>(data_female, <span class="st">"Gyr_abs"</span>)</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(male_PLA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(male_PLA), <span class="st">"_PLA"</span>)</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(male_PAA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(male_PAA), <span class="st">"_PAA"</span>)</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(male_ALA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(male_ALA), <span class="st">"_ALA"</span>)</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(male_AAA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(male_AAA), <span class="st">"_AAA"</span>)</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(female_PLA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(female_PLA), <span class="st">"_PLA"</span>)</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(female_PAA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(female_PAA), <span class="st">"_PAA"</span>)</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(female_ALA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(female_ALA), <span class="st">"_ALA"</span>)</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(female_AAA) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(female_AAA), <span class="st">"_AAA"</span>)</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the data into dataframes</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>d_male <span class="ot">&lt;-</span> <span class="fu">cbind</span>(male_PLA, male_PAA, male_ALA, male_AAA)</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> <span class="fu">cbind</span>(female_PLA, female_PAA, female_ALA, female_AAA)</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a group column to each dataframe</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>d_male <span class="ot">&lt;-</span> d_male <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"male"</span>)</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>d_female <span class="ot">&lt;-</span> d_female <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="st">"female"</span>)</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the dataframes</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(d_male, d_female)</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename data headers</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PLA1 =</span> A_abs1_PLA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PLA2 =</span> A_abs2_PLA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PLA3 =</span> A_abs3_PLA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PLA4 =</span> A_abs4_PLA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PLA5 =</span> A_abs5_PLA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ALA1 =</span> A_abs1_ALA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ALA2 =</span> A_abs2_ALA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ALA3 =</span> A_abs3_ALA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ALA4 =</span> A_abs4_ALA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">ALA5 =</span> A_abs5_ALA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PAA1 =</span> Gyr_abs1_PAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PAA2 =</span> Gyr_abs2_PAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PAA3 =</span> Gyr_abs3_PAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PAA4 =</span> Gyr_abs4_PAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PAA5 =</span> Gyr_abs5_PAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">AAA1 =</span> Gyr_abs1_AAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">AAA2 =</span> Gyr_abs2_AAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">AAA3 =</span> Gyr_abs3_AAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">AAA4 =</span> Gyr_abs4_AAA) <span class="sc">%&gt;%</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">AAA5 =</span> Gyr_abs5_AAA)</span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Round all numerical data in the dataframe</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>datarounded <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">round</span>(., <span class="dv">2</span>)))</span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing only first 10 rows</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(datarounded, <span class="at">caption =</span> <span class="st">"Table X: PLA, ALA, PAA and AAA for each marker per participant"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     F_value   Pr_value
-1  2.2237647 0.14669981
-2  1.5492879 0.22320604
-3  3.4201089 0.07462357
-4  1.2658581 0.26977118
-5  1.0881306 0.30550397
-6  0.2832777 0.59861540
-7  1.1257677 0.29743678
-8  2.7473097 0.10819881
-9  0.4381282 0.51325311
-10 0.4849665 0.49172573</code></pre>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table X: PLA, ALA, PAA and AAA for each marker per participant</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">PLA1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PLA2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PLA3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PLA4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PLA5</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PAA1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PAA2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PAA3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PAA4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">PAA5</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ALA1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ALA2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ALA3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ALA4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ALA5</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AAA1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AAA2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AAA3</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AAA4</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AAA5</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">group</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">19.46</td>
+<td style="text-align: right;">123.71</td>
+<td style="text-align: right;">68.15</td>
+<td style="text-align: right;">37.95</td>
+<td style="text-align: right;">31.24</td>
+<td style="text-align: right;">30.71</td>
+<td style="text-align: right;">447.37</td>
+<td style="text-align: right;">378.95</td>
+<td style="text-align: right;">152.08</td>
+<td style="text-align: right;">405.70</td>
+<td style="text-align: right;">9.87</td>
+<td style="text-align: right;">13.18</td>
+<td style="text-align: right;">12.79</td>
+<td style="text-align: right;">10.94</td>
+<td style="text-align: right;">11.44</td>
+<td style="text-align: right;">7.11</td>
+<td style="text-align: right;">89.40</td>
+<td style="text-align: right;">103.87</td>
+<td style="text-align: right;">41.85</td>
+<td style="text-align: right;">87.08</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.46</td>
+<td style="text-align: right;">123.71</td>
+<td style="text-align: right;">68.15</td>
+<td style="text-align: right;">37.95</td>
+<td style="text-align: right;">31.24</td>
+<td style="text-align: right;">30.71</td>
+<td style="text-align: right;">447.37</td>
+<td style="text-align: right;">378.95</td>
+<td style="text-align: right;">152.08</td>
+<td style="text-align: right;">405.70</td>
+<td style="text-align: right;">9.87</td>
+<td style="text-align: right;">13.18</td>
+<td style="text-align: right;">12.79</td>
+<td style="text-align: right;">10.94</td>
+<td style="text-align: right;">11.44</td>
+<td style="text-align: right;">7.11</td>
+<td style="text-align: right;">89.40</td>
+<td style="text-align: right;">103.87</td>
+<td style="text-align: right;">41.85</td>
+<td style="text-align: right;">87.08</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17.94</td>
+<td style="text-align: right;">134.63</td>
+<td style="text-align: right;">87.32</td>
+<td style="text-align: right;">55.14</td>
+<td style="text-align: right;">31.52</td>
+<td style="text-align: right;">12.96</td>
+<td style="text-align: right;">510.08</td>
+<td style="text-align: right;">415.35</td>
+<td style="text-align: right;">167.52</td>
+<td style="text-align: right;">439.30</td>
+<td style="text-align: right;">9.81</td>
+<td style="text-align: right;">14.07</td>
+<td style="text-align: right;">13.09</td>
+<td style="text-align: right;">11.06</td>
+<td style="text-align: right;">11.01</td>
+<td style="text-align: right;">8.28</td>
+<td style="text-align: right;">98.23</td>
+<td style="text-align: right;">100.10</td>
+<td style="text-align: right;">43.27</td>
+<td style="text-align: right;">82.99</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17.94</td>
+<td style="text-align: right;">134.63</td>
+<td style="text-align: right;">87.32</td>
+<td style="text-align: right;">55.14</td>
+<td style="text-align: right;">31.52</td>
+<td style="text-align: right;">12.96</td>
+<td style="text-align: right;">510.08</td>
+<td style="text-align: right;">415.35</td>
+<td style="text-align: right;">167.52</td>
+<td style="text-align: right;">439.30</td>
+<td style="text-align: right;">9.81</td>
+<td style="text-align: right;">14.07</td>
+<td style="text-align: right;">13.09</td>
+<td style="text-align: right;">11.06</td>
+<td style="text-align: right;">11.01</td>
+<td style="text-align: right;">8.28</td>
+<td style="text-align: right;">98.23</td>
+<td style="text-align: right;">100.10</td>
+<td style="text-align: right;">43.27</td>
+<td style="text-align: right;">82.99</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.34</td>
+<td style="text-align: right;">119.94</td>
+<td style="text-align: right;">79.21</td>
+<td style="text-align: right;">42.86</td>
+<td style="text-align: right;">27.21</td>
+<td style="text-align: right;">20.19</td>
+<td style="text-align: right;">571.61</td>
+<td style="text-align: right;">416.39</td>
+<td style="text-align: right;">151.02</td>
+<td style="text-align: right;">416.25</td>
+<td style="text-align: right;">9.79</td>
+<td style="text-align: right;">13.84</td>
+<td style="text-align: right;">13.32</td>
+<td style="text-align: right;">11.14</td>
+<td style="text-align: right;">11.05</td>
+<td style="text-align: right;">6.76</td>
+<td style="text-align: right;">89.40</td>
+<td style="text-align: right;">93.61</td>
+<td style="text-align: right;">41.06</td>
+<td style="text-align: right;">82.98</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.34</td>
+<td style="text-align: right;">119.94</td>
+<td style="text-align: right;">79.21</td>
+<td style="text-align: right;">42.86</td>
+<td style="text-align: right;">27.21</td>
+<td style="text-align: right;">20.19</td>
+<td style="text-align: right;">571.61</td>
+<td style="text-align: right;">416.39</td>
+<td style="text-align: right;">151.02</td>
+<td style="text-align: right;">416.25</td>
+<td style="text-align: right;">9.79</td>
+<td style="text-align: right;">13.84</td>
+<td style="text-align: right;">13.32</td>
+<td style="text-align: right;">11.14</td>
+<td style="text-align: right;">11.05</td>
+<td style="text-align: right;">6.76</td>
+<td style="text-align: right;">89.40</td>
+<td style="text-align: right;">93.61</td>
+<td style="text-align: right;">41.06</td>
+<td style="text-align: right;">82.98</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15.99</td>
+<td style="text-align: right;">145.17</td>
+<td style="text-align: right;">59.99</td>
+<td style="text-align: right;">37.66</td>
+<td style="text-align: right;">19.23</td>
+<td style="text-align: right;">16.91</td>
+<td style="text-align: right;">472.49</td>
+<td style="text-align: right;">408.23</td>
+<td style="text-align: right;">189.71</td>
+<td style="text-align: right;">408.49</td>
+<td style="text-align: right;">9.78</td>
+<td style="text-align: right;">14.01</td>
+<td style="text-align: right;">13.22</td>
+<td style="text-align: right;">11.01</td>
+<td style="text-align: right;">10.84</td>
+<td style="text-align: right;">4.81</td>
+<td style="text-align: right;">98.42</td>
+<td style="text-align: right;">88.54</td>
+<td style="text-align: right;">40.07</td>
+<td style="text-align: right;">69.37</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15.99</td>
+<td style="text-align: right;">145.17</td>
+<td style="text-align: right;">59.99</td>
+<td style="text-align: right;">37.66</td>
+<td style="text-align: right;">19.23</td>
+<td style="text-align: right;">16.91</td>
+<td style="text-align: right;">472.49</td>
+<td style="text-align: right;">408.23</td>
+<td style="text-align: right;">189.71</td>
+<td style="text-align: right;">408.49</td>
+<td style="text-align: right;">9.78</td>
+<td style="text-align: right;">14.01</td>
+<td style="text-align: right;">13.22</td>
+<td style="text-align: right;">11.01</td>
+<td style="text-align: right;">10.84</td>
+<td style="text-align: right;">4.81</td>
+<td style="text-align: right;">98.42</td>
+<td style="text-align: right;">88.54</td>
+<td style="text-align: right;">40.07</td>
+<td style="text-align: right;">69.37</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16.23</td>
+<td style="text-align: right;">79.55</td>
+<td style="text-align: right;">62.69</td>
+<td style="text-align: right;">33.00</td>
+<td style="text-align: right;">25.64</td>
+<td style="text-align: right;">45.76</td>
+<td style="text-align: right;">591.97</td>
+<td style="text-align: right;">391.29</td>
+<td style="text-align: right;">176.59</td>
+<td style="text-align: right;">480.10</td>
+<td style="text-align: right;">8.28</td>
+<td style="text-align: right;">15.05</td>
+<td style="text-align: right;">13.54</td>
+<td style="text-align: right;">11.29</td>
+<td style="text-align: right;">11.18</td>
+<td style="text-align: right;">8.08</td>
+<td style="text-align: right;">129.77</td>
+<td style="text-align: right;">97.32</td>
+<td style="text-align: right;">44.18</td>
+<td style="text-align: right;">118.40</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16.23</td>
+<td style="text-align: right;">79.55</td>
+<td style="text-align: right;">62.69</td>
+<td style="text-align: right;">33.00</td>
+<td style="text-align: right;">25.64</td>
+<td style="text-align: right;">45.76</td>
+<td style="text-align: right;">591.97</td>
+<td style="text-align: right;">391.29</td>
+<td style="text-align: right;">176.59</td>
+<td style="text-align: right;">480.10</td>
+<td style="text-align: right;">8.28</td>
+<td style="text-align: right;">15.05</td>
+<td style="text-align: right;">13.54</td>
+<td style="text-align: right;">11.29</td>
+<td style="text-align: right;">11.18</td>
+<td style="text-align: right;">8.08</td>
+<td style="text-align: right;">129.77</td>
+<td style="text-align: right;">97.32</td>
+<td style="text-align: right;">44.18</td>
+<td style="text-align: right;">118.40</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.28</td>
+<td style="text-align: right;">36.83</td>
+<td style="text-align: right;">23.90</td>
+<td style="text-align: right;">18.62</td>
+<td style="text-align: right;">21.61</td>
+<td style="text-align: right;">469.85</td>
+<td style="text-align: right;">400.38</td>
+<td style="text-align: right;">545.16</td>
+<td style="text-align: right;">105.14</td>
+<td style="text-align: right;">362.98</td>
+<td style="text-align: right;">9.65</td>
+<td style="text-align: right;">11.72</td>
+<td style="text-align: right;">11.28</td>
+<td style="text-align: right;">10.44</td>
+<td style="text-align: right;">10.96</td>
+<td style="text-align: right;">52.65</td>
+<td style="text-align: right;">63.85</td>
+<td style="text-align: right;">103.17</td>
+<td style="text-align: right;">28.48</td>
+<td style="text-align: right;">76.74</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.28</td>
+<td style="text-align: right;">36.83</td>
+<td style="text-align: right;">23.90</td>
+<td style="text-align: right;">18.62</td>
+<td style="text-align: right;">21.61</td>
+<td style="text-align: right;">469.85</td>
+<td style="text-align: right;">400.38</td>
+<td style="text-align: right;">545.16</td>
+<td style="text-align: right;">105.14</td>
+<td style="text-align: right;">362.98</td>
+<td style="text-align: right;">9.65</td>
+<td style="text-align: right;">11.72</td>
+<td style="text-align: right;">11.28</td>
+<td style="text-align: right;">10.44</td>
+<td style="text-align: right;">10.96</td>
+<td style="text-align: right;">52.65</td>
+<td style="text-align: right;">63.85</td>
+<td style="text-align: right;">103.17</td>
+<td style="text-align: right;">28.48</td>
+<td style="text-align: right;">76.74</td>
+<td style="text-align: left;">male</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21.33</td>
+<td style="text-align: right;">26.26</td>
+<td style="text-align: right;">21.11</td>
+<td style="text-align: right;">20.36</td>
+<td style="text-align: right;">21.43</td>
+<td style="text-align: right;">162.24</td>
+<td style="text-align: right;">295.52</td>
+<td style="text-align: right;">212.82</td>
+<td style="text-align: right;">158.95</td>
+<td style="text-align: right;">412.07</td>
+<td style="text-align: right;">9.72</td>
+<td style="text-align: right;">11.55</td>
+<td style="text-align: right;">11.07</td>
+<td style="text-align: right;">10.49</td>
+<td style="text-align: right;">10.74</td>
+<td style="text-align: right;">41.04</td>
+<td style="text-align: right;">64.03</td>
+<td style="text-align: right;">52.01</td>
+<td style="text-align: right;">32.96</td>
+<td style="text-align: right;">99.08</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.32</td>
+<td style="text-align: right;">52.59</td>
+<td style="text-align: right;">29.68</td>
+<td style="text-align: right;">29.37</td>
+<td style="text-align: right;">18.89</td>
+<td style="text-align: right;">357.70</td>
+<td style="text-align: right;">555.56</td>
+<td style="text-align: right;">324.17</td>
+<td style="text-align: right;">177.33</td>
+<td style="text-align: right;">458.55</td>
+<td style="text-align: right;">9.65</td>
+<td style="text-align: right;">12.35</td>
+<td style="text-align: right;">10.98</td>
+<td style="text-align: right;">10.63</td>
+<td style="text-align: right;">10.59</td>
+<td style="text-align: right;">36.77</td>
+<td style="text-align: right;">68.16</td>
+<td style="text-align: right;">60.92</td>
+<td style="text-align: right;">42.15</td>
+<td style="text-align: right;">68.18</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17.81</td>
+<td style="text-align: right;">61.22</td>
+<td style="text-align: right;">28.66</td>
+<td style="text-align: right;">28.80</td>
+<td style="text-align: right;">17.90</td>
+<td style="text-align: right;">339.33</td>
+<td style="text-align: right;">401.71</td>
+<td style="text-align: right;">244.02</td>
+<td style="text-align: right;">188.66</td>
+<td style="text-align: right;">431.03</td>
+<td style="text-align: right;">9.59</td>
+<td style="text-align: right;">11.99</td>
+<td style="text-align: right;">10.89</td>
+<td style="text-align: right;">10.61</td>
+<td style="text-align: right;">10.65</td>
+<td style="text-align: right;">42.93</td>
+<td style="text-align: right;">64.62</td>
+<td style="text-align: right;">54.92</td>
+<td style="text-align: right;">41.62</td>
+<td style="text-align: right;">79.20</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20.69</td>
+<td style="text-align: right;">33.19</td>
+<td style="text-align: right;">19.86</td>
+<td style="text-align: right;">20.08</td>
+<td style="text-align: right;">21.77</td>
+<td style="text-align: right;">266.94</td>
+<td style="text-align: right;">297.68</td>
+<td style="text-align: right;">229.01</td>
+<td style="text-align: right;">167.39</td>
+<td style="text-align: right;">463.36</td>
+<td style="text-align: right;">9.62</td>
+<td style="text-align: right;">12.06</td>
+<td style="text-align: right;">11.03</td>
+<td style="text-align: right;">10.54</td>
+<td style="text-align: right;">11.01</td>
+<td style="text-align: right;">56.40</td>
+<td style="text-align: right;">76.03</td>
+<td style="text-align: right;">49.91</td>
+<td style="text-align: right;">33.35</td>
+<td style="text-align: right;">109.73</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20.18</td>
+<td style="text-align: right;">65.96</td>
+<td style="text-align: right;">31.89</td>
+<td style="text-align: right;">29.47</td>
+<td style="text-align: right;">29.89</td>
+<td style="text-align: right;">218.32</td>
+<td style="text-align: right;">306.38</td>
+<td style="text-align: right;">232.02</td>
+<td style="text-align: right;">156.21</td>
+<td style="text-align: right;">519.07</td>
+<td style="text-align: right;">9.74</td>
+<td style="text-align: right;">12.34</td>
+<td style="text-align: right;">11.10</td>
+<td style="text-align: right;">10.43</td>
+<td style="text-align: right;">11.14</td>
+<td style="text-align: right;">43.59</td>
+<td style="text-align: right;">75.60</td>
+<td style="text-align: right;">68.17</td>
+<td style="text-align: right;">34.48</td>
+<td style="text-align: right;">105.06</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.42</td>
+<td style="text-align: right;">40.37</td>
+<td style="text-align: right;">23.66</td>
+<td style="text-align: right;">21.93</td>
+<td style="text-align: right;">19.92</td>
+<td style="text-align: right;">278.87</td>
+<td style="text-align: right;">383.21</td>
+<td style="text-align: right;">222.32</td>
+<td style="text-align: right;">142.26</td>
+<td style="text-align: right;">438.72</td>
+<td style="text-align: right;">9.82</td>
+<td style="text-align: right;">12.15</td>
+<td style="text-align: right;">11.14</td>
+<td style="text-align: right;">10.62</td>
+<td style="text-align: right;">10.73</td>
+<td style="text-align: right;">36.73</td>
+<td style="text-align: right;">69.34</td>
+<td style="text-align: right;">57.73</td>
+<td style="text-align: right;">32.09</td>
+<td style="text-align: right;">87.87</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20.49</td>
+<td style="text-align: right;">47.57</td>
+<td style="text-align: right;">23.36</td>
+<td style="text-align: right;">25.57</td>
+<td style="text-align: right;">22.10</td>
+<td style="text-align: right;">317.98</td>
+<td style="text-align: right;">314.07</td>
+<td style="text-align: right;">294.65</td>
+<td style="text-align: right;">147.64</td>
+<td style="text-align: right;">429.42</td>
+<td style="text-align: right;">9.77</td>
+<td style="text-align: right;">13.22</td>
+<td style="text-align: right;">11.47</td>
+<td style="text-align: right;">10.66</td>
+<td style="text-align: right;">11.13</td>
+<td style="text-align: right;">46.77</td>
+<td style="text-align: right;">100.72</td>
+<td style="text-align: right;">77.32</td>
+<td style="text-align: right;">40.92</td>
+<td style="text-align: right;">101.62</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.20</td>
+<td style="text-align: right;">36.75</td>
+<td style="text-align: right;">22.33</td>
+<td style="text-align: right;">18.90</td>
+<td style="text-align: right;">19.85</td>
+<td style="text-align: right;">234.42</td>
+<td style="text-align: right;">287.75</td>
+<td style="text-align: right;">214.17</td>
+<td style="text-align: right;">136.34</td>
+<td style="text-align: right;">396.77</td>
+<td style="text-align: right;">9.72</td>
+<td style="text-align: right;">11.47</td>
+<td style="text-align: right;">10.72</td>
+<td style="text-align: right;">10.33</td>
+<td style="text-align: right;">10.46</td>
+<td style="text-align: right;">31.37</td>
+<td style="text-align: right;">56.54</td>
+<td style="text-align: right;">48.70</td>
+<td style="text-align: right;">26.56</td>
+<td style="text-align: right;">75.59</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.21</td>
+<td style="text-align: right;">39.00</td>
+<td style="text-align: right;">23.14</td>
+<td style="text-align: right;">21.93</td>
+<td style="text-align: right;">20.79</td>
+<td style="text-align: right;">519.54</td>
+<td style="text-align: right;">327.15</td>
+<td style="text-align: right;">245.41</td>
+<td style="text-align: right;">276.24</td>
+<td style="text-align: right;">411.21</td>
+<td style="text-align: right;">9.47</td>
+<td style="text-align: right;">11.87</td>
+<td style="text-align: right;">11.02</td>
+<td style="text-align: right;">10.52</td>
+<td style="text-align: right;">10.60</td>
+<td style="text-align: right;">54.64</td>
+<td style="text-align: right;">63.13</td>
+<td style="text-align: right;">59.07</td>
+<td style="text-align: right;">46.86</td>
+<td style="text-align: right;">92.95</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.95</td>
+<td style="text-align: right;">55.58</td>
+<td style="text-align: right;">24.34</td>
+<td style="text-align: right;">22.38</td>
+<td style="text-align: right;">19.79</td>
+<td style="text-align: right;">191.23</td>
+<td style="text-align: right;">340.22</td>
+<td style="text-align: right;">264.37</td>
+<td style="text-align: right;">161.10</td>
+<td style="text-align: right;">464.75</td>
+<td style="text-align: right;">9.74</td>
+<td style="text-align: right;">12.03</td>
+<td style="text-align: right;">11.02</td>
+<td style="text-align: right;">10.36</td>
+<td style="text-align: right;">10.49</td>
+<td style="text-align: right;">42.41</td>
+<td style="text-align: right;">70.55</td>
+<td style="text-align: right;">60.15</td>
+<td style="text-align: right;">36.55</td>
+<td style="text-align: right;">75.67</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18.33</td>
+<td style="text-align: right;">61.40</td>
+<td style="text-align: right;">24.53</td>
+<td style="text-align: right;">26.58</td>
+<td style="text-align: right;">19.16</td>
+<td style="text-align: right;">292.56</td>
+<td style="text-align: right;">352.57</td>
+<td style="text-align: right;">247.88</td>
+<td style="text-align: right;">168.52</td>
+<td style="text-align: right;">405.21</td>
+<td style="text-align: right;">9.48</td>
+<td style="text-align: right;">13.37</td>
+<td style="text-align: right;">11.69</td>
+<td style="text-align: right;">10.95</td>
+<td style="text-align: right;">11.18</td>
+<td style="text-align: right;">53.59</td>
+<td style="text-align: right;">93.52</td>
+<td style="text-align: right;">73.53</td>
+<td style="text-align: right;">38.13</td>
+<td style="text-align: right;">94.39</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21.33</td>
+<td style="text-align: right;">26.26</td>
+<td style="text-align: right;">21.11</td>
+<td style="text-align: right;">20.36</td>
+<td style="text-align: right;">21.43</td>
+<td style="text-align: right;">162.24</td>
+<td style="text-align: right;">295.52</td>
+<td style="text-align: right;">212.82</td>
+<td style="text-align: right;">158.95</td>
+<td style="text-align: right;">412.07</td>
+<td style="text-align: right;">9.72</td>
+<td style="text-align: right;">11.55</td>
+<td style="text-align: right;">11.07</td>
+<td style="text-align: right;">10.49</td>
+<td style="text-align: right;">10.74</td>
+<td style="text-align: right;">41.04</td>
+<td style="text-align: right;">64.03</td>
+<td style="text-align: right;">52.01</td>
+<td style="text-align: right;">32.96</td>
+<td style="text-align: right;">99.08</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20.69</td>
+<td style="text-align: right;">33.19</td>
+<td style="text-align: right;">19.86</td>
+<td style="text-align: right;">20.08</td>
+<td style="text-align: right;">21.77</td>
+<td style="text-align: right;">266.94</td>
+<td style="text-align: right;">297.68</td>
+<td style="text-align: right;">229.01</td>
+<td style="text-align: right;">167.39</td>
+<td style="text-align: right;">463.36</td>
+<td style="text-align: right;">9.62</td>
+<td style="text-align: right;">12.06</td>
+<td style="text-align: right;">11.03</td>
+<td style="text-align: right;">10.54</td>
+<td style="text-align: right;">11.01</td>
+<td style="text-align: right;">56.40</td>
+<td style="text-align: right;">76.03</td>
+<td style="text-align: right;">49.91</td>
+<td style="text-align: right;">33.35</td>
+<td style="text-align: right;">109.73</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20.18</td>
+<td style="text-align: right;">65.96</td>
+<td style="text-align: right;">31.89</td>
+<td style="text-align: right;">29.47</td>
+<td style="text-align: right;">29.89</td>
+<td style="text-align: right;">218.32</td>
+<td style="text-align: right;">306.38</td>
+<td style="text-align: right;">232.02</td>
+<td style="text-align: right;">156.21</td>
+<td style="text-align: right;">519.07</td>
+<td style="text-align: right;">9.78</td>
+<td style="text-align: right;">12.28</td>
+<td style="text-align: right;">11.07</td>
+<td style="text-align: right;">10.41</td>
+<td style="text-align: right;">11.13</td>
+<td style="text-align: right;">42.60</td>
+<td style="text-align: right;">74.73</td>
+<td style="text-align: right;">68.44</td>
+<td style="text-align: right;">33.57</td>
+<td style="text-align: right;">102.15</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.42</td>
+<td style="text-align: right;">40.37</td>
+<td style="text-align: right;">23.66</td>
+<td style="text-align: right;">21.93</td>
+<td style="text-align: right;">19.92</td>
+<td style="text-align: right;">278.87</td>
+<td style="text-align: right;">383.21</td>
+<td style="text-align: right;">222.32</td>
+<td style="text-align: right;">142.26</td>
+<td style="text-align: right;">438.72</td>
+<td style="text-align: right;">9.80</td>
+<td style="text-align: right;">12.16</td>
+<td style="text-align: right;">11.18</td>
+<td style="text-align: right;">10.64</td>
+<td style="text-align: right;">10.78</td>
+<td style="text-align: right;">37.80</td>
+<td style="text-align: right;">69.06</td>
+<td style="text-align: right;">58.55</td>
+<td style="text-align: right;">33.13</td>
+<td style="text-align: right;">90.75</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20.49</td>
+<td style="text-align: right;">47.57</td>
+<td style="text-align: right;">23.36</td>
+<td style="text-align: right;">25.57</td>
+<td style="text-align: right;">22.10</td>
+<td style="text-align: right;">317.98</td>
+<td style="text-align: right;">314.07</td>
+<td style="text-align: right;">294.65</td>
+<td style="text-align: right;">147.64</td>
+<td style="text-align: right;">429.42</td>
+<td style="text-align: right;">9.78</td>
+<td style="text-align: right;">13.30</td>
+<td style="text-align: right;">11.56</td>
+<td style="text-align: right;">10.79</td>
+<td style="text-align: right;">11.25</td>
+<td style="text-align: right;">47.27</td>
+<td style="text-align: right;">104.11</td>
+<td style="text-align: right;">79.75</td>
+<td style="text-align: right;">41.43</td>
+<td style="text-align: right;">103.95</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.20</td>
+<td style="text-align: right;">36.75</td>
+<td style="text-align: right;">22.33</td>
+<td style="text-align: right;">18.90</td>
+<td style="text-align: right;">19.85</td>
+<td style="text-align: right;">234.42</td>
+<td style="text-align: right;">287.75</td>
+<td style="text-align: right;">214.17</td>
+<td style="text-align: right;">136.34</td>
+<td style="text-align: right;">396.77</td>
+<td style="text-align: right;">9.82</td>
+<td style="text-align: right;">11.81</td>
+<td style="text-align: right;">10.86</td>
+<td style="text-align: right;">10.40</td>
+<td style="text-align: right;">10.69</td>
+<td style="text-align: right;">34.74</td>
+<td style="text-align: right;">66.14</td>
+<td style="text-align: right;">56.64</td>
+<td style="text-align: right;">30.77</td>
+<td style="text-align: right;">86.53</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18.54</td>
+<td style="text-align: right;">93.05</td>
+<td style="text-align: right;">46.36</td>
+<td style="text-align: right;">21.42</td>
+<td style="text-align: right;">25.55</td>
+<td style="text-align: right;">613.66</td>
+<td style="text-align: right;">540.73</td>
+<td style="text-align: right;">707.79</td>
+<td style="text-align: right;">142.60</td>
+<td style="text-align: right;">422.10</td>
+<td style="text-align: right;">10.00</td>
+<td style="text-align: right;">12.67</td>
+<td style="text-align: right;">11.62</td>
+<td style="text-align: right;">10.67</td>
+<td style="text-align: right;">10.92</td>
+<td style="text-align: right;">49.80</td>
+<td style="text-align: right;">80.28</td>
+<td style="text-align: right;">107.79</td>
+<td style="text-align: right;">29.21</td>
+<td style="text-align: right;">58.25</td>
+<td style="text-align: left;">female</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19.73</td>
+<td style="text-align: right;">32.00</td>
+<td style="text-align: right;">20.69</td>
+<td style="text-align: right;">19.55</td>
+<td style="text-align: right;">19.95</td>
+<td style="text-align: right;">620.34</td>
+<td style="text-align: right;">778.19</td>
+<td style="text-align: right;">449.50</td>
+<td style="text-align: right;">123.27</td>
+<td style="text-align: right;">424.41</td>
+<td style="text-align: right;">9.96</td>
+<td style="text-align: right;">10.89</td>
+<td style="text-align: right;">10.81</td>
+<td style="text-align: right;">10.66</td>
+<td style="text-align: right;">10.70</td>
+<td style="text-align: right;">53.69</td>
+<td style="text-align: right;">58.04</td>
+<td style="text-align: right;">77.47</td>
+<td style="text-align: right;">21.94</td>
+<td style="text-align: right;">61.03</td>
+<td style="text-align: left;">female</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>levene_p_values <span class="ot">&lt;-</span> levene_results_df<span class="sc">$</span>Pr_value</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if all p-values &gt; 0.05 for normality assumption</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>all_normal <span class="ot">&lt;-</span> <span class="fu">all</span>(normality_results_df <span class="sc">&gt;</span> <span class="fl">0.05</span>) <span class="sc">&amp;</span> <span class="fu">all</span>(levene_p_values <span class="sc">&lt;</span> <span class="fl">0.05</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (all_normal) {</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Perform MANOVA</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  formula <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste</span>(<span class="st">"cbind("</span>, <span class="fu">paste</span>(<span class="fu">names</span>(numerical_data), <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">") ~ group"</span>))</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  manova_result <span class="ot">&lt;-</span> <span class="fu">manova</span>(formula, <span class="at">data =</span> data)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  manova_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(manova_result, <span class="at">test =</span> <span class="st">"Pillai"</span>)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(manova_summary)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if the MANOVA is significant</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"Pr(&gt;F)"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"MANOVA is significant. Performing univariate ANOVAs:"</span>)</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform univariate ANOVAs for each dependent variable</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    univariate_results <span class="ot">&lt;-</span> <span class="fu">summary.aov</span>(manova_result)</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(univariate_results)</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extracting p-values and means for interpretation</span></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(numerical_data)) {</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Analyzing variable:"</span>, var))</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>      aov_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(var, <span class="st">"~ group"</span>)), <span class="at">data =</span> data)</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">summary</span>(aov_result))</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">model.tables</span>(aov_result, <span class="st">"means"</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Calculate effect size (eta-squared)</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>      eta_squared_result <span class="ot">&lt;-</span> <span class="fu">eta_squared</span>(aov_result)</span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(eta_squared_result)</span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"MANOVA is not significant. No further tests are performed."</span>)</span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If normality is not met, use Multivariate Kruskal-Wallis test for each numerical column</span></span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(numerical_data)) {</span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Performing Multivariate Kruskal-Wallis test for variable:"</span>, var))</span>
-<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>    kruskal_result <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(var, <span class="st">"~ group"</span>)), <span class="at">data =</span> data)</span>
-<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(kruskal_result)</span>
-<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract p-value and calculate effect size (not applicable for Kruskal-Wallis)</span></span>
-<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>p.value</span>
-<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"P-value:"</span>, p_value))</span>
-<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs1"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs1 by group
-Kruskal-Wallis chi-squared = 0.32289, df = 1, p-value = 0.5699
-
-[1] "P-value: 0.56987648706177"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs2"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs2 by group
-Kruskal-Wallis chi-squared = 10.023, df = 1, p-value = 0.001546
-
-[1] "P-value: 0.0015461888770745"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs3"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs3 by group
-Kruskal-Wallis chi-squared = 18.51, df = 1, p-value = 1.69e-05
-
-[1] "P-value: 1.69004707588289e-05"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs4"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs4 by group
-Kruskal-Wallis chi-squared = 11.624, df = 1, p-value = 0.0006511
-
-[1] "P-value: 0.000651058298461034"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs5"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs5 by group
-Kruskal-Wallis chi-squared = 5.9306, df = 1, p-value = 0.01488
-
-[1] "P-value: 0.014880021347098"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs1"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs1 by group
-Kruskal-Wallis chi-squared = 12.184, df = 1, p-value = 0.000482
-
-[1] "P-value: 0.000481979293686005"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs2"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs2 by group
-Kruskal-Wallis chi-squared = 6.3326, df = 1, p-value = 0.01185
-
-[1] "P-value: 0.011853959762315"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs3"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs3 by group
-Kruskal-Wallis chi-squared = 17.139, df = 1, p-value = 3.473e-05
-
-[1] "P-value: 3.4732658676603e-05"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs4"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs4 by group
-Kruskal-Wallis chi-squared = 4.8038, df = 1, p-value = 0.0284
-
-[1] "P-value: 0.0283970253776627"
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs5"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs5 by group
-Kruskal-Wallis chi-squared = 0.79734, df = 1, p-value = 0.3719
-
-[1] "P-value: 0.371890258961034"</code></pre>
 </div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty dataframe to store the results</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>kruskal_results_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">character</span>(),</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Test_Statistic =</span> <span class="fu">numeric</span>(),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Degrees_of_Freedom =</span> <span class="fu">numeric</span>(),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">P_Value =</span> <span class="fu">numeric</span>(),</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>all_normal) {</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If normality assumptions are not met, perform Multivariate Kruskal-Wallis test for each numerical column</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(numerical_data)) {</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Performing Multivariate Kruskal-Wallis test for variable:"</span>, var))</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    kruskal_result <span class="ot">&lt;-</span> <span class="fu">kruskal.test</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(var, <span class="st">"~ group"</span>)), <span class="at">data =</span> data)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(kruskal_result)</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract relevant information and add to the dataframe</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    p_value <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>p.value</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    test_statistic <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>statistic</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    degrees_freedom <span class="ot">&lt;-</span> kruskal_result<span class="sc">$</span>parameter</span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    kruskal_results_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kruskal_results_df, <span class="fu">data.frame</span>(</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">Variable =</span> var,</span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">Test_Statistic =</span> test_statistic,</span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">Degrees_of_Freedom =</span> degrees_freedom,</span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">P_Value =</span> p_value</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    ))</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs1"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs1 by group
-Kruskal-Wallis chi-squared = 0.32289, df = 1, p-value = 0.5699
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs2"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs2 by group
-Kruskal-Wallis chi-squared = 10.023, df = 1, p-value = 0.001546
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs3"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs3 by group
-Kruskal-Wallis chi-squared = 18.51, df = 1, p-value = 1.69e-05
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs4"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs4 by group
-Kruskal-Wallis chi-squared = 11.624, df = 1, p-value = 0.0006511
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: A_abs5"
-
-    Kruskal-Wallis rank sum test
-
-data:  A_abs5 by group
-Kruskal-Wallis chi-squared = 5.9306, df = 1, p-value = 0.01488
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs1"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs1 by group
-Kruskal-Wallis chi-squared = 12.184, df = 1, p-value = 0.000482
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs2"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs2 by group
-Kruskal-Wallis chi-squared = 6.3326, df = 1, p-value = 0.01185
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs3"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs3 by group
-Kruskal-Wallis chi-squared = 17.139, df = 1, p-value = 3.473e-05
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs4"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs4 by group
-Kruskal-Wallis chi-squared = 4.8038, df = 1, p-value = 0.0284
-
-[1] "Performing Multivariate Kruskal-Wallis test for variable: Gyr_abs5"
-
-    Kruskal-Wallis rank sum test
-
-data:  Gyr_abs5 by group
-Kruskal-Wallis chi-squared = 0.79734, df = 1, p-value = 0.3719</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the dataframe of Kruskal-Wallis test results</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(kruskal_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>                            Variable Test_Statistic Degrees_of_Freedom
-Kruskal-Wallis chi-squared    A_abs1      0.3228892                  1
-Kruskal-Wallis chi-squared1   A_abs2     10.0227447                  1
-Kruskal-Wallis chi-squared2   A_abs3     18.5101182                  1
-Kruskal-Wallis chi-squared3   A_abs4     11.6240116                  1
-Kruskal-Wallis chi-squared4   A_abs5      5.9306181                  1
-Kruskal-Wallis chi-squared5 Gyr_abs1     12.1841255                  1
-Kruskal-Wallis chi-squared6 Gyr_abs2      6.3325823                  1
-Kruskal-Wallis chi-squared7 Gyr_abs3     17.1394864                  1
-Kruskal-Wallis chi-squared8 Gyr_abs4      4.8038007                  1
-Kruskal-Wallis chi-squared9 Gyr_abs5      0.7973387                  1
-                                 P_Value
-Kruskal-Wallis chi-squared  5.698765e-01
-Kruskal-Wallis chi-squared1 1.546189e-03
-Kruskal-Wallis chi-squared2 1.690047e-05
-Kruskal-Wallis chi-squared3 6.510583e-04
-Kruskal-Wallis chi-squared4 1.488002e-02
-Kruskal-Wallis chi-squared5 4.819793e-04
-Kruskal-Wallis chi-squared6 1.185396e-02
-Kruskal-Wallis chi-squared7 3.473266e-05
-Kruskal-Wallis chi-squared8 2.839703e-02
-Kruskal-Wallis chi-squared9 3.718903e-01</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the dataframe without row names and the "Degrees_of_Freedom" column, with P-values formatted</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell ALA"</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg ALA"</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg ALA"</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">"Torso ALA"</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm ALA"</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell AAA"</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg AAA"</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg AAA"</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="st">"Torso AAA"</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>kruskal_results_df<span class="sc">$</span>Variable[<span class="dv">10</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm AAA"</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">format</span>(kruskal_results_df[, <span class="sc">-</span><span class="fu">which</span>(<span class="fu">names</span>(kruskal_results_df) <span class="sc">==</span> <span class="st">"Degrees_of_Freedom"</span>)], <span class="at">scientific =</span> <span class="cn">FALSE</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Variable Test_Statistic       P_Value
-   Barbell ALA      0.3228892 0.56987648706
- Lower leg ALA     10.0227447 0.00154618888
- Upper leg ALA     18.5101182 0.00001690047
-     Torso ALA     11.6240116 0.00065105830
- Upper arm ALA      5.9306181 0.01488002135
-   Barbell AAA     12.1841255 0.00048197929
- Lower leg AAA      6.3325823 0.01185395976
- Upper leg AAA     17.1394864 0.00003473266
-     Torso AAA      4.8038007 0.02839702538
- Upper arm AAA      0.7973387 0.37189025896</code></pre>
-</div>
-</div>
-<p>Calculate the Point-biserial correlation coefficient</p>
+<section id="statistical-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-analyses">Statistical analyses</h2>
+<p>Lets run an MANOVA</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty vector to store the point-biserial correlation coefficients</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>point_biserial_coeffs <span class="ot">&lt;-</span> <span class="fu">numeric</span>()</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each column in the dataset (excluding the grouping variable)</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> <span class="fu">names</span>(data)[<span class="sc">!</span><span class="fu">names</span>(data) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"group"</span>)]) {</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the point-biserial correlation coefficient</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  point_biserial <span class="ot">&lt;-</span> <span class="fu">cor</span>(data[[col]], <span class="fu">as.numeric</span>(data<span class="sc">$</span>group <span class="sc">==</span> <span class="st">"female"</span>))  <span class="co"># Convert "female" to 1 and "male" to 0</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the coefficient in the vector</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  point_biserial_coeffs <span class="ot">&lt;-</span> <span class="fu">c</span>(point_biserial_coeffs, point_biserial)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe to display the results</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>pb_results_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">names</span>(data)[<span class="sc">!</span><span class="fu">names</span>(data) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"group"</span>)],  <span class="co"># Variable names (excluding grouping variable)</span></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Point_Biserial_Coefficient =</span> point_biserial_coeffs  <span class="co"># Point-biserial correlation coefficients</span></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the results dataframe</span></span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell ALA"</span></span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg ALA"</span></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg ALA"</span></span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="st">"Torso ALA"</span></span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm ALA"</span></span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="st">"Barbell AAA"</span></span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"Lower leg AAA"</span></span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="st">"Upper leg AAA"</span></span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="st">"Torso AAA"</span></span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>pb_results_df<span class="sc">$</span>Variable[<span class="dv">10</span>] <span class="ot">&lt;-</span> <span class="st">"Upper arm AAA"</span></span>
-<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pb_results_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'data' is your dataframe and 'group' column indicates 'male' or 'female'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate numerical columns and the 'group' column</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data2 &lt;- data[1:24, c(1:10, 21)]  # Selecting desired rows and columns</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, is.numeric)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>numerical_data <span class="ot">&lt;-</span> data[, numerical_columns]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform MANOVA</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>manova_result <span class="ot">&lt;-</span> <span class="fu">manova</span>(<span class="fu">as.matrix</span>(numerical_data) <span class="sc">~</span> group, <span class="at">data =</span> data)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary of MANOVA</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>manova_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(manova_result)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># print(manova_summary)</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>manova_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Test =</span> <span class="st">"Pillai"</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">Df =</span> manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"Df"</span>],</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pillai =</span> manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"Pillai"</span>],</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Approx_F =</span> manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"approx F"</span>],</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Num_Df =</span> manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"num Df"</span>],</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">Den_Df =</span> manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"den Df"</span>],</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pr_F =</span> manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"Pr(&gt;F)"</span>]</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Print MANOVA results</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(manova_table, <span class="at">caption =</span> <span class="st">"Table X: Results of MANOVA"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>        Variable Point_Biserial_Coefficient
-1    Barbell ALA                  0.2561495
-2  Lower leg ALA                 -0.6699079
-3  Upper leg ALA                 -0.8584492
-4      Torso ALA                 -0.7068735
-5  Upper arm ALA                 -0.4662353
-6    Barbell AAA                  0.7709157
-7  Lower leg AAA                 -0.5525890
-8  Upper leg AAA                 -0.8183856
-9      Torso AAA                 -0.3966161
-10 Upper arm AAA                  0.1021446</code></pre>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table X: Results of MANOVA</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Test</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pillai</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Approx_F</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Num_Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Den_Df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Pr_F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pillai</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.9992735</td>
+<td style="text-align: right;">687.7773</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
+<p>Looking at <code>Pr(&gt;F), the result of the MANOVA is significant. </code></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> data</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the MANOVA is significant</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (manova_summary<span class="sc">$</span>stats[<span class="dv">1</span>, <span class="st">"Pr(&gt;F)"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span>) {</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cat("MANOVA is significant. Performing univariate ANOVAs:\n")</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Perform univariate ANOVAs for each dependent variable</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  univariate_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">names</span>(numerical_data), <span class="sc">~</span><span class="fu">aov</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(.x, <span class="st">"~ group"</span>)), <span class="at">data =</span> data2))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Tidy the univariate ANOVA results</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  tidy_results <span class="ot">&lt;-</span> <span class="fu">map2</span>(<span class="fu">names</span>(numerical_data), univariate_results, <span class="sc">~</span><span class="fu">tidy</span>(.y) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">variable =</span> .x))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine the tidy results into a single table</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  univariate_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(tidy_results) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(variable, <span class="fu">everything</span>())</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Print the univariate ANOVA table</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(univariate_table, <span class="at">caption =</span> <span class="st">"Table X: Results of univariate ANOVAs"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"MANOVA is not significant. No further tests are performed.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table X: Results of univariate ANOVAs</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">term</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">sumsq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">meansq</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PLA1</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.666287e+01</td>
+<td style="text-align: right;">3.666287e+01</td>
+<td style="text-align: right;">26.2134162</td>
+<td style="text-align: right;">0.0000182</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA1</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">4.056027e+01</td>
+<td style="text-align: right;">1.398630e+00</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA2</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.606467e+04</td>
+<td style="text-align: right;">2.606467e+04</td>
+<td style="text-align: right;">34.5602062</td>
+<td style="text-align: right;">0.0000022</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA2</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">2.187126e+04</td>
+<td style="text-align: right;">7.541814e+02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA3</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.072294e+04</td>
+<td style="text-align: right;">1.072294e+04</td>
+<td style="text-align: right;">56.0600394</td>
+<td style="text-align: right;">0.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA3</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">5.547005e+03</td>
+<td style="text-align: right;">1.912760e+02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA4</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.491565e+03</td>
+<td style="text-align: right;">1.491565e+03</td>
+<td style="text-align: right;">25.4576666</td>
+<td style="text-align: right;">0.0000223</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA4</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">1.699110e+03</td>
+<td style="text-align: right;">5.859000e+01</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA5</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.419130e+02</td>
+<td style="text-align: right;">1.419130e+02</td>
+<td style="text-align: right;">9.1803895</td>
+<td style="text-align: right;">0.0051029</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA5</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">4.482901e+02</td>
+<td style="text-align: right;">1.545828e+01</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA1</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.265243e+05</td>
+<td style="text-align: right;">3.265243e+05</td>
+<td style="text-align: right;">14.3819547</td>
+<td style="text-align: right;">0.0007009</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA1</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">6.584086e+05</td>
+<td style="text-align: right;">2.270375e+04</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA2</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.188580e+05</td>
+<td style="text-align: right;">1.188580e+05</td>
+<td style="text-align: right;">10.1914590</td>
+<td style="text-align: right;">0.0033834</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA2</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">3.382129e+05</td>
+<td style="text-align: right;">1.166251e+04</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA3</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.596016e+05</td>
+<td style="text-align: right;">1.596016e+05</td>
+<td style="text-align: right;">16.0554269</td>
+<td style="text-align: right;">0.0003926</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA3</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">2.882793e+05</td>
+<td style="text-align: right;">9.940667e+03</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA4</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.059592e+02</td>
+<td style="text-align: right;">1.059592e+02</td>
+<td style="text-align: right;">0.1130926</td>
+<td style="text-align: right;">0.7390717</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA4</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">2.717081e+04</td>
+<td style="text-align: right;">9.369243e+02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA5</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.923262e+03</td>
+<td style="text-align: right;">2.923262e+03</td>
+<td style="text-align: right;">2.2373904</td>
+<td style="text-align: right;">0.1455124</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA5</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">3.788994e+04</td>
+<td style="text-align: right;">1.306550e+03</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA1</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.908299e-01</td>
+<td style="text-align: right;">2.908299e-01</td>
+<td style="text-align: right;">2.0363761</td>
+<td style="text-align: right;">0.1642543</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA1</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">4.141704e+00</td>
+<td style="text-align: right;">1.428174e-01</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA2</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.612614e+01</td>
+<td style="text-align: right;">1.612614e+01</td>
+<td style="text-align: right;">23.6102520</td>
+<td style="text-align: right;">0.0000375</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA2</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">1.980741e+01</td>
+<td style="text-align: right;">6.830141e-01</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA3</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2.252892e+01</td>
+<td style="text-align: right;">2.252892e+01</td>
+<td style="text-align: right;">81.2389390</td>
+<td style="text-align: right;">0.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA3</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">8.042185e+00</td>
+<td style="text-align: right;">2.773167e-01</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA4</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.267810e+00</td>
+<td style="text-align: right;">1.267810e+00</td>
+<td style="text-align: right;">28.9617569</td>
+<td style="text-align: right;">0.0000088</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA4</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">1.269484e+00</td>
+<td style="text-align: right;">4.377530e-02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA5</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.260683e-01</td>
+<td style="text-align: right;">4.260683e-01</td>
+<td style="text-align: right;">8.0547989</td>
+<td style="text-align: right;">0.0082013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA5</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">1.533990e+00</td>
+<td style="text-align: right;">5.289620e-02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA1</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6.663497e+03</td>
+<td style="text-align: right;">6.663497e+03</td>
+<td style="text-align: right;">42.4833183</td>
+<td style="text-align: right;">0.0000004</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA1</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">4.548642e+03</td>
+<td style="text-align: right;">1.568497e+02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA2</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.381382e+03</td>
+<td style="text-align: right;">3.381382e+03</td>
+<td style="text-align: right;">12.7479198</td>
+<td style="text-align: right;">0.0012662</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA2</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">7.692241e+03</td>
+<td style="text-align: right;">2.652497e+02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA3</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8.464803e+03</td>
+<td style="text-align: right;">8.464803e+03</td>
+<td style="text-align: right;">58.8135804</td>
+<td style="text-align: right;">0.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA3</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">4.173854e+03</td>
+<td style="text-align: right;">1.439260e+02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA4</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.820670e+02</td>
+<td style="text-align: right;">1.820670e+02</td>
+<td style="text-align: right;">5.4133732</td>
+<td style="text-align: right;">0.0271739</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA4</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">9.753515e+02</td>
+<td style="text-align: right;">3.363281e+01</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA5</td>
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7.804322e+01</td>
+<td style="text-align: right;">7.804322e+01</td>
+<td style="text-align: right;">0.3057623</td>
+<td style="text-align: right;">0.5845301</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA5</td>
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">7.402004e+03</td>
+<td style="text-align: right;">2.552415e+02</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="t-test-between-the-groups" class="level2">
+<h2 class="anchored" data-anchor-id="t-test-between-the-groups">T-test between the groups</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'data' is your dataframe and 'group' column indicates 'male' or 'female'</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate numerical columns and the 'group' column</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, is.numeric)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>numerical_data <span class="ot">&lt;-</span> data[, numerical_columns]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform t-tests for each numerical column</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>t_test_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">names</span>(numerical_data), <span class="sc">~</span> <span class="fu">t.test</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(.x, <span class="st">"~ group"</span>)), <span class="at">data =</span> data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>())</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the t-test results into a single table</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>t_test_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(t_test_results) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">names</span>(numerical_data)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, <span class="fu">everything</span>())</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the t-test results table</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(t_test_table, <span class="at">caption =</span> <span class="st">"Table X: Results of t-tests between groups"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table X: Results of t-tests between groups</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">parameter</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">conf.low</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">conf.high</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">method</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PLA1</td>
+<td style="text-align: right;">2.2326808</td>
+<td style="text-align: right;">19.605932</td>
+<td style="text-align: right;">17.373251</td>
+<td style="text-align: right;">4.8753334</td>
+<td style="text-align: right;">0.0000929</td>
+<td style="text-align: right;">19.89268</td>
+<td style="text-align: right;">1.2770740</td>
+<td style="text-align: right;">3.1882876</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA2</td>
+<td style="text-align: right;">-59.5304968</td>
+<td style="text-align: right;">47.106431</td>
+<td style="text-align: right;">106.636928</td>
+<td style="text-align: right;">-5.0030772</td>
+<td style="text-align: right;">0.0002075</td>
+<td style="text-align: right;">13.67521</td>
+<td style="text-align: right;">-85.1078149</td>
+<td style="text-align: right;">-33.9531787</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA3</td>
+<td style="text-align: right;">-38.1830317</td>
+<td style="text-align: right;">25.360898</td>
+<td style="text-align: right;">63.543929</td>
+<td style="text-align: right;">-6.1372975</td>
+<td style="text-align: right;">0.0000459</td>
+<td style="text-align: right;">12.26349</td>
+<td style="text-align: right;">-51.7062256</td>
+<td style="text-align: right;">-24.6598379</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA4</td>
+<td style="text-align: right;">-14.2408022</td>
+<td style="text-align: right;">23.297922</td>
+<td style="text-align: right;">37.538724</td>
+<td style="text-align: right;">-4.1742638</td>
+<td style="text-align: right;">0.0011666</td>
+<td style="text-align: right;">12.58663</td>
+<td style="text-align: right;">-21.6357370</td>
+<td style="text-align: right;">-6.8458675</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA5</td>
+<td style="text-align: right;">-4.3926292</td>
+<td style="text-align: right;">21.682547</td>
+<td style="text-align: right;">26.075176</td>
+<td style="text-align: right;">-2.7949117</td>
+<td style="text-align: right;">0.0120583</td>
+<td style="text-align: right;">17.79469</td>
+<td style="text-align: right;">-7.6972809</td>
+<td style="text-align: right;">-1.0879776</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA1</td>
+<td style="text-align: right;">210.7032068</td>
+<td style="text-align: right;">310.100063</td>
+<td style="text-align: right;">99.396857</td>
+<td style="text-align: right;">3.5800970</td>
+<td style="text-align: right;">0.0019584</td>
+<td style="text-align: right;">19.29557</td>
+<td style="text-align: right;">87.6478509</td>
+<td style="text-align: right;">333.7585628</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA2</td>
+<td style="text-align: right;">-127.1240398</td>
+<td style="text-align: right;">371.858872</td>
+<td style="text-align: right;">498.982912</td>
+<td style="text-align: right;">-3.6081254</td>
+<td style="text-align: right;">0.0011576</td>
+<td style="text-align: right;">28.71717</td>
+<td style="text-align: right;">-199.2138637</td>
+<td style="text-align: right;">-55.0342159</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA3</td>
+<td style="text-align: right;">-147.3099592</td>
+<td style="text-align: right;">278.585136</td>
+<td style="text-align: right;">425.895095</td>
+<td style="text-align: right;">-4.6313927</td>
+<td style="text-align: right;">0.0000780</td>
+<td style="text-align: right;">27.63939</td>
+<td style="text-align: right;">-212.5016317</td>
+<td style="text-align: right;">-82.1182868</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA4</td>
+<td style="text-align: right;">3.7956200</td>
+<td style="text-align: right;">160.804009</td>
+<td style="text-align: right;">157.008389</td>
+<td style="text-align: right;">0.3470914</td>
+<td style="text-align: right;">0.7313252</td>
+<td style="text-align: right;">25.91819</td>
+<td style="text-align: right;">-18.6860872</td>
+<td style="text-align: right;">26.2773272</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA5</td>
+<td style="text-align: right;">19.9364252</td>
+<td style="text-align: right;">438.740710</td>
+<td style="text-align: right;">418.804285</td>
+<td style="text-align: right;">1.4806397</td>
+<td style="text-align: right;">0.1524140</td>
+<td style="text-align: right;">22.75993</td>
+<td style="text-align: right;">-7.9337731</td>
+<td style="text-align: right;">47.8066236</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA1</td>
+<td style="text-align: right;">0.1988534</td>
+<td style="text-align: right;">9.726806</td>
+<td style="text-align: right;">9.527953</td>
+<td style="text-align: right;">1.1511624</td>
+<td style="text-align: right;">0.2725708</td>
+<td style="text-align: right;">11.74039</td>
+<td style="text-align: right;">-0.1784429</td>
+<td style="text-align: right;">0.5761496</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA2</td>
+<td style="text-align: right;">-1.4807392</td>
+<td style="text-align: right;">12.164138</td>
+<td style="text-align: right;">13.644878</td>
+<td style="text-align: right;">-4.3492850</td>
+<td style="text-align: right;">0.0004929</td>
+<td style="text-align: right;">16.06073</td>
+<td style="text-align: right;">-2.2022515</td>
+<td style="text-align: right;">-0.7592269</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA3</td>
+<td style="text-align: right;">-1.7501835</td>
+<td style="text-align: right;">11.122611</td>
+<td style="text-align: right;">12.872794</td>
+<td style="text-align: right;">-7.4819277</td>
+<td style="text-align: right;">0.0000053</td>
+<td style="text-align: right;">12.70794</td>
+<td style="text-align: right;">-2.2567233</td>
+<td style="text-align: right;">-1.2436437</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA4</td>
+<td style="text-align: right;">-0.4151840</td>
+<td style="text-align: right;">10.564904</td>
+<td style="text-align: right;">10.980088</td>
+<td style="text-align: right;">-4.7578763</td>
+<td style="text-align: right;">0.0002360</td>
+<td style="text-align: right;">15.41882</td>
+<td style="text-align: right;">-0.6007404</td>
+<td style="text-align: right;">-0.2296275</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA5</td>
+<td style="text-align: right;">-0.2406872</td>
+<td style="text-align: right;">10.837661</td>
+<td style="text-align: right;">11.078348</td>
+<td style="text-align: right;">-2.9817747</td>
+<td style="text-align: right;">0.0059931</td>
+<td style="text-align: right;">27.10891</td>
+<td style="text-align: right;">-0.4062787</td>
+<td style="text-align: right;">-0.0750957</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA1</td>
+<td style="text-align: right;">30.0998645</td>
+<td style="text-align: right;">44.714077</td>
+<td style="text-align: right;">14.614213</td>
+<td style="text-align: right;">5.5395654</td>
+<td style="text-align: right;">0.0000806</td>
+<td style="text-align: right;">13.61987</td>
+<td style="text-align: right;">18.4153310</td>
+<td style="text-align: right;">41.7843980</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA2</td>
+<td style="text-align: right;">-21.4417651</td>
+<td style="text-align: right;">73.403562</td>
+<td style="text-align: right;">94.845327</td>
+<td style="text-align: right;">-3.2489163</td>
+<td style="text-align: right;">0.0047289</td>
+<td style="text-align: right;">16.97892</td>
+<td style="text-align: right;">-35.3671618</td>
+<td style="text-align: right;">-7.5163683</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA3</td>
+<td style="text-align: right;">-33.9251553</td>
+<td style="text-align: right;">63.841631</td>
+<td style="text-align: right;">97.766786</td>
+<td style="text-align: right;">-9.1236354</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">25.20607</td>
+<td style="text-align: right;">-41.5801315</td>
+<td style="text-align: right;">-26.2701790</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA4</td>
+<td style="text-align: right;">-4.9754112</td>
+<td style="text-align: right;">34.844094</td>
+<td style="text-align: right;">39.819505</td>
+<td style="text-align: right;">-2.3750024</td>
+<td style="text-align: right;">0.0254966</td>
+<td style="text-align: right;">25.11091</td>
+<td style="text-align: right;">-9.2889886</td>
+<td style="text-align: right;">-0.6618338</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA5</td>
+<td style="text-align: right;">3.2574744</td>
+<td style="text-align: right;">89.517594</td>
+<td style="text-align: right;">86.260120</td>
+<td style="text-align: right;">0.5509687</td>
+<td style="text-align: right;">0.5869077</td>
+<td style="text-align: right;">23.26578</td>
+<td style="text-align: right;">-8.9652571</td>
+<td style="text-align: right;">15.4802059</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<section id="bonferroni-correction" class="level3">
+<h3 class="anchored" data-anchor-id="bonferroni-correction">Bonferroni correction</h3>
+<p>Lets repeat it with Bonferroni correction. The bonferroni correction is implemented in such a way that the <code>bonferroni_p</code> represents the adjusted P-values. A quick calculation with alpha = 0.05 and 20 comparisons led to a adjusted alpha of 0.00250</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'data' is your dataframe and 'group' column indicates 'male' or 'female'</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate numerical columns and the 'group' column</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, is.numeric)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>numerical_data <span class="ot">&lt;-</span> data[, numerical_columns]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform t-tests for each numerical column</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>t_test_results <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="fu">names</span>(numerical_data), <span class="sc">~</span> <span class="fu">t.test</span>(<span class="fu">as.formula</span>(<span class="fu">paste</span>(.x, <span class="st">"~ group"</span>)), <span class="at">data =</span> data) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>())</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine the t-test results into a single table</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>t_test_table <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(t_test_results) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="fu">names</span>(numerical_data)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, <span class="fu">everything</span>())</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply Bonferroni correction</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>bonferroni_corrected_p <span class="ot">&lt;-</span> <span class="fu">p.adjust</span>(t_test_table<span class="sc">$</span>p.value, <span class="at">method =</span> <span class="st">"bonferroni"</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>t_test_table <span class="ot">&lt;-</span> t_test_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">bonferroni_p =</span> bonferroni_corrected_p)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the t-test results table with Bonferroni correction</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(t_test_table, <span class="at">caption =</span> <span class="st">"Table X: Results of t-tests between groups with Bonferroni correction"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<caption>Table X: Results of t-tests between groups with Bonferroni correction</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate1</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">estimate2</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">statistic</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">p.value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">parameter</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">conf.low</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">conf.high</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">method</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">alternative</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">bonferroni_p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PLA1</td>
+<td style="text-align: right;">2.2326808</td>
+<td style="text-align: right;">19.605932</td>
+<td style="text-align: right;">17.373251</td>
+<td style="text-align: right;">4.8753334</td>
+<td style="text-align: right;">0.0000929</td>
+<td style="text-align: right;">19.89268</td>
+<td style="text-align: right;">1.2770740</td>
+<td style="text-align: right;">3.1882876</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0018583</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA2</td>
+<td style="text-align: right;">-59.5304968</td>
+<td style="text-align: right;">47.106431</td>
+<td style="text-align: right;">106.636928</td>
+<td style="text-align: right;">-5.0030772</td>
+<td style="text-align: right;">0.0002075</td>
+<td style="text-align: right;">13.67521</td>
+<td style="text-align: right;">-85.1078149</td>
+<td style="text-align: right;">-33.9531787</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0041502</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA3</td>
+<td style="text-align: right;">-38.1830317</td>
+<td style="text-align: right;">25.360898</td>
+<td style="text-align: right;">63.543929</td>
+<td style="text-align: right;">-6.1372975</td>
+<td style="text-align: right;">0.0000459</td>
+<td style="text-align: right;">12.26349</td>
+<td style="text-align: right;">-51.7062256</td>
+<td style="text-align: right;">-24.6598379</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0009178</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLA4</td>
+<td style="text-align: right;">-14.2408022</td>
+<td style="text-align: right;">23.297922</td>
+<td style="text-align: right;">37.538724</td>
+<td style="text-align: right;">-4.1742638</td>
+<td style="text-align: right;">0.0011666</td>
+<td style="text-align: right;">12.58663</td>
+<td style="text-align: right;">-21.6357370</td>
+<td style="text-align: right;">-6.8458675</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0233325</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLA5</td>
+<td style="text-align: right;">-4.3926292</td>
+<td style="text-align: right;">21.682547</td>
+<td style="text-align: right;">26.075176</td>
+<td style="text-align: right;">-2.7949117</td>
+<td style="text-align: right;">0.0120583</td>
+<td style="text-align: right;">17.79469</td>
+<td style="text-align: right;">-7.6972809</td>
+<td style="text-align: right;">-1.0879776</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.2411668</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA1</td>
+<td style="text-align: right;">210.7032068</td>
+<td style="text-align: right;">310.100063</td>
+<td style="text-align: right;">99.396857</td>
+<td style="text-align: right;">3.5800970</td>
+<td style="text-align: right;">0.0019584</td>
+<td style="text-align: right;">19.29557</td>
+<td style="text-align: right;">87.6478509</td>
+<td style="text-align: right;">333.7585628</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0391678</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA2</td>
+<td style="text-align: right;">-127.1240398</td>
+<td style="text-align: right;">371.858872</td>
+<td style="text-align: right;">498.982912</td>
+<td style="text-align: right;">-3.6081254</td>
+<td style="text-align: right;">0.0011576</td>
+<td style="text-align: right;">28.71717</td>
+<td style="text-align: right;">-199.2138637</td>
+<td style="text-align: right;">-55.0342159</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0231522</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA3</td>
+<td style="text-align: right;">-147.3099592</td>
+<td style="text-align: right;">278.585136</td>
+<td style="text-align: right;">425.895095</td>
+<td style="text-align: right;">-4.6313927</td>
+<td style="text-align: right;">0.0000780</td>
+<td style="text-align: right;">27.63939</td>
+<td style="text-align: right;">-212.5016317</td>
+<td style="text-align: right;">-82.1182868</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0015609</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PAA4</td>
+<td style="text-align: right;">3.7956200</td>
+<td style="text-align: right;">160.804009</td>
+<td style="text-align: right;">157.008389</td>
+<td style="text-align: right;">0.3470914</td>
+<td style="text-align: right;">0.7313252</td>
+<td style="text-align: right;">25.91819</td>
+<td style="text-align: right;">-18.6860872</td>
+<td style="text-align: right;">26.2773272</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PAA5</td>
+<td style="text-align: right;">19.9364252</td>
+<td style="text-align: right;">438.740710</td>
+<td style="text-align: right;">418.804285</td>
+<td style="text-align: right;">1.4806397</td>
+<td style="text-align: right;">0.1524140</td>
+<td style="text-align: right;">22.75993</td>
+<td style="text-align: right;">-7.9337731</td>
+<td style="text-align: right;">47.8066236</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA1</td>
+<td style="text-align: right;">0.1988534</td>
+<td style="text-align: right;">9.726806</td>
+<td style="text-align: right;">9.527953</td>
+<td style="text-align: right;">1.1511624</td>
+<td style="text-align: right;">0.2725708</td>
+<td style="text-align: right;">11.74039</td>
+<td style="text-align: right;">-0.1784429</td>
+<td style="text-align: right;">0.5761496</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA2</td>
+<td style="text-align: right;">-1.4807392</td>
+<td style="text-align: right;">12.164138</td>
+<td style="text-align: right;">13.644878</td>
+<td style="text-align: right;">-4.3492850</td>
+<td style="text-align: right;">0.0004929</td>
+<td style="text-align: right;">16.06073</td>
+<td style="text-align: right;">-2.2022515</td>
+<td style="text-align: right;">-0.7592269</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0098578</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA3</td>
+<td style="text-align: right;">-1.7501835</td>
+<td style="text-align: right;">11.122611</td>
+<td style="text-align: right;">12.872794</td>
+<td style="text-align: right;">-7.4819277</td>
+<td style="text-align: right;">0.0000053</td>
+<td style="text-align: right;">12.70794</td>
+<td style="text-align: right;">-2.2567233</td>
+<td style="text-align: right;">-1.2436437</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0001057</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ALA4</td>
+<td style="text-align: right;">-0.4151840</td>
+<td style="text-align: right;">10.564904</td>
+<td style="text-align: right;">10.980088</td>
+<td style="text-align: right;">-4.7578763</td>
+<td style="text-align: right;">0.0002360</td>
+<td style="text-align: right;">15.41882</td>
+<td style="text-align: right;">-0.6007404</td>
+<td style="text-align: right;">-0.2296275</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0047208</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ALA5</td>
+<td style="text-align: right;">-0.2406872</td>
+<td style="text-align: right;">10.837661</td>
+<td style="text-align: right;">11.078348</td>
+<td style="text-align: right;">-2.9817747</td>
+<td style="text-align: right;">0.0059931</td>
+<td style="text-align: right;">27.10891</td>
+<td style="text-align: right;">-0.4062787</td>
+<td style="text-align: right;">-0.0750957</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.1198613</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA1</td>
+<td style="text-align: right;">30.0998645</td>
+<td style="text-align: right;">44.714077</td>
+<td style="text-align: right;">14.614213</td>
+<td style="text-align: right;">5.5395654</td>
+<td style="text-align: right;">0.0000806</td>
+<td style="text-align: right;">13.61987</td>
+<td style="text-align: right;">18.4153310</td>
+<td style="text-align: right;">41.7843980</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0016118</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA2</td>
+<td style="text-align: right;">-21.4417651</td>
+<td style="text-align: right;">73.403562</td>
+<td style="text-align: right;">94.845327</td>
+<td style="text-align: right;">-3.2489163</td>
+<td style="text-align: right;">0.0047289</td>
+<td style="text-align: right;">16.97892</td>
+<td style="text-align: right;">-35.3671618</td>
+<td style="text-align: right;">-7.5163683</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0945786</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA3</td>
+<td style="text-align: right;">-33.9251553</td>
+<td style="text-align: right;">63.841631</td>
+<td style="text-align: right;">97.766786</td>
+<td style="text-align: right;">-9.1236354</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">25.20607</td>
+<td style="text-align: right;">-41.5801315</td>
+<td style="text-align: right;">-26.2701790</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AAA4</td>
+<td style="text-align: right;">-4.9754112</td>
+<td style="text-align: right;">34.844094</td>
+<td style="text-align: right;">39.819505</td>
+<td style="text-align: right;">-2.3750024</td>
+<td style="text-align: right;">0.0254966</td>
+<td style="text-align: right;">25.11091</td>
+<td style="text-align: right;">-9.2889886</td>
+<td style="text-align: right;">-0.6618338</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">0.5099316</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AAA5</td>
+<td style="text-align: right;">3.2574744</td>
+<td style="text-align: right;">89.517594</td>
+<td style="text-align: right;">86.260120</td>
+<td style="text-align: right;">0.5509687</td>
+<td style="text-align: right;">0.5869077</td>
+<td style="text-align: right;">23.26578</td>
+<td style="text-align: right;">-8.9652571</td>
+<td style="text-align: right;">15.4802059</td>
+<td style="text-align: left;">Welch Two Sample t-test</td>
+<td style="text-align: left;">two.sided</td>
+<td style="text-align: right;">1.0000000</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
 </section>
 </div>
 
