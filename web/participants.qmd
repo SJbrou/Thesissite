@@ -17,11 +17,13 @@ editor: source
 number-sections: false
 ---
 
-Analysis of the participants of the study
+# Analysis of participants' characteristics
+
+Lets analyse participants characteristics for equality of variance, normality.
 
 ::: column-page-right
 
-```{r LoadData, message = FALSE, verbose = FALSE}
+```{r LoadData, message = FALSE, verbose = FALSE, echo=FALSE}
 # Clean workspace
 rm(list = ls())
 library(tidyr)
@@ -50,16 +52,25 @@ for (i in seq_along(toload)) {
   eval(parse(text = setup_chunk))             
 }
 rm(rmd, i, setup_chunk, toload)
-```
 
-Iformation about the participants is collected in participants.csv. It is trivial to calculate means and standard deviations (or other descriptive statistics) using R, but it is somewhat harder to output this in the [mean ± std] format in a table. This code is somewhat complex but does just that!
-
-```{r lets_go, message=FALSE}
 # Load participant data
 data <- read.csv("../../Logs/participants.csv", header = TRUE, sep = ";")
-# Install and load necessary packages
-library(dplyr)
-library(knitr)
+```
+
+The reported participants' data with the names blurred:
+```{r}
+data <- read.csv("../../Logs/participants.csv", header = TRUE, sep = ";")
+knitr::kable(data[ ,2:8], caption = "Table X: Participant characteristics") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped")
+```
+
+
+
+## Some simple descriptives
+
+Start by calculating means and std. I took some steps to format it to [mean ± std] format
+
+```{r lets_go, message=FALSE, warning=FALSE}
 
 # Calculate the number of participants overall and by sex
 count_summary <- data %>%
@@ -135,7 +146,12 @@ library(gtExtras)
 knitr::kable(final_summary_table[1:6,], caption = "Table X: summary of participant characteristics") %>%
   kableExtra::kable_styling(bootstrap_options = "striped")
 ```
-```{r, message=FALSE}
+As expected some differences between genders seem to exists. Differences on height, body mass and reported 1rm are expected. However, age and experience should be similar to (try to) eliminate confounding.
+
+## Levene's test
+Lets run levene's test to determine equality of variance 
+
+```{r, message=FALSE, warning=FALSE}
 
 library(car)
 
@@ -154,208 +170,238 @@ for (col in names(data)[num_cols]) {
   levene_results[[col]] <- test_result
 }
 
-# View the results
-levene_results
+# Extract the necessary information from the test results
+results_table <- data.frame(
+  Variable = character(),
+  F_Value = numeric(),
+  Pr_Greater_F = numeric(),
+  stringsAsFactors = FALSE
+)
 
+for (col in names(levene_results)) {
+  test_result <- levene_results[[col]]
+  results_table <- rbind(results_table, data.frame(
+    Variable = col,
+    F_Value = round(test_result$`F value`[1],2),
+    Pr_Greater_F = round(test_result$`Pr(>F)`[1],2)
+  ))
+}
 
+# Print the results in a nice table
+knitr::kable(results_table, caption = "Table X: Levene's test results on participants' characteristics") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped")
 ```
+*None of the P-values (<code>PR_Greater_F</code>) are significant. Mass seems to have the greatest relative difference in variances at p=0.08*
 
-Now the statistics for the particiapnt's characteristics
+## Shapiro-Wilk test
 
-Lets confirm normality
+Test the normality
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(car)
 
-data_male <- data %>%
-  filter(Sex == "male")
+# Filter the data by sex
+data_male <- data %>% filter(Sex == "male")
+data_female <- data %>% filter(Sex == "female")
 
-data_female <- data %>%
-  filter(Sex == "female")
-
+# Initialize lists to store the test results
 shapiro_test_male <- list()
 shapiro_test_female <- list()
 
-
+# Perform Shapiro-Wilk test for each specified column
 for (i in colnames(data)[3:8]) { # Adjust the column indices based on actual data structure
   shapiro_test_male[[i]] <- shapiro.test(data_male[[i]])
   shapiro_test_female[[i]] <- shapiro.test(data_female[[i]])
 }
 
-shapiro_test_male
-shapiro_test_female
+# Extract the necessary information from the test results
+results_male <- data.frame(
+  Variable = character(),
+  Statistic_Male = numeric(),
+  P_Value_Male = numeric(),
+  stringsAsFactors = FALSE
+)
 
+results_female <- data.frame(
+  Variable = character(),
+  Statistic_Female = numeric(),
+  P_Value_Female = numeric(),
+  stringsAsFactors = FALSE
+)
 
-```
-
-
-
-Lets run an MANOVA and calculate effect sizes
-
-```{r, message=FALSE}
-# Load necessary packages
-library(car)
-library(MVN)
-library(effectsize)  # For effect size calculation
-
-# Assuming 'data' is your dataframe and 'Sex' column indicates 'male' or 'female'
-# Separate numerical columns and the 'Sex' column
-numerical_columns <- sapply(data, is.numeric)
-numerical_data <- data[, numerical_columns]
-group_data <- data$Sex
-
-# Check for normality for each numerical column and each group (male, female)
-normality_results <- lapply(names(numerical_data), function(col) {
-  male_normality <- shapiro.test(numerical_data[group_data == "male", col])$p.value
-  female_normality <- shapiro.test(numerical_data[group_data == "female", col])$p.value
-  return(c(male_normality, female_normality))
-})
-
-
-
-# Combine normality results into a dataframe
-normality_results_df <- do.call(rbind, normality_results)
-colnames(normality_results_df) <- c("Male_p_value", "Female_p_value")
-rownames(normality_results_df) <- names(numerical_data)
-
-print(normality_results_df)
-
-# Check if all p-values > 0.05 for normality assumption
-all_normal <- all(normality_results_df > 0.05)
-
-if (all_normal) {
-  # Perform MANOVA
-  formula <- as.formula(paste("cbind(", paste(names(numerical_data), collapse = ", "), ") ~ Sex"))
-  manova_result <- manova(formula, data = data)
-  manova_summary <- summary(manova_result, test = "Pillai")
-  print(manova_summary)
-  
-  # Check if the MANOVA is significant
-  if (manova_summary$stats[1, "Pr(>F)"] < 0.05) {
-    print("MANOVA is significant. Performing univariate ANOVAs:")
-    # Perform univariate ANOVAs for each dependent variable
-    univariate_results <- summary.aov(manova_result)
-    print(univariate_results)
-    
-    # Extracting p-values and means for interpretation
-    for (var in names(numerical_data)) {
-      print(paste("Analyzing variable:", var))
-      aov_result <- aov(as.formula(paste(var, "~ Sex")), data = data)
-      print(summary(aov_result))
-      print(model.tables(aov_result, "means"), digits = 3)
-      
-      # Calculate effect size (eta-squared)
-      eta_squared_result <- eta_squared(aov_result)
-      print(eta_squared_result)
-    }
-  } else {
-    print("MANOVA is not significant. No further tests are performed.")
-  }
-} else {
-  # If normality is not met, use Kruskal-Wallis test for each numerical column
-  print("Normality assumption not met. Performing Kruskal-Wallis tests:")
-  kruskal_results <- lapply(names(numerical_data), function(col) {
-    kruskal.test(numerical_data[, col] ~ group_data)$p.value
-  })
-  kruskal_results_df <- data.frame(
-    Variable = names(numerical_data),
-    Kruskal_p_value = unlist(kruskal_results)
-  )
-  print(kruskal_results_df)
+for (col in names(shapiro_test_male)) {
+  test_result_male <- shapiro_test_male[[col]]
+  results_male <- rbind(results_male, data.frame(
+    Variable = col,
+    Statistic_Male = round(test_result_male$statistic,2),
+    P_Value_Male = round(test_result_male$p.value,2)
+  ))
 }
 
+for (col in names(shapiro_test_female)) {
+  test_result_female <- shapiro_test_female[[col]]
+  results_female <- rbind(results_female, data.frame(
+    Variable = col,
+    Statistic_Female = round(test_result_female$statistic,2),
+    P_Value_Female = round(test_result_female$p.value,2)
+  ))
+}
+
+# Combine the results into one table
+results_table <- merge(results_male, results_female, by = "Variable")
+
+# Print the results in a nice table
+knitr::kable(results_table, caption = "Table X: Shapiro-Wilk's test results on participants' characteristics") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped")
+
 
 
 ```
+*Female age doesn't seem to be normally distributed. (<code>P_Value_Female</code> = 0.001568)*
+
+Lets plot a histogram for female age to further inspect the data 
+```{r}
+hist(data$Age[data$Sex == "female"])
+```
+Apperently there is a overrepresentation of younger female participants.
+
+## Differences in means between sexes
+Lets run a simple t-test to determine different means between the sex groups. 
+
+```{r, message=FALSE, error=FALSE, warning=FALSE}
+# Load necessary libraries
+library(dplyr)
+library(broom)
+library(tidyr)
+
+# Get the numeric columns from the dataframe, excluding 'Sex'
+num_cols <- sapply(data, is.numeric)
+num_cols <- num_cols & names(data) != "Sex"
+
+# Initialize a list to store the t-test results
+t_test_results <- list()
+
+# Perform t-test for each numeric column
+for (col in names(data)[num_cols]) {
+  t_test_result <- t.test(data[[col]] ~ data$Sex)
+  t_test_results[[col]] <- t_test_result
+}
+
+# Extract the necessary information from the t-test results
+results_table <- data.frame(
+  Variable = character(),
+  Mean_Male = numeric(),
+  Mean_Female = numeric(),
+  t_Value = numeric(),
+  df = numeric(),
+  P_Value = numeric(),
+  stringsAsFactors = FALSE
+)
+
+for (col in names(t_test_results)) {
+  test_result <- t_test_results[[col]]
+  male_mean <- mean(data[[col]][data$Sex == "male"], na.rm = TRUE)
+  female_mean <- mean(data[[col]][data$Sex == "female"], na.rm = TRUE)
+  
+  results_table <- rbind(results_table, data.frame(
+    Variable = col,
+    Mean_Male = round(male_mean,2),
+    Mean_Female = round(female_mean,2),
+    t_Value = round(test_result$statistic,2),
+    df = round(test_result$parameter,2),
+    P_Value = round(test_result$p.value,2)
+  ))
+}
+
+# Print the results in a nice table
+knitr::kable(results_table, caption = "Table X: t-test results on participants' characteristics") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped")
+
+```
+As expected, there are differences in means between sexes in height, bodymass, reported 1RM and performed 1RM. Luckily, no significant differences in mean Age or Experience seem to exist. However, the distribution of age seems to be skewed to younger participants for females.
+
+## Skewness and kurtosis
+Lets continue by determining skewness and curtosis for the variables:
+
+```{r, message=FALSE, warning=FALSE}
+
+library(moments)
+
+# Get the numeric columns from the dataframe, excluding 'Sex'
+num_cols <- sapply(data, is.numeric)
+num_cols <- num_cols & names(data) != "Sex"
+
+# Initialize a data frame to store the results
+results_table <- data.frame(
+  Variable = character(),
+  Sex = character(),
+  Skewness = numeric(),
+  Kurtosis = numeric(),
+  Skewness_Z = numeric(),
+  Kurtosis_Z = numeric(),
+  stringsAsFactors = FALSE
+)
+
+# Calculate skewness and kurtosis for each numeric column and each sex
+for (col in names(data)[num_cols]) {
+  for (sex in c("male", "female")) {
+    subset_data <- data[[col]][data$Sex == sex]
+    
+    skewness_value <- round(skewness(subset_data, na.rm = TRUE),2)
+    kurtosis_value <- round(kurtosis(subset_data, na.rm = TRUE),2)
+    
+    n <- length(subset_data)
+    skewness_se <- sqrt(6/n)
+    kurtosis_se <- sqrt(24/n)
+    
+    skewness_z <- round(skewness_value / skewness_se,2)
+    kurtosis_z <- round((kurtosis_value - 3) / kurtosis_se,2)  # Adjust kurtosis by subtracting 3 for excess kurtosis
+
+    results_table <- rbind(results_table, data.frame(
+      Variable = col,
+      Sex = sex,
+      Skewness = skewness_value,
+      Kurtosis = kurtosis_value,
+      Skewness_Z = skewness_z,
+      Kurtosis_Z = kurtosis_z
+    ))
+  }
+}
+
+# Print the results in a nice table
+knitr::kable(results_table, caption = "Table X: skewness and kurtosis of participants' characteristics") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped")
+```
+
+Only female age skewness is outside the [-2:2] interval. This seems to be in line with previous findings for skewness. All other values are within the accepted interval. 
+
+## Histogram
+One more check for normality: lets plot histograms of all variables, grouped by sex. 
 
 
+```{r, message=FALSE, warning=FALSE}
+library(ggplot2)
 
+# Identify numeric columns excluding 'Sex'
+num_cols <- names(data)[sapply(data, is.numeric) & names(data) != "Sex"]
 
-
-
-
-
-Using t-tests
-
-```{r, message=FALSE, eval=FALSE}
-# # Load necessary packages
-# library(car)
-# library(MVN)
-# 
-# # Assuming 'data' is your dataframe and 'Sex' column indicates 'male' or 'female'
-# # Separate numerical columns and the 'Sex' column
-# numerical_columns <- sapply(data, is.numeric)
-# numerical_data <- data[, numerical_columns]
-# group_data <- data$Sex
-# 
-# # Check for normality for each numerical column and each group (male, female)
-# normality_results <- lapply(names(numerical_data), function(col) {
-#   male_normality <- shapiro.test(numerical_data[group_data == "male", col])$p.value
-#   female_normality <- shapiro.test(numerical_data[group_data == "female", col])$p.value
-#   return(c(male_normality, female_normality))
-# })
-# 
-# # Combine normality results into a dataframe
-# normality_results_df <- do.call(rbind, normality_results)
-# colnames(normality_results_df) <- c("Male_p_value", "Female_p_value")
-# rownames(normality_results_df) <- names(numerical_data)
-# 
-# print(normality_results_df)
-# 
-# # Check if all p-values > 0.05 for normality assumption
-# all_normal <- all(normality_results_df > 0.05)
-# 
-# if (all_normal) {
-#   # Perform t-tests for each numerical column
-#   t_test_results <- lapply(names(numerical_data), function(var) {
-#     t_test_result <- t.test(numerical_data[data$Sex == "male", var], 
-#                              numerical_data[data$Sex == "female", var])
-#     return(t_test_result)
-#   })
-# 
-#   # Extract p-values from t-test results
-#   p_values <- sapply(t_test_results, function(result) result$p.value)
-# 
-#   # Correct for multiple comparisons if necessary
-#   # Bonferroni correction for example
-#   alpha <- 0.05
-#   num_tests <- length(p_values)
-#   corrected_alpha <- alpha / num_tests
-#   significant_tests <- p_values < corrected_alpha
-# 
-#   # Print significant tests
-#   print("Significant t-tests:")
-#   print(names(numerical_data)[significant_tests])
-# 
-#   # Function to calculate Cohen's d
-#   calculate_cohens_d <- function(t_test_result) {
-#     d <- (mean(t_test_result$estimate[1]) - mean(t_test_result$estimate[2])) / 
-#       sqrt(((t_test_result$estimate[1] + t_test_result$estimate[2]) / 2) * 
-#              (1 - ((t_test_result$parameter + 1) / t_test_result$parameter)) *
-#              (1 / t_test_result$parameter))
-#     return(d)
-#   }
-# 
-#   # Calculate Cohen's d for significant tests
-#   cohens_d_results <- lapply(t_test_results[significant_tests], calculate_cohens_d)
-#   names(cohens_d_results) <- names(t_test_results)[significant_tests]
-# 
-#   # Calculate Hedges' g for significant tests
-#   # Assuming unequal sample sizes
-#   n1 <- sum(data$Sex == "male")
-#   n2 <- sum(data$Sex == "female")
-#   hedges_g_results <- lapply(cohens_d_results, function(cohen_d) {
-#     g <- cohen_d * (1 - (3 / (4 * (n1 + n2) - 9)))
-#     return(g)
-#   })
-# 
-#   print("Hedges' g for significant tests:")
-#   print(hedges_g_results)
-# 
-# } else {
-#   print("Normality assumption not met. Further tests cannot be performed.")
-# }
-
+# Plot histograms for each numeric column, grouped by sex
+for (col in num_cols) {
+  # Convert to numeric in case some columns are not numeric
+  data[[col]] <- as.numeric(data[[col]])
+  
+  plot <- ggplot(data, aes_string(x = col, fill = "Sex")) +
+    geom_histogram(alpha = 0.6, position = "identity") +
+    labs(title = paste("Histogram of", col, "Grouped by Sex"),
+         x = col,
+         y = "Frequency") +
+    theme_minimal() +
+    facet_wrap(~Sex, scales = "free_y") +
+    theme(legend.position = "top") +
+    guides(fill = guide_legend(title = "Sex"))
+  
+  print(plot)
+}
 
 ```
 
