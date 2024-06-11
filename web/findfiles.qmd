@@ -1,0 +1,270 @@
+---
+title: "findfiles"
+author: "Stan Brouwer"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 1
+    embed-resources: true
+    # standalone: true
+    smooth-scroll: true
+    page-layout: full
+    code-fold: show
+    grid:
+      sidebar-width: 180px
+editor: source
+number-sections: false
+---
+
+
+::: column-page-right
+
+
+```{r startUp, message = FALSE, verbose = FALSE, echo=FALSE}
+# Clean workspace
+rm(list = ls())
+library(tidyr)
+library(tidyverse)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+library(car)
+
+# Most dependencies are loaded by loading datafiltering.qmd.
+# To load only the chuncks containing functions we need parsermd
+library(parsermd)
+
+toload <- c("load_data","load_plots", "filter_data", "separate_lifts", "visualise_seperate_lifts", "loadXsenseData2")
+rmd <- parse_rmd("datafiltering.qmd")
+
+
+for (i in seq_along(toload)) {
+  setup_chunk <- rmd_select(rmd, toload[i]) |> 
+    as_document()
+
+  setup_chunk <- setup_chunk[-grep("```", setup_chunk)]
+  setup_chunk
+#> [1] "library(tidyr)"   "library(stringr)" ""                
+
+  eval(parse(text = setup_chunk))             
+}
+rm(rmd, i, setup_chunk, toload)
+
+
+loadLift <- function(dir) {
+  files <- list.files(path = dir, full.names = TRUE)
+  data <- list()
+  
+  for (i in seq_along(files)) {
+    data[[i]] <- read.csv(files[i])
+  }
+  return(data)
+}
+
+
+
+
+# Function to find the maximum value for each attribute for the lift
+find_col_max <- function(df_list, colname) {
+  # Initialize a matrix to store the maximum values
+  col_max <- matrix(NA, nrow = length(df_list), ncol = 5)
+  colnames(col_max) <- c(paste0(colname, "1"), paste0(colname, "2"), paste0(colname, "3"), paste0(colname, "4"), paste0(colname, "5"))
+  
+  for (i in seq_along(df_list)) {
+    df <- df_list[[i]]
+    for (j in 1:5) {
+      col_max[i, j] <- max(df[[paste0(colname, j)]], na.rm = TRUE)
+    }
+  }
+  # Convert the matrix to a dataframe
+  col_max_df <- as.data.frame(col_max)
+  
+  return(col_max_df)
+}
+
+# Function to find the average value for each attribute for the lift
+find_col_mean <- function(df_list, colname) {
+  # Initialize a matrix to store the mean values
+  col_mean <- matrix(NA, nrow = length(df_list), ncol = 5)
+  colnames(col_mean) <- c(paste0(colname, "1"), paste0(colname, "2"), paste0(colname, "3"), paste0(colname, "4"), paste0(colname, "5"))
+  
+  for (i in seq_along(df_list)) {
+    df <- df_list[[i]]
+    for (j in 1:5) {
+      col_mean[i, j] <- mean(df[[paste0(colname, j)]], na.rm = TRUE)
+    }
+  }
+  # Convert the matrix to a dataframe
+  col_mean_df <- as.data.frame(col_mean)
+  
+  return(col_mean_df)
+}
+```
+
+```{r message=FALSE, warning=FALSE}
+# Load the data
+data <- loadLift("../../lifts/all")
+
+
+# calculate peak accelerations
+PLA <- find_col_max(data, "A_abs")
+PAA <- find_col_max(data, "Gyr_abs")
+
+# calculate average accelerations
+ALA <- find_col_mean(data, "A_abs")
+AAA <- find_col_mean(data, "Gyr_abs")
+PLA <- PLA %>%
+  rename(PLA1 = A_abs1) %>%
+  rename(PLA2 = A_abs2) %>%
+  rename(PLA3 = A_abs3) %>%
+  rename(PLA4 = A_abs4) %>%
+  rename(PLA5 = A_abs5)
+ALA <- ALA %>%
+  rename(ALA1 = A_abs1) %>%
+  rename(ALA2 = A_abs2) %>%
+  rename(ALA3 = A_abs3) %>%
+  rename(ALA4 = A_abs4) %>%
+  rename(ALA5 = A_abs5)
+PAA <- PAA %>%
+  rename(PAA1 = Gyr_abs1) %>%
+  rename(PAA2 = Gyr_abs2) %>%
+  rename(PAA3 = Gyr_abs3) %>%
+  rename(PAA4 = Gyr_abs4) %>%
+  rename(PAA5 = Gyr_abs5)
+AAA <- AAA %>%
+  rename(AAA1 = Gyr_abs1) %>%
+  rename(AAA2 = Gyr_abs2) %>%
+  rename(AAA3 = Gyr_abs3) %>%
+  rename(AAA4 = Gyr_abs4) %>%
+  rename(AAA5 = Gyr_abs5)
+
+
+
+# Combine the data into dataframes
+d_all <- cbind(PLA, PAA, ALA, AAA)
+data <- d_all
+data <- data[-c(7, 11, 12), ]
+rm(AAA,ALA, PLA, PAA)
+# Rename data headers
+
+# Round all numerical data in the dataframe
+datarounded <- data %>%
+  mutate(across(where(is.numeric), ~ round(., 2)))
+# Showing only first 10 rows
+knitr::kable(datarounded, caption = "Table X: PLA, ALA, PAA and AAA for each marker per participant") %>%
+  kableExtra::kable_styling(bootstrap_options = "striped")
+```
+
+```{r}
+# Hist each column of data
+# Load necessary packages
+library(dplyr)
+library(ggplot2)
+library(purrr)
+
+# Assuming data is already prepared
+# Create a function to plot histograms for each column
+plot_histograms <- function(data) {
+  numeric_columns <- data %>% select(where(is.numeric))
+  plots <- map(names(numeric_columns), function(col_name) {
+    ggplot(data, aes_string(x = col_name)) +
+      geom_histogram(binwidth = 0.5, fill = "blue", color = "black", alpha = 0.7) +
+      labs(title = paste("Histogram of", col_name), x = col_name, y = "Frequency") +
+      theme_minimal()
+  })
+  return(plots)
+}
+
+# Generate histograms
+histograms <- plot_histograms(data)
+
+# Print histograms
+walk(histograms, print)
+
+```
+```{r}
+# Compute the means and standard deviations for each column
+summary_stats <- data %>%
+  summarise(across(where(is.numeric), list(mean = mean, sd = sd), na.rm = TRUE)) %>%
+  pivot_longer(cols = everything(), names_to = c("Variable", ".value"), names_sep = "_")
+
+# Print the summary statistics table
+print(summary_stats)
+
+
+# Function to perform Shapiro-Wilk test and return results as a data frame
+shapiro_test_results <- function(data) {
+  results <- data.frame(
+    Variable = character(),
+    W = numeric(),
+    p_value = numeric(),
+    stringsAsFactors = FALSE
+  )
+  
+  num_cols <- names(data)[sapply(data, is.numeric)]
+  
+  for (col in num_cols) {
+    test_result <- shapiro.test(data[[col]])
+    results <- rbind(results, data.frame(
+      Variable = col,
+      W = test_result$statistic,
+      p_value = test_result$p.value
+    ))
+  }
+  
+  return(results)
+}
+
+# Perform Shapiro-Wilk test for each numeric column in the dataset
+results_table <- shapiro_test_results(data)
+
+# Set options to avoid scientific notation
+options(scipen = 999)
+
+# Format the results for better readability
+results_table$W <- format(results_table$W, digits = 5, nsmall = 5)
+results_table$p_value <- format(results_table$p_value, digits = 5, nsmall = 5)
+
+# Print the results table
+print(results_table)
+
+
+```
+```{r}
+# Load necessary library
+library(dplyr)
+
+# Function to calculate Z-scores and identify the row with the highest sum of absolute Z-scores
+find_biggest_outlier <- function(data) {
+  # Identify numeric columns
+  num_cols <- names(data)[sapply(data, is.numeric)]
+  
+  # Calculate Z-scores for each numeric column
+  z_scores <- data %>%
+    mutate(across(all_of(num_cols), ~ (.- mean(., na.rm = TRUE)) / sd(., na.rm = TRUE)))
+  
+  # Calculate the sum of absolute Z-scores for each row
+  z_scores <- z_scores %>%
+    rowwise() %>%
+    mutate(sum_abs_z = sum(across(all_of(num_cols), ~ abs(.)), na.rm = TRUE)) %>%
+    ungroup()
+  
+  # Identify the row with the highest sum of absolute Z-scores
+  outlier_row <- which.max(z_scores$sum_abs_z)
+  
+  return(outlier_row)
+}
+
+# Find the row that is the biggest outlier for all columns
+biggest_outlier_row <- find_biggest_outlier(data)
+
+# Print the row index of the biggest outlier
+print(biggest_outlier_row)
+
+
+
+```
+:::

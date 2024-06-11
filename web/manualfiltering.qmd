@@ -53,21 +53,15 @@ for (i in seq_along(toload)) {
 rm(rmd, i, setup_chunk, toload)
 ```
 
-I've collected metadata about all recorded lift in liftinfo.csv. This can be used to easialy load the lifts:
-
-```{r lets_go, message=FALSE}
-metadata <- read.csv("../../Logs/metadata.csv", header = TRUE, sep = ";")
-```
-
 
 
 Here is the code to cut each lift and store it as a R object
 
 ```{r cut_and_save, message=FALSE, warning=FALSE}
-dir = "../../Logs/new"
+dir = "../../Logs/Usefull data"
 files <- list.files(path = dir, full.names = TRUE)
-
-data <- LoadXsenseData2(files[1])
+y = 1
+data <- LoadXsenseData2(files[y])
 plot_a(data)
 
 
@@ -85,12 +79,12 @@ This was used to loop throuhg all the lifts
 ```{r, message=FALSE, eval=FALSE}
 #! A mistake of mine, This filters the analysed data (with the absolute values) instead of the raw imu data. 
 cat("lift ", i)
-proefpersoon <- "female1_2105"
+proefpersoon <- files[y]
 cat("start time: ")
 start_time <- readline()
 cat("end time: ")
 end_time <- readline()
-df <- data1[[i]]
+df <- data
   
 time_column <- "time"
 output_filename <- paste0(proefpersoon, i, ".csv")
@@ -101,7 +95,6 @@ filtered_df <- df[df[[time_column]] >= start_time & df[[time_column]] <= end_tim
 write.csv(filtered_df, output_filename, row.names = FALSE)
 
 i <- i + 1
-
 ```
 
 The next chapter will describe the analysis of the lifts.

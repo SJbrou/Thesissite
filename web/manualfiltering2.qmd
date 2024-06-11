@@ -1,0 +1,102 @@
+---
+title: "Data filtering"
+author: "Stan Brouwer"
+format:
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 1
+    embed-resources: true
+    # standalone: true
+    smooth-scroll: true
+    page-layout: full
+    code-fold: show
+    grid:
+      sidebar-width: 180px
+editor: source
+number-sections: false
+---
+
+This is the code used to identify and cut out each of the lifts from the IMU's data. This process has been repeated for each subject, and the resulting data is stored as seperate R dataframe files for further analysis. The process is described below
+
+::: column-page-right
+Lets load all functions from the previous chapter. This is a hassle since they are stored in Quarto markdown language, and R only accept real R code.
+
+```{r LoadData, message = FALSE, verbose = FALSE}
+# Clean workspace
+rm(list = ls())
+library(tidyr)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+
+# Most dependencies are loaded by loading datafiltering.qmd.
+# To load only the chuncks containing functions we need parsermd
+library(parsermd)
+
+toload <- c("load_data","load_plots", "filter_data", "separate_lifts", "visualise_seperate_lifts", "loadXsenseData2")
+rmd <- parse_rmd("datafiltering.qmd")
+
+
+for (i in seq_along(toload)) {
+  setup_chunk <- rmd_select(rmd, toload[i]) |> 
+    as_document()
+
+  setup_chunk <- setup_chunk[-grep("```", setup_chunk)]
+  setup_chunk
+#> [1] "library(tidyr)"   "library(stringr)" ""                
+
+  eval(parse(text = setup_chunk))             
+}
+rm(rmd, i, setup_chunk, toload)
+```
+
+
+
+Here is the code to cut each lift and store it as a R object
+
+```{r cut_and_save, message=FALSE, warning=FALSE}
+dir = "../../Logs/Usefull data"
+files <- list.files(path = dir, full.names = TRUE)
+y = 1
+data <- LoadXsenseData2(files[y])
+plot_a(data)
+
+
+```
+
+```{r, message=FALSE}
+data1 <- filterdata(data)
+data1 <- separatelifts(data1)
+
+i = 1
+plot_filtered_subplots(data1)
+
+```
+This was used to loop throuhg all the lifts
+```{r, message=FALSE, eval=FALSE}
+#! A mistake of mine, This filters the analysed data (with the absolute values) instead of the raw imu data. 
+cat("lift ", i)
+proefpersoon <- files[y]
+cat("start time: ")
+start_time <- readline()
+cat("end time: ")
+end_time <- readline()
+df <- data
+  
+time_column <- "time"
+output_filename <- paste0(proefpersoon, i, ".csv")
+  
+# Filter the dataframe
+filtered_df <- df[df[[time_column]] >= start_time & df[[time_column]] <= end_time, ]
+# Save the filtered dataframe to a CSV file
+write.csv(filtered_df, output_filename, row.names = FALSE)
+
+i <- i + 1
+```
+
+The next chapter will describe the analysis of the lifts.
+
+:::
