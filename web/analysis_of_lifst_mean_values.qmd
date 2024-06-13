@@ -209,10 +209,34 @@ kable(manova_table, caption = "Table X: Results of MANOVA") %>%
   kable_styling(bootstrap_options = "striped")
 
 ```
-Looking at <code>Pr(>F), the result of the MANOVA is significant. </code>
+Looking at <code>Pr(>F)</code>, the result of the MANOVA is insignificant (hardcoded text)
 
 
+```{r}
+# Initialize an empty list to store results
+kruskal_results <- list()
 
+# Loop through each numerical column
+for (col in colnames(numerical_data)) {
+  # Extract the numeric vector for the column
+  x <- split(numerical_data[[col]], data$group)
+  
+  # Perform Kruskal-Wallis test
+  kruskal_results[[col]] <- kruskal.test(x)
+}
+
+# Extracting p-values from each test
+p_values <- sapply(kruskal_results, function(x) x$p.value)
+
+# Print results
+results_df <- data.frame(
+  Variable = names(kruskal_results),
+  P_Value = p_values
+)
+
+print(results_df)
+
+```
   
 ```{r message=FALSE, warning=FALSE}
 data2 <- data
@@ -286,11 +310,62 @@ alpha <- 0.05
 bonferroni_corrected_p <- p.adjust(t_test_table$p.value, method = "bonferroni")
 t_test_table <- t_test_table %>% mutate(bonferroni_p = bonferroni_corrected_p)
 
+# Assuming t_test_table is your dataframe
+t_test_table <- subset(t_test_table, select = -c(estimate, parameter, method, alternative))
+
 # Print the t-test results table with Bonferroni correction
 knitr::kable(t_test_table, caption = "Table X: Results of t-tests between groups with Bonferroni correction") %>%
   kableExtra::kable_styling(bootstrap_options = "striped")
 
 
 ```
+
+### Effect sizes
+```{r}
+# Load required libraries
+library(dplyr)
+library(broom)
+library(knitr)
+library(kableExtra)
+
+# Assuming 'data' is your dataframe and 'group' column indicates 'male' or 'female'
+# Separate numerical columns and the 'group' column
+numerical_columns <- sapply(data, is.numeric)
+numerical_data <- data[, numerical_columns]
+
+# Perform t-tests for each numerical column
+t_test_results <- purrr::map(names(numerical_data), ~ t.test(as.formula(paste(.x, "~ group")), data = data) %>% tidy())
+
+# Combine the t-test results into a single table
+t_test_table <- bind_rows(t_test_results) %>%
+  mutate(variable = names(numerical_data)) %>%
+  select(variable, everything())
+
+# Apply Bonferroni correction
+alpha <- 0.05
+bonferroni_corrected_p <- p.adjust(t_test_table$p.value, method = "bonferroni")
+t_test_table <- t_test_table %>%
+  mutate(bonferroni_p = bonferroni_corrected_p)
+
+# Calculate Partial Eta Squared
+# Function to calculate partial eta squared
+calc_partial_eta_squared <- function(t_value, df) {
+  eta_squared <- (t_value^2) / (t_value^2 + df)
+  return(eta_squared)
+}
+
+# Add partial eta squared to the t_test_table
+t_test_table <- t_test_table %>%
+  mutate(partial_eta_squared = calc_partial_eta_squared(statistic, parameter))
+
+# Remove unnecessary columns
+t_test_table <- t_test_table %>%
+  select(-estimate, -parameter, -method, -alternative)
+
+# Print the t-test results table with Bonferroni correction and partial eta squared
+kable(t_test_table, caption = "Table X: Results of t-tests between groups with Bonferroni correction and Partial Eta Squared") %>%
+  kable_styling(bootstrap_options = "striped")
+```
+
 
 :::

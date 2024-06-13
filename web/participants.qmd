@@ -71,6 +71,11 @@ knitr::kable(data[ ,2:8], caption = "Table X: Participant characteristics") %>%
 Start by calculating means and std. I took some steps to format it to [mean ± std] format
 
 ```{r lets_go, message=FALSE, warning=FALSE}
+# Load necessary libraries
+library(dplyr)
+library(tidyr)
+library(knitr)
+library(kableExtra)
 
 # Calculate the number of participants overall and by sex
 count_summary <- data %>%
@@ -81,15 +86,15 @@ count_summary <- data %>%
 # Calculate the summary statistics for all subjects
 overall_summary <- data %>%
   summarise(across(c(Age, Height, Mass, Experience, Reported1rm), 
-                   list(mean = ~ round(mean(.x, na.rm = TRUE),2), 
-                        sd = ~ round(sd(.x, na.rm = TRUE)))),2)
+                   list(mean = ~ round(mean(.x, na.rm = TRUE), 2), 
+                        sd = ~ round(sd(.x, na.rm = TRUE), 2))))
 
 # Calculate the summary statistics by sex
 sex_summary <- data %>%
   group_by(Sex) %>%
   summarise(across(c(Age, Height, Mass, Experience, Reported1rm), 
-                   list(mean = ~ round(mean(.x, na.rm = TRUE),2), 
-                        sd = ~ round(sd(.x, na.rm = TRUE)))),2)
+                   list(mean = ~ round(mean(.x, na.rm = TRUE), 2), 
+                        sd = ~ round(sd(.x, na.rm = TRUE), 2))))
 
 # Combine the summaries into a single table
 summary_table <- bind_rows(
@@ -117,7 +122,7 @@ summary_table <- summary_table %>%
 # Prepare the participant counts in the correct format
 participant_counts <- count_summary %>%
   pivot_wider(names_from = Sex, values_from = count) %>%
-  mutate(variable = "count",
+  mutate(variable = "Participants",
          Overall = as.character(Overall),
          male = as.character(male),
          female = as.character(female))
@@ -138,13 +143,13 @@ final_summary_table$variable[1] <- "Participants"
 final_summary_table$variable[2] <- "Age (years)"
 final_summary_table$variable[3] <- "Height (cm)"
 final_summary_table$variable[4] <- "Body mass (kg)"
-final_summary_table$variable[5] <- "Experience (months)"
+final_summary_table$variable[5] <- "Experience (years)"
 final_summary_table$variable[6] <- "Reported 1RM (kg)"
 
-library(gtExtras)
 # Print the table using knitr::kable
-knitr::kable(final_summary_table[1:6,], caption = "Table X: summary of participant characteristics") %>%
+knitr::kable(final_summary_table, caption = "Table X: Summary of Participant Characteristics") %>%
   kableExtra::kable_styling(bootstrap_options = "striped")
+
 ```
 As expected some differences between genders seem to exists. Differences on height, body mass and reported 1rm are expected. However, age and experience should be similar to (try to) eliminate confounding.
 
@@ -261,7 +266,11 @@ knitr::kable(results_table, caption = "Table X: Shapiro-Wilk's test results on p
 
 Lets plot a histogram for female age to further inspect the data 
 ```{r}
-hist(data$Age[data$Sex == "female"])
+# Create the histogram with a custom title and x-axis label
+hist(data$Age[data$Sex == "female"],
+     main = "Histogram of Female Age",
+     xlab = "Age (years)")
+
 ```
 Apperently there is a overrepresentation of younger female participants.
 
@@ -308,10 +317,11 @@ for (col in names(t_test_results)) {
     Mean_Male = round(male_mean,2),
     Mean_Female = round(female_mean,2),
     t_Value = round(test_result$statistic,2),
-    df = round(test_result$parameter,2),
+    # df = round(test_result$parameter,2),
     P_Value = round(test_result$p.value,2)
   ))
 }
+rownames(results_table) <- NULL
 
 # Print the results in a nice table
 knitr::kable(results_table, caption = "Table X: t-test results on participants' characteristics") %>%

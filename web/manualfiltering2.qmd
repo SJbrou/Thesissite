@@ -58,7 +58,7 @@ rm(rmd, i, setup_chunk, toload)
 Here is the code to cut each lift and store it as a R object
 
 ```{r cut_and_save, message=FALSE, warning=FALSE}
-dir = "../../Logs/Usefull data"
+dir = "../../lifts/all"
 files <- list.files(path = dir, full.names = TRUE)
 y = 1
 data <- LoadXsenseData2(files[y])

@@ -104,10 +104,10 @@ find_col_mean <- function(df_list, colname) {
 }
 ```
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, echo=FALSE}
 # Load the data
 data <- loadLift("../../lifts/all")
-
+files <- list.files(path = "../../lifts/all", full.names = TRUE)
 
 # calculate peak accelerations
 PLA <- find_col_max(data, "A_abs")
@@ -145,17 +145,72 @@ AAA <- AAA %>%
 
 # Combine the data into dataframes
 d_all <- cbind(PLA, PAA, ALA, AAA)
-data <- d_all
-data <- data[-c(7, 11, 12), ]
+
 rm(AAA,ALA, PLA, PAA)
 # Rename data headers
 
 # Round all numerical data in the dataframe
-datarounded <- data %>%
+datarounded <- d_all %>%
   mutate(across(where(is.numeric), ~ round(., 2)))
+
 # Showing only first 10 rows
 knitr::kable(datarounded, caption = "Table X: PLA, ALA, PAA and AAA for each marker per participant") %>%
   kableExtra::kable_styling(bootstrap_options = "striped")
+
+
+i = 1
+```
+
+```{r, eval=FALSE}
+daat <- as.data.frame(data[i])
+data_long <- daat %>%
+  pivot_longer(
+    cols = -time,
+    names_to = "variable",
+    values_to = "value"
+  )
+
+# Select only the columns of interest and the time column
+data_selected <- daat
+
+# Reshape the data to long format
+data_long <- data_selected %>%
+  pivot_longer(
+    cols = -time,
+    names_to = "variable",
+    values_to = "value"
+  )
+
+# Create the interactive plot with plotly
+interactive_plot <- plot_ly(data_long, x = ~time, y = ~value, color = ~variable, type = 'scatter', mode = 'lines') %>%
+  layout(title = files[i],
+         xaxis = list(title = "Time"),
+         yaxis = list(title = "Value"))
+
+# Display the interactive plot
+interactive_plot
+```
+```{r, eval=FALSE}
+
+#! A mistake of mine, This filters the analysed data (with the absolute values) instead of the raw imu data. 
+proefpersoon <- files[i]
+proefpersoon <- gsub("../../lifts/all/", "", proefpersoon)
+output_filename <- paste0(proefpersoon)
+
+cat("start time: ")
+start_time <- readline()
+cat("end time: ")
+end_time <- readline()
+df <- daat
+time_column <- "time"
+proefpersoon <- gsub("../../lifts/all/", "", proefpersoon)
+  
+# Filter the dataframe
+filtered_df <- df[df[[time_column]] >= start_time & df[[time_column]] <= end_time, ]
+# Save the filtered dataframe to a CSV file
+write.csv(filtered_df, output_filename, row.names = FALSE)
+
+
 ```
 
 ```{r}
@@ -179,7 +234,7 @@ plot_histograms <- function(data) {
 }
 
 # Generate histograms
-histograms <- plot_histograms(data)
+histograms <- plot_histograms(d_all)
 
 # Print histograms
 walk(histograms, print)
@@ -187,7 +242,7 @@ walk(histograms, print)
 ```
 ```{r}
 # Compute the means and standard deviations for each column
-summary_stats <- data %>%
+summary_stats <- d_all %>%
   summarise(across(where(is.numeric), list(mean = mean, sd = sd), na.rm = TRUE)) %>%
   pivot_longer(cols = everything(), names_to = c("Variable", ".value"), names_sep = "_")
 
@@ -219,7 +274,7 @@ shapiro_test_results <- function(data) {
 }
 
 # Perform Shapiro-Wilk test for each numeric column in the dataset
-results_table <- shapiro_test_results(data)
+results_table <- shapiro_test_results(d_all)
 
 # Set options to avoid scientific notation
 options(scipen = 999)
@@ -259,12 +314,12 @@ find_biggest_outlier <- function(data) {
 }
 
 # Find the row that is the biggest outlier for all columns
-biggest_outlier_row <- find_biggest_outlier(data)
+biggest_outlier_row <- find_biggest_outlier(d_all)
 
 # Print the row index of the biggest outlier
 print(biggest_outlier_row)
 
-
+print(files[biggest_outlier_row])
 
 ```
 :::
